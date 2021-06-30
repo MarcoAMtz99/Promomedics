@@ -1,0 +1,35 @@
+<IfModule mod_rewrite.c>
+	# Activar RewriteEngine
+	RewriteEngine on
+	
+	# Directorio donde trabajaremos
+	# Si esta en raiz unicamente /
+	RewriteBase /
+	
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f
+	 
+	# Reescribir la URL recibida
+	# empieza a buscar lo que este entre ^ y $
+	# lo reemplaza con lo que este en seguida
+	# lo que este entre () se guardara en una variable $1, $2, $3, etc
+	
+	# \w => busca cualquier caracter 
+	# [0-9] => busca únicamente caracteres numéricos (entre 0 y 9)
+	# +     => indica que no hay limite de longitud
+	# ?     => indica que es opcional
+
+	Rewriterule ^(\w+)$ $1.php
+	Rewriterule ^core/(\w+)$ core/$1.php
+	Rewriterule ^core/(\w+)/(\w+)$ core/$1.php?action=$2
+	Rewriterule ^core/(\w+)/(\w+)/(\w+)$ core/$1.php?action=$2$3
+
+	Rewriterule ^medico/(.*)$ medico.php?id=$1
+	Rewriterule ^cat/(.*)$ cat_$1.php
+
+	# Pagina no encontrada
+	ErrorDocument 404 /404.php
+
+</IfModule>
+
+Options All -Indexes
