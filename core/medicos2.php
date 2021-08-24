@@ -1031,7 +1031,7 @@ switch ($action) {
 			$actions .= '<button type="button" class="btn btn-xs btn-danger btncub-del" title="Eliminar"><i class="fa fa-trash"></i></button>';
 		}
 
-		echo json_encode(array('items' => $arr, 'act' => $actions));
+		echo json_encode(array('items' => $arr, 'act' => $actions,'query'=>$SQL,'resultado'=>$res));
 		break;
 
 	case 'addCubiculo':

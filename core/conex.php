@@ -1,12 +1,12 @@
 <?php 
 	ini_set('display_errors',0);
 
-	$conn = mysql_pconnect('localhost','root','');
-	mysql_select_db('promo');
+	$conn = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
+	mysql_select_db('bywsicom_promo');
 
 
 	if(!defined('URL_ROOT')){
-		define('URL_ROOT', 'http://localhost/promo');
+		define('URL_ROOT', 'https://promo.byw-si.com.mx');
 	}
 	if(!defined('PAGE_TITLE')){
 		define('PAGE_TITLE', 'Promomedics');

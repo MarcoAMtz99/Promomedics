@@ -194,7 +194,7 @@ switch ($action) {
 	case 'addPerfil':
 		$permp = $perm['children'][MOD_PERFILES];
 		if($edita && $permp['action'] == 'EDIT'){
-			$SQL = "INSERT INTO seg_perfil VALUES (NULL, '$data->nom', '$data->desc', NOW(), NOW(), '', 1); ";
+			$SQL = "INSERT INTO seg_perfil VALUES (null,'$data->nom', '$data->desc', NOW(), NOW(), null, 1) ";
 			$res = mysql_query($SQL);
 
 			$id = mysql_insert_id();
@@ -209,7 +209,7 @@ switch ($action) {
 				
 				$arrRes = array('id' => $id, 'item' => $item, 'actions' => $acciones);
 			}else{
-				$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'No se pudo guardar');
+				$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'No se pudo guardar','id_query'=>$SQL,'data'=>$data,'res'=>$res);
 			}
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');

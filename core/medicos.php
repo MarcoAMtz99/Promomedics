@@ -88,7 +88,7 @@ switch ($action) {
 			}
 			$arrItems[] = $item;
 		}
-
+            
 		$acciones = '';
 		if($edita){
 			$acciones = '<button class="btn btn-primary btn-xs btn-edit" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil fa-fw"></i></button>';
@@ -96,7 +96,7 @@ switch ($action) {
 			$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash fa-fw"></i></button>';
 		}
 		
-		$arrRes = array('error' => false, 'items' => $arrItems, 'actions' => $acciones);
+		$arrRes = array('error' => $SQL, 'items' => $arrItems, 'actions' => $acciones,'hola');
 		echo json_encode($arrRes);
 		break;
 
@@ -132,15 +132,15 @@ switch ($action) {
 					$arrRes = array('error' => true, 'elem' => 'item-mail', 'msg' => 'Email ya registrado');
 				}else{
 
-					$SQLm = "INSERT INTO medico (tipoMedico, nombre, paterno, materno, num_cedula, status, usuarioCreacionId) 
-									VALUES('AF', '$data->nom', '$data->ape', '$data->mat', '$data->ced', '1', $user)";
+					$SQLm = "INSERT INTO medico (tipoMedico, nombre, paterno, materno, num_cedula, status, usuarioCreacionId,usuarioActualizacionId,num_recer,id_cp,num_piso,num_interior,num_exterior,calle,rfc,nacimiento_lugar,sexo,fecha_recer) 	VALUES('AF', '$data->nom', '$data->ape', '$data->mat', '$data->ced', '1', $user,$user,'',0,0,0,0,'','','','','2000')";
 					$resm = mysql_query($SQLm);
+					
 
 					$med = mysql_insert_id();
 					$pass = randomString(8);
 
 					$passBD = strrev(md5(sha1($pass)));
-					$SQL = "INSERT INTO seg_user VALUES (NULL, 3, $med, '$data->nom', '$data->ape $data->mat', '$data->mail', '$passBD', '$data->mail', '', NOW(), NOW(), '', 3); ";
+					$SQL = "INSERT INTO seg_user VALUES (NULL, 3, $med, '$data->nom', '$data->ape $data->mat', '$data->mail', '$passBD', '$data->mail', NULL, NOW(), NOW(), NULL, 3); ";
 					$res = mysql_query($SQL);
 
 					$id = mysql_insert_id();
@@ -162,7 +162,7 @@ switch ($action) {
 						$acciones .= '<button class="btn btn-danger btn-xs btn-neg" data-toggle="tooltip" title="Negar"><i class="fa fa-ban fa-fw"></i></button>';
 						$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash fa-fw"></i></button>';
 						
-						$arrRes = array('id' => $id, 'item' => $item, 'actions' => $acciones);
+						$arrRes = array('id' => $id, 'item' => $item, 'actions' => $acciones,'consultas'=>$SQL);
 
 
 
@@ -177,12 +177,12 @@ switch ($action) {
 					    $header .= "From: ".PAGE_TITLE." <notifica@promomedics.com.mx>\r\n";
 					    $resultMail = mail($to, $subject, $body, $header);
 					}else{
-						$arrRes = array('error' => true, 'elem' => 'btnSave', 'msg' => 'No se pudo guardar');
+						$arrRes = array('error' => true, 'elem' => 'btnSave', 'msg' => 'No se pudo guardar',$resm,$SQLm,$SQL,$data->sexo);
 					}
 				}
 			}
 		}else{
-			$arrRes = array('error' => true, 'elem' => 'btnSave', 'msg' => 'Acceso Restringido.');
+			$arrRes = array('error' => false, 'elem' => 'btnSave', 'msg' => 'Acceso Restringido.');
 		}
 		echo json_encode($arrRes);
 		break;
@@ -513,7 +513,7 @@ switch ($action) {
 
 				$arrRes = array('error' => false, 'item' => $item, 'act' => $actions);	
 			}else{
-				$arrRes = array('error' => true);
+				$arrRes = array('error' => true,'query'=>$SQLe);
 			}
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');
@@ -1055,7 +1055,7 @@ switch ($action) {
 			$actions .= '<button type="button" class="btn btn-xs btn-danger btncub-del" title="Eliminar"><i class="fa fa-trash"></i></button>';
 		}
 
-		echo json_encode(array('items' => $arr, 'act' => $actions));
+		echo json_encode(array('items' => $arr, 'act' => $actions,'query'=>$SQL));
 		break;
 
 	case 'addCubiculo':
@@ -1081,7 +1081,7 @@ switch ($action) {
 
 				$arrRes = array('error' => false, 'item' => $item, 'act' => $actions);	
 			}else{
-				$arrRes = array('error' => true);
+				$arrRes = array('error' => true,'query'=>$SQL,'resultado'=>$res);
 			}
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');
@@ -2798,7 +2798,7 @@ switch ($action) {
 		if($edita){
 			$med = $data->med;
 
-			$SQL = "INSERT INTO medico_servicio VALUES (NULL, $med, '$data->nom', '$data->desc', '$data->costo', '', '', '', 'S', 1); ";
+			$SQL = "INSERT INTO medico_servicio VALUES (NULL, $med, '$data->nom', '$data->desc', '$data->costo',0, '', 00.00, 'S', 1); ";
 			$res = mysql_query($SQL);
 
 			$id = mysql_insert_id();
@@ -2814,7 +2814,7 @@ switch ($action) {
 
 				$arrRes = array('error' => false, 'item' => $item, 'act' => $actions);	
 			}else{
-				$arrRes = array('error' => true);
+				$arrRes = array('error' => true,'query'=>$SQL);
 			}
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');
@@ -3359,6 +3359,24 @@ switch ($action) {
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');
 		}
+		echo json_encode($arrRes);
+		break;
+		case 'getGrupoMedico':
+			$id = $_POST['id'];
+
+			/*$SQL = "SELECT ID, m.nombre, m.paterno, m.materno, num_cedula, 
+							id_user, email, fk_medico, DATE_FORMAT(m.fechaCreacion,'%d/%m/%Y %H:%i') AS creado, 
+							(SELECT CONCAT(nombre,' ',apellidos) FROM seg_user WHERE id_user = m.usuarioCreacionId) AS usuario
+						FROM medico m, seg_user u
+							WHERE u.id_user = $id AND m.ID = u.fk_medico; "; */
+			$SQL = "SELECT * FROM `grupo_medico`;";
+			$res = mysql_query($SQL);
+
+			$item = mysql_fetch_assoc($res);
+			    $aux = json_encode($SQL);
+			    
+			$arrRes = array('error' => false, 'item' => $item, 'consulta' => $aux);	
+			
 		echo json_encode($arrRes);
 		break;
 
