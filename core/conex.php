@@ -6,7 +6,7 @@
 
 
 	if(!defined('URL_ROOT')){
-		define('URL_ROOT', 'https://promo.byw-si.com.mx');
+		define('URL_ROOT', 'https://promomedics.byw-si.com.mx');
 	}
 	if(!defined('PAGE_TITLE')){
 		define('PAGE_TITLE', 'Promomedics');
