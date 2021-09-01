@@ -148,15 +148,7 @@
                               <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="TUTOR(A)" value="<?= $infoFact['representante'] ?>">
                             </div>
                           </div>
-
-                        </form>
-                      </div>
-
-                      <div class="col-md-6 col-sm-12 col-xs-12">
-                        <span class="section">DATOS DE CONTACTO</span>
-
-                        <form class="form-horizontal form-label-right">
-
+                          <span class="section">DATOS DE CONTACTO</span>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fact-calle">TELEFONO 
                             </label>
@@ -220,6 +212,16 @@
                               <input type="text" id="fact-mail" class="control-label col-md-3 col-sm-3 col-xs-12" placeholder="Correo electrónico" value="<?= $infoFact['email'] ?>">
                             </div>
                           </div>
+
+                        </form>
+                      </div>
+
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                       
+
+                        <form class="form-horizontal form-label-right">
+
+                          
 
                         </form>
                         <input type="hidden" id="fact-id" value="<?= $infoMed['fact'] ?>">
