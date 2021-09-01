@@ -2,13 +2,13 @@
   $titulo = "Calendario";
   include 'header.php'; 
 
-/*   $aperm = $_SESSION['perm'];
+  $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){
     include '403.php';
     exit(0);
   }else{
     $perm = $aperm[MOD_MEDICOS];
-    $perm = $perm['action']; */
+    $perm = $perm['action'];
   }
 
 ?>
@@ -86,7 +86,101 @@
             </div>
           </div>
 
+<!-- 
+        
+          <div id="frm-item" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                  </button>
+                  <h4 class="modal-title">Agregar </h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal form-label-left">
 
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="item-nom">Nombre <span class="required">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" id="item-nom" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Grupo Médico">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="item-ape" class="control-label col-md-3 col-sm-3 col-xs-12">Responsable</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input id="item-ape" class="form-control col-md-7 col-xs-12" type="text" placeholder="Responsable">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="item-mat" class="control-label col-md-3 col-sm-3 col-xs-12">Giro</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input id="item-mat" class="form-control col-md-7 col-xs-12" type="text" placeholder="Giro">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="item-ced" class="control-label col-md-3 col-sm-3 col-xs-12">Celular <span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="item-ced" class="form-control col-md-7 col-xs-12" type="text" placeholder="Celular" <?php echo $usertype != 1 ? 'disabled' : '' ?>>
+                      </div>
+                    </div>
+
+                 
+                    <div class="form-group">
+                      <label for="item-sexo" class="control-label col-md-3 col-sm-3 col-xs-12">Estado <span class="required">*</span></label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input id="item-sexo" class="form-control col-md-7 col-xs-12" type="text" placeholder="Estado">
+                      </div>
+                    </div>
+                    
+                    <hr class="creado">
+                    <div class="form-group creado">
+                      <label for="item-creado" class="control-label col-md-3 col-sm-3 col-xs-12">Creado</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input id="item-creado" class="form-control col-md-7 col-xs-12" type="text" readonly>
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <input type="hidden" id="item-id" value="0">
+                  <input type="hidden" id="item-med" value="0">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <a href="#" id="btnDatos" class="btn btn-default hide">Ver todos los datos</a>
+                  <button id="btnSave" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="frm-item-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Eliminar Médico</h4>
+                      </div>
+                      <div class="modal-body">
+                          <p>¿Estas seguro de eliminar a '<strong></strong>' (<strong></strong>)?</p>
+                          <input type="hidden" id="item-del-id" value="0">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="btnDelete">Eliminar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          
+        </div>
+        <!-- /page content -->
         <div role="tabpanel" class="tab-pane fade" id="consultorios-tab" aria-labelledby="consultorios-tab">
                     <?php include 'calendario/datos.php'; ?>
                   </div>
@@ -125,32 +219,3 @@
     <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
 
     
-    <!-- Custom Theme Scripts -->
-    <script src="build/js/custom.min.js"></script>
-
-<!-- 
-    <script>
-      $(document).ready(function() {
-
-        getMedicos();
-
-      function getMedicos(){
-        NProgress.start();
-        $.post('core/agenda/getMedicos', 
-          {}, 
-          function(resp) {
-          
-            console.log('datos grupo medico',resp.item);
-            //  $.each(resp, function(index){
-                addItemRow( resp.item,0);
-             // });
-              $("[data-toggle='tooltip']").tooltip();
-            
-            doTable('#tbl-items', 5);
-            NProgress.done();
-        },'json');
-      }
-
-     
-
-    </script> -->
