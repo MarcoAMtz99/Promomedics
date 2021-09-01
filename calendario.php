@@ -39,7 +39,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Alta de Grupo Médicos <small>Grupos registrados</small></h2>
+                      <h2>AGENDA <small></small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <?php if($perm == 'EDIT') : ?>
                         <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar Grupo</a></li>
@@ -53,17 +53,48 @@
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th>Nombre </th>
-                            <th>Responsable</th>
-                            <th>Estado</th>
-                            <th>Telefono</th>
-                            <th>Giro</th>
-                            <th></th>
+                            <th>DATOS MEDICOS </th>
+                            <th>AGENDAR CITA</th>
+                            <th>CONFIRMACION</th>
+                            <th>ALERTAS</th>
+                            <!-- <th>Giro</th>
+                            <th></th> -->
                           </tr>
                         </thead>
                         <tbody>
                         </tbody>
                       </table>
+                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTabs" class="nav nav-tabs bar_tabs" role="tablist">
+                  <li role="presentation" class="active">
+                    <a href="#general-tab" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">DATOS MEDICOS</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#consultorios-tab" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">AGENDAR CIT</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#contacto-tab" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Medios de Contacto</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#profesional-tab" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">CONFIRMACION</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#curriculum-tab" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">ALERTAS</a>
+                  </li>
+               
+
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade active in" id="general-tab" aria-labelledby="general-tab">
+                    <div class="row">
+                      <div class="col-md-2 col-sm-2 col-xs-12">
+
+
+
+
+
+
+
                     </div>
                   </div>
             </div>
