@@ -86,6 +86,7 @@
                     </div>
                   </div>
             </div>
+
           </div>
           <div class="row">
                       <div class="col-md-4 col-sm-12 col-xs-12">
@@ -142,12 +143,12 @@
                             </div>
                           </div>
 
-                          <div class="col-md-5 col-sm-5 col-xs-12">
+                         <!--  <div class="col-md-5 col-sm-5 col-xs-12">
                               <select class="form-control" id="fact-tipo">
                                 <option value="1">MASCULINO</option>
                                 <option value="2">FEMENINO</option>
                               </select>
-                            </div>
+                            </div> -->
 
                             <div class="form-group persmoral">
                             <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">TUTOR(A)</label>
@@ -258,8 +259,8 @@
                   <div role="tabpanel" class="tab-pane fade" id="curriculum-tab" aria-labelledby="curriculum-tab">
                     <?php include 'med/confirmacion.php'; ?>
                   </div>
-
-
+                  </div>
+       </div>
         <?php include 'footer.php'; ?>
 
 
