@@ -222,7 +222,7 @@
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>
 
-
+<!-- 
     <script>
       $(document).ready(function() {
 
@@ -233,7 +233,7 @@
         $.post('core/agenda/getMedicos', 
           {}, 
           function(resp) {
-            $('#tbl-items tbody').empty();
+          
             console.log('datos grupo medico',resp.item);
             //  $.each(resp, function(index){
                 addItemRow( resp.item,0);
@@ -247,4 +247,4 @@
 
      
 
-    </script>
+    </script> -->
