@@ -238,7 +238,7 @@
                       <?php if($edita) : ?>
                       <button type="button" class="btn btn-primary hide" id="btnSaveFact"><i class="fa fa-check"></i> AGENDAR CITA</button>
                       <?php endif; ?>
-                      <button type="button" class="btn btn-default btnNext" data-next="<?php echo $ant ?>"><i class="fa fa-angle-double-left"></i> Anterior</button>
+                      <button type="button" class="btn btn-default btnNext" data-next="<?php echo $ant ?>"><i class="fa fa-angle-double-left"></i> AGENDAR CITA</button>
                       <!--button type="button" class="btn btn-default btnNext" data-next="6">Siguiente <i class="fa fa-angle-double-right"></i></button-->
                     </div>
 
