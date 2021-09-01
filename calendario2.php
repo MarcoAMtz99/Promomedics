@@ -228,12 +228,6 @@
     <script>
       $(document).ready(function() {
 
-     
-
-        getMedicos();
-
-      
-
       function getMedicos(){
         NProgress.start();
         $.post('core/agenda/getMedicos', 
