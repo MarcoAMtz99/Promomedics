@@ -2,13 +2,13 @@
   $titulo = "Calendario";
   include 'header.php'; 
 
-  $aperm = $_SESSION['perm'];
+/*   $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){
     include '403.php';
     exit(0);
   }else{
     $perm = $aperm[MOD_MEDICOS];
-    $perm = $perm['action'];
+    $perm = $perm['action']; */
   }
 
 ?>
