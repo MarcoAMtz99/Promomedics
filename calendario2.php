@@ -42,9 +42,9 @@
                     <div class="x_title">
                       <h2>AGENDA <small></small></h2>
                       <ul class="nav navbar-right panel_toolbox">
-                      <button onclick="getMedicos()">ACTUALIZAR</button>
+                     <!--  <button onclick="getMedicos()">ACTUALIZAR</button> -->
                         <?php if($perm == 'EDIT') : ?>
-                        <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar Cita</a></li>
+                       <!--  <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar Cita</a></li> -->
                         <?php endif; ?>
                       </ul>
                       <div class="clearfix"></div>
@@ -228,6 +228,7 @@
     <script>
       $(document).ready(function() {
 
+        $.get('core/agenda/getMedicos');
       function getMedicos(){
         NProgress.start();
         $.post('core/agenda/getMedicos', 
