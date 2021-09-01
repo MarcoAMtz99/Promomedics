@@ -46,7 +46,7 @@
 
 	define('MEDICOS', 		14);
 	define('GPOSMEDICOS', 	22);
-
+	define('CALENDARIO', 	32);
 	define('PACIENTE', 	23);
 
 	define('CUPON', 	25);
