@@ -58,12 +58,6 @@
 
                 </ul>
               </div>
-                    <span> 
-                    <?php>
-                    echo $permArray;
 
-                       ?>
-
-                    </span>
             </div>
             <!-- /sidebar menu -->
