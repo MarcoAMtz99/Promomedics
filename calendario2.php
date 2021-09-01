@@ -94,36 +94,65 @@
                         <form class="form-horizontal form-label-left">
 
                           <div class="form-group">
-                            <label for="fact-razon" class="control-label col-md-3 col-sm-3 col-xs-12">Razón Social</label>
+                            <label for="fact-razon" class="control-label col-md-3 col-sm-3 col-xs-12">SELECCIONE LA FECHA</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="text" id="fact-razon" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre o Razón Social" value="<?= $infoFact['razon_social'] ?>">
+                            <input id="date" type="date">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="fact-rfc" class="control-label col-md-3 col-sm-3 col-xs-12">RFC</label>
+                            <label for="fact-rfc" class="control-label col-md-3 col-sm-3 col-xs-12">CONSULTA CON:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="text" id="fact-rfc" required="required" class="form-control col-md-7 col-xs-12" placeholder="Registro Federal de Contribuyentes" value="<?= $infoFact['rfc'] ?>">
+                              <input type="text" id="fact-rfc" required="required" class="form-control col-md-7 col-xs-12" placeholder="CONSULTA CON:" value="<?= $infoFact['rfc'] ?>">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="fact-nom" class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Comercial</label>
+                            <label for="fact-nom" class="control-label col-md-3 col-sm-3 col-xs-12">CONSULTORIO</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input id="fact-nom" class="form-control col-md-7 col-xs-12" type="text" placeholder="Nombre Comercial" value="<?= $infoFact['nombre_comercial'] ?>">
+                              <input id="fact-nom" class="form-control col-md-7 col-xs-12" type="text" placeholder="CONSULTORIO" value="<?= $infoFact['nombre_comercial'] ?>">
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="control-label col-md-3 col-sm-3 col-xs-12"></div>
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <select class="form-control" id="fact-tipo">
-                                <option value="1">Persona Física</option>
-                                <option value="2">Persona Moral</option>
+                                <!-- <option value="1">Persona Física</option>
+                                <option value="2">Persona Moral</option> -->
                               </select>
                             </div>
                           </div>
                           <div class="form-group persmoral">
-                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">Representante Legal</label>
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">NOMBRE</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="Nombre del Representante Legal" value="<?= $infoFact['representante'] ?>">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="Nombre " value="<?= $infoFact['representante'] ?>">
+                            </div>
+                            <div class="form-group persmoral">
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">A PATERNO</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="A PATERNO" value="<?= $infoFact['representante'] ?>">
+                            </div>
+                            <div class="form-group persmoral">
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">A MATERNO</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="A MATERNO" value="<?= $infoFact['representante'] ?>">
+                            </div>
+                            <div class="form-group persmoral">
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">EDAD</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="EDAD" value="<?= $infoFact['representante'] ?>">
+                            </div>
+                          </div>
+
+                          <div class="col-md-5 col-sm-5 col-xs-12">
+                              <select class="form-control" id="fact-tipo">
+                                <option value="1">MASCULINO</option>
+                                <option value="2">FEMENINO</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group persmoral">
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">TUTOR(A)</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="TUTOR(A)" value="<?= $infoFact['representante'] ?>">
                             </div>
                           </div>
 
@@ -131,34 +160,41 @@
                       </div>
 
                       <div class="col-md-7 col-sm-12 col-xs-12">
-                        <span class="section">Dirección Fiscal</span>
+                        <span class="section">DATOS DE CONTACTO</span>
 
                         <form class="form-horizontal form-label-left">
 
                           <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="fact-calle">Calle 
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="fact-calle">TELEFONO 
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-12">
-                              <input type="text" id="fact-calle" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre de la calle" value="<?= $infoFact['calle'] ?>">
+                              <input type="text" id="fact-calle" required="required" class="form-control col-md-7 col-xs-12" placeholder="TELEFONO" value="<?= $infoFact['calle'] ?>">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="fact-calle">EMAIL 
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                              <input type="text" id="fact-calle" required="required" class="form-control col-md-7 col-xs-12" placeholder="TELEFONO" value="<?= $infoFact['calle'] ?>">
                             </div>
                           </div>
 
                           <div class="form-group">
-                            <label for="fact-ext" class="control-label col-md-2 col-sm-2 col-xs-12">No. Ext.</label>
+                            <label for="fact-ext" class="control-label col-md-2 col-sm-2 col-xs-12">NOMBRE DEL MEDICO</label>
                             <div class="col-md-2 col-sm-2 col-xs-12">
-                              <input id="fact-ext" class="form-control col-md-7 col-xs-12" type="text" placeholder="Número Exterior" value="<?= $infoFact['exterior'] ?>">
+                              <input id="fact-ext" class="form-control col-md-7 col-xs-12" type="text" placeholder="NOMBRE DEL MEDICO" value="<?= $infoFact['exterior'] ?>">
                             </div>
-                            <label for="fact-int" class="control-label col-md-1 col-sm-1 col-xs-12">No. Int.</label>
+                            <label for="fact-int" class="control-label col-md-1 col-sm-1 col-xs-12">CONSULTORIO</label>
                             <div class="col-md-2 col-sm-2 col-xs-12">
-                              <input id="fact-int" class="form-control col-md-7 col-xs-12" type="text" placeholder="Número Interior" value="<?= $infoFact['interior'] ?>">
+                              <input id="fact-int" class="form-control col-md-7 col-xs-12" type="text" placeholder="CONSULTORIO" value="<?= $infoFact['interior'] ?>">
                             </div>
-                            <label for="fact-cp" class="control-label col-md-1 col-sm-1 col-xs-12">C. P.</label>
+                            <label for="fact-cp" class="control-label col-md-1 col-sm-1 col-xs-12">FOLIO DE RESERVACION</label>
                             <div class="col-md-2 col-sm-2 col-xs-12">
-                              <input id="fact-cp" class="form-control col-md-7 col-xs-12" type="text" data-inputmask="'mask' : '99999'" placeholder="Código Postal" value="<?= $infoFact['codigo_postal'] ?>">
+                              <input id="fact-cp" class="form-control col-md-7 col-xs-12" type="text" data-inputmask="'mask' : '99999'" placeholder="FOLIO" value="<?= $infoFact['codigo_postal'] ?>">
                             </div>
                           </div>
 
-                          <div class="form-group">
+                         <!--  <div class="form-group">
                             <label for="fact-col" class="control-label col-md-2 col-sm-2 col-xs-12">Colonia</label>
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <select id="fact-col" class="select2_single form-control" tabindex="-1" style="width: 100%">
@@ -190,7 +226,7 @@
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <input type="text" id="fact-mail" class="form-control col-md-7 col-xs-12" placeholder="Correo electrónico" value="<?= $infoFact['email'] ?>">
                             </div>
-                          </div>
+                          </div> -->
 
                         </form>
                         <input type="hidden" id="fact-id" value="<?= $infoMed['fact'] ?>">
@@ -199,7 +235,7 @@
 
                     <div class="actionBar">
                       <?php if($edita) : ?>
-                      <button type="button" class="btn btn-primary hide" id="btnSaveFact"><i class="fa fa-check"></i> Guardar Datos Fiscales</button>
+                      <button type="button" class="btn btn-primary hide" id="btnSaveFact"><i class="fa fa-check"></i> AGENDAR CITA</button>
                       <?php endif; ?>
                       <button type="button" class="btn btn-default btnNext" data-next="<?php echo $ant ?>"><i class="fa fa-angle-double-left"></i> Anterior</button>
                       <!--button type="button" class="btn btn-default btnNext" data-next="6">Siguiente <i class="fa fa-angle-double-right"></i></button-->
