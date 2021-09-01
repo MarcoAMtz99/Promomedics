@@ -78,7 +78,16 @@
                       <div class="col-md-2 col-sm-2 col-xs-12">
 
 
-                      <div class="row">
+                
+
+
+
+
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="row">
                       <div class="col-md-5 col-sm-12 col-xs-12">
                         <span class="section">Datos Fiscales</span>
 
@@ -195,14 +204,6 @@
                       <button type="button" class="btn btn-default btnNext" data-next="<?php echo $ant ?>"><i class="fa fa-angle-double-left"></i> Anterior</button>
                       <!--button type="button" class="btn btn-default btnNext" data-next="6">Siguiente <i class="fa fa-angle-double-right"></i></button-->
                     </div>
-
-
-
-
-                    </div>
-                  </div>
-            </div>
-          </div>
 
 <!-- 
         
