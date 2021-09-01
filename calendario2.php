@@ -241,7 +241,8 @@
                       <!--button type="button" class="btn btn-default btnNext" data-next="6">Siguiente <i class="fa fa-angle-double-right"></i></button-->
                     </div>
 
-<!-- 
+
+                    <!-- 
         
           <div id="frm-item" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
