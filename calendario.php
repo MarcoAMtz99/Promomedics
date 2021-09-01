@@ -1,6 +1,17 @@
+
 <?php 
   $titulo = "Calendario";
   include 'header.php'; 
+
+  $aperm = $_SESSION['perm'];
+  if(!array_key_exists(MOD_MEDICOS, $aperm)){
+    include '403.php';
+    exit(0);
+  }else{
+    $perm = $aperm[MOD_MEDICOS];
+    $perm = $perm['action'];
+  }
+
 ?>
 
     <!-- iCheck -->
@@ -176,15 +187,15 @@
                   </div>
 
                   <div role="tabpanel" class="tab-pane fade" id="contacto-tab" aria-labelledby="contacto-tab">
-                    <?php include 'calendario/agendar.php'; ?>
+                    <?php include 'med/agendar.php'; ?>
                   </div>
 
                   <div role="tabpanel" class="tab-pane fade" id="profesional-tab" aria-labelledby="profesional-tab">
-                    <?php include 'calendario/medios.php'; ?>
+                    <?php include 'med/medios.php'; ?>
                   </div>
 
                   <div role="tabpanel" class="tab-pane fade" id="curriculum-tab" aria-labelledby="curriculum-tab">
-                    <?php include 'calendario/confirmacion.php'; ?>
+                    <?php include 'med/confirmacion.php'; ?>
                   </div>
 
 
