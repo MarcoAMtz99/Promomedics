@@ -217,5 +217,3 @@
     <script src="/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
     <script src="/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-
-    
