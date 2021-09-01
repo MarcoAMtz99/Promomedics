@@ -86,8 +86,8 @@
             </div>
           </div>
 
-
-          <?php if($perm == 'EDIT') : ?>
+<!-- 
+        
           <div id="frm-item" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -175,13 +175,28 @@
                   </div>
               </div>
           </div>
-          <?php endif; ?>
 
 
 
           
         </div>
         <!-- /page content -->
+        <div role="tabpanel" class="tab-pane fade" id="consultorios-tab" aria-labelledby="consultorios-tab">
+                    <?php include 'calendario/datos.php'; ?>
+                  </div>
+
+                  <div role="tabpanel" class="tab-pane fade" id="contacto-tab" aria-labelledby="contacto-tab">
+                    <?php include 'calendario/agendar.php'; ?>
+                  </div>
+
+                  <div role="tabpanel" class="tab-pane fade" id="profesional-tab" aria-labelledby="profesional-tab">
+                    <?php include 'calendario/medios.php'; ?>
+                  </div>
+
+                  <div role="tabpanel" class="tab-pane fade" id="curriculum-tab" aria-labelledby="curriculum-tab">
+                    <?php include 'calendario/confirmacion.php'; ?>
+                  </div>
+
 
         <?php include 'footer.php'; ?>
 
