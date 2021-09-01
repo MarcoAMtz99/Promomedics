@@ -194,7 +194,7 @@
                             </div>
                           </div>
 
-                         <!--  <div class="form-group">
+                          <div class="form-group">
                             <label for="fact-col" class="control-label col-md-2 col-sm-2 col-xs-12">Colonia</label>
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <select id="fact-col" class="select2_single form-control" tabindex="-1" style="width: 100%">
@@ -226,7 +226,7 @@
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <input type="text" id="fact-mail" class="form-control col-md-7 col-xs-12" placeholder="Correo electrónico" value="<?= $infoFact['email'] ?>">
                             </div>
-                          </div> -->
+                          </div>
 
                         </form>
                         <input type="hidden" id="fact-id" value="<?= $infoMed['fact'] ?>">
