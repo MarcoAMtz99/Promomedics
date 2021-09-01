@@ -227,20 +227,7 @@
     <script>
       $(document).ready(function() {
 
-        $('#mnu-med').addClass('active');
-
-
-        $('#btnAdd').click(function(event) {
-          $('#frm-item .modal-title').html('Agregar Grupo Médico');
-          $('#frm-item input').val('');
-          $('#item-id').val(0);
-          $('#item-med').val(0);
-          $('#btnDatos').addClass('hide').attr('href', '#');
-          $('.creado').addClass('hide');
-          //$('#item-perf').val(1);
-          $('#frm-item small').addClass('hide');
-          $('#frm-item').modal('show');
-        });
+     
 
         getMedicos();
 
@@ -262,7 +249,7 @@
             NProgress.done();
         },'json');
       }
-
+    });
      
 
     </script>
