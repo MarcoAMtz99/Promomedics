@@ -135,12 +135,14 @@
                             </div>
                           </div>
 
-                         <!--  <div class="col-md-5 col-sm-5 col-xs-12">
-                              <select class="form-control" id="fact-tipo">
+                          <div class="col-md-5 col-sm-5 col-xs-12">
+                          <label for="fact-sexo" class="control-label col-md-3 col-sm-3 col-xs-12">GENERO</label>
+                              <select class="form-control" id="fact-sexo">
                                 <option value="1">MASCULINO</option>
                                 <option value="2">FEMENINO</option>
+                                <option value="3">OTRO</option>
                               </select>
-                            </div> -->
+                            </div>
 
                             <div class="form-group persmoral">
                             <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">TUTOR(A)</label>
@@ -190,7 +192,48 @@
                               <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="FOLIO" value="<?= $infoFact['representante'] ?>">
                             </div>
                           </div>
+                          <span class="section">CONSULTA:</span>
+                          <div class="col-md-5 col-sm-5 col-xs-12">
+                          <label for="fact-sexo" class="control-label col-md-3 col-sm-3 col-xs-12">TIPO:</label>
+                              <select class="form-control" id="fact-sexo">
+                                <option value="1">PRIMERA VEZ</option>
+                                <option value="2">SUBSECUENTE</option>
+                                <option value="3">URGENCIA</option>
+                                <option value="4">SIN COSTO</option>
+                                <option value="5">1RA VEZ</option>
+                              </select>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                          <label for="fact-ASE" class="control-label col-md-3 col-sm-3 col-xs-12">ASEGURADORA</label>
+                              <select class="form-control" id="fact-ASE">
+                                <option value="1">GNP</option>
+                                <option value="2">SEGUROS MONTERREY</option>
+                                <option value="3">SEGUROS INBURSA</option>
+                              </select>
+                            </div>
                           
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                          <label for="fact-ASE" class="control-label col-md-3 col-sm-3 col-xs-12">¿COMO SE GENERÓ LA CITA? </label>
+                              <select class="form-control" id="fact-ASE">
+                                <option value="1">CONSULTORIO</option>
+                                <option value="2">TELEFONO</option>
+                                <option value="3">MEDICO</option>
+                              </select>
+                            </div>
+                            
+                          <div class="form-group persmoral">
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">¿QUIEN LA REALIZO?</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="PACIENTE" value="<?= $infoFact['representante'] ?>">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="USUARIO" value="<?= $infoFact['representante'] ?>">
+                            </div>
+                          </div>
+                          <div class="form-group persmoral">
+                            <label for="fact-rep" class="control-label col-md-3 col-sm-3 col-xs-12">RECADO</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input id="fact-rep" class="form-control col-md-7 col-xs-12" type="text" placeholder="RECADO" value="<?= $infoFact['representante'] ?>">
+                            </div>
+                          </div>
 
                         </form>
                       </div>
