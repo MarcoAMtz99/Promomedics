@@ -50,27 +50,14 @@
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
                       </p>
-                      <table id="tbl-items" class="table table-striped table-bordered table-hover">
-                        <thead>
-                          <tr>
-                            <th>DATOS MEDICOS </th>
-                            <th>AGENDAR CITA</th>
-                            <th>CONFIRMACION</th>
-                            <th>ALERTAS</th>
-                            <!-- <th>Giro</th>
-                            <th></th> -->
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                      </table>
+                
                       <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                <ul id="myTabs" class="nav nav-tabs bar_tabs" role="tablist">
+                  <ul id="myTabs" class="nav nav-tabs bar_tabs" role="tablist">
                   <li role="presentation" class="active">
                     <a href="#general-tab" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">DATOS MEDICOS</a>
                   </li>
                   <li role="presentation" class="">
-                    <a href="#consultorios-tab" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">AGENDAR CIT</a>
+                    <a href="#consultorios-tab" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">AGENDAR CITA</a>
                   </li>
                   <li role="presentation" class="">
                     <a href="#contacto-tab" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Medios de Contacto</a>
@@ -81,8 +68,7 @@
                   <li role="presentation" class="">
                     <a href="#curriculum-tab" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">ALERTAS</a>
                   </li>
-               
-
+            
                 </ul>
                 <div id="myTabContent" class="tab-content">
                   <div role="tabpanel" class="tab-pane fade active in" id="general-tab" aria-labelledby="general-tab">
