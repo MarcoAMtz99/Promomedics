@@ -2,13 +2,13 @@
   $titulo = "Calendario";
   include 'header.php'; 
 
-  $aperm = $_SESSION['perm'];
+/*   $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){
     include '403.php';
     exit(0);
   }else{
     $perm = $aperm[MOD_MEDICOS];
-    $perm = $perm['action'];
+    $perm = $perm['action']; */
   }
 
 ?>
@@ -217,3 +217,51 @@
     <script src="/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
     <script src="/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+
+    
+    <!-- Custom Theme Scripts -->
+    <script src="build/js/custom.min.js"></script>
+
+
+    <script>
+      $(document).ready(function() {
+
+        $('#mnu-med').addClass('active');
+
+
+        $('#btnAdd').click(function(event) {
+          $('#frm-item .modal-title').html('Agregar Grupo Médico');
+          $('#frm-item input').val('');
+          $('#item-id').val(0);
+          $('#item-med').val(0);
+          $('#btnDatos').addClass('hide').attr('href', '#');
+          $('.creado').addClass('hide');
+          //$('#item-perf').val(1);
+          $('#frm-item small').addClass('hide');
+          $('#frm-item').modal('show');
+        });
+
+        getMedicos();
+
+      
+
+      function getMedicos(){
+        NProgress.start();
+        $.post('core/agenda/getMedicos', 
+          {}, 
+          function(resp) {
+            $('#tbl-items tbody').empty();
+            console.log('datos grupo medico',resp.item);
+            //  $.each(resp, function(index){
+                addItemRow( resp.item,0);
+             // });
+              $("[data-toggle='tooltip']").tooltip();
+            
+            doTable('#tbl-items', 5);
+            NProgress.done();
+        },'json');
+      }
+
+     
+
+    </script>
