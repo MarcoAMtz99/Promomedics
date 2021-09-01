@@ -88,7 +88,7 @@
             </div>
           </div>
           <div class="row">
-                      <div class="col-md-5 col-sm-12 col-xs-12">
+                      <div class="col-md-4 col-sm-12 col-xs-12">
                         <span class="section">Datos Fiscales</span>
 
                         <form class="form-horizontal form-label-left">
@@ -159,7 +159,7 @@
                         </form>
                       </div>
 
-                      <div class="col-md-7 col-sm-12 col-xs-12">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
                         <span class="section">DATOS DE CONTACTO</span>
 
                         <form class="form-horizontal form-label-left">
