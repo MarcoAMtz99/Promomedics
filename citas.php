@@ -32,15 +32,14 @@
 	$SQL2 ='select * from agenda';
 
 	$res = mysql_query("select * from agenda");
-	/* echo "RESULTADO: ".mysql_num_rows($res); */
+
 	$arrItems = array();
 	while ($fila = mysql_fetch_assoc($res)) {
 		$arrItems[] = $fila;
+		echo $fila;
+		echo '	<br>';
 	}
 	$array = array('AGENDA' => $arrItems);
-
-
-/* 	$resultado = $res->fetchAll(PDO::FETCH_ASSOC); */
 	echo json_encode($array);
 
 
