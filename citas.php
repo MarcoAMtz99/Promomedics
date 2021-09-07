@@ -32,6 +32,12 @@
 
 	$res = mysql_query('select * from agenda');
 	echo "RESULTADO: ".mysql_num_rows($res);
+	while ($fila = mysql_fetch_assoc($res)) {
+		echo $fila['id'];
+		echo $fila['paciente'];
+		echo $fila['fecha_consulta'];
+		echo $fila['edad'];
+	}
 	
 
 
