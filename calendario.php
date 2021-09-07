@@ -61,7 +61,7 @@
 					right:'month,basicWeek,basicDay,agendaWeek,agendaDay'
 				},
 				dayClick:function(date,jsEvent,view){
-					swal("cota para la fecha: "+date.format());
+				/* 	swal("cota para la fecha: "+date.format()); */
 					$("#FECHA").val(date.format());
 					$("#agendarModal").modal();
 				},
@@ -86,7 +86,7 @@
 
 					$("#persona").val(callEvent.paciente);
 					$("#descripcionCita").val(fechaAux);
-					swal('persona: ',callEvent.paciente);
+					/* swal('persona: ',callEvent.paciente); */
 					$("#hora_consulta").val();
 					$("#edad").val(callEvent.edad);
 					$("#telefono1").val(callEvent.telefono1);
