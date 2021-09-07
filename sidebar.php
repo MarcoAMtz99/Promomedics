@@ -54,7 +54,7 @@
                         }
                       }
                     }
-                    <li id="mnu-cal"><a href="https://promomedics.byw-si.com.mx/calendario.php"><i class="fa fa-calendar"></i> Agenda</a></li>
+                    echo' <li id="mnu-cal"><a href="https://promomedics.byw-si.com.mx/calendario.php"><i class="fa fa-calendar"></i> Agenda</a></li>';
                   ?>
 
                 </ul>
