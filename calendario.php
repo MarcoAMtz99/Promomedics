@@ -1,32 +1,7 @@
-<div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo URL_ROOT; ?>" class="site_title">
-                <img class="logo-sm" src="/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
-                <img class="logo-md" src="/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
-              </a>
-            </div>
+<?php
 
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile">
-              <div class="profile_info">
-                <span>Bienvenido,</span>
-                <h2><?php echo $username ?></h2>
-              </div>
-
-              <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <!--h3>General</h3-->
-                <ul class="nav side-menu">
-
+	include('sidebar.php');
+ ?>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/fullcalendar.min.css">
 	<script src="js/jquery.min.js"></script>
