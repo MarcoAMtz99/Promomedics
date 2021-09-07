@@ -3,7 +3,9 @@
 	/* include('header.php');
 	include('sidebar.php'); */
  ?>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/fullcalendar.min.css">
 	<script src="js/jquery.min.js"></script>
 		<script src="js/moment.min.js"></script>
@@ -11,9 +13,11 @@
 		<!-- <script src="js/es.js"></script> -->
 		<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+		<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
 		 <nav class="navbar navbar-default navbar-static-top">
- 
+
+		 </nav>
 
 	<div class="container">
 		<!-- Button trigger modal -->
@@ -285,7 +289,7 @@
 								    </div>
 								  </div>
 								</div>
-								</nav>
-								
+
+							
 
 
