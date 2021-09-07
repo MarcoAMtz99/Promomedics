@@ -23,8 +23,8 @@
 							comoSeEntero
 							 from agenda;";
 	$res = mysql_query($sql);
-	$infoMed = mysql_fetch_assoc($res);
-	echo mysql_fetch_assoc($res);
+	/* $infoMed = mysql_fetch_assoc($res); */
+	echo "RESULTADO: ".$res;
 	$arr = array();
 /* 	while ($item = mysql_fetch_assoc($res)) {
 		$item['nombre'] = utf8_encode($item['nombre']);
