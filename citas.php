@@ -37,11 +37,11 @@
 	while ($fila = mysql_fetch_assoc($res)) {
 		$arrItems[] = $fila;
 	}
-
+	$array = array('AGENDA' => $arrItems);
 
 
 /* 	$resultado = $res->fetchAll(PDO::FETCH_ASSOC); */
-	echo json_encode($arrItems);
+	echo json_encode($array);
 
 
 
