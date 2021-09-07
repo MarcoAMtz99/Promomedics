@@ -34,20 +34,20 @@
 	$res = mysql_query("select * from agenda");
 	/* echo "RESULTADO: ".mysql_num_rows($res); */
 	while ($fila = mysql_fetch_assoc($res)) {
-		echo $fila['id'];
+		/* echo $fila['id'];
 		echo '<br>';
 		echo $fila['paciente'];
 		echo '<br>';
 		echo $fila['fecha_consulta'];
 		echo '<br>';
 		echo $fila['edad'];
-		echo '<br>';
+		echo '<br>'; */
 	}
 	
 
 
 /* 	$resultado = $res->fetchAll(PDO::FETCH_ASSOC); */
-	echo json_encode($infoMed);
+	echo json_encode(mysql_fetch_assoc($res));
 
 
 
