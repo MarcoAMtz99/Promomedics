@@ -33,6 +33,7 @@
   </div>
 </nav>
 <div class="clearfix"></div>
+
 	<div class="container" style="background-image: url(/images/bg.jpg);">
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
@@ -45,14 +46,11 @@
   Agendar
 </button>
 			</div>
-			<!-- <div class="col-6">
-					<div class="" style="background: red">HOLA</div>
-
-			</div> -->
+			
 
 		</div>
 		
-	</div>
+	
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
@@ -204,7 +202,7 @@
 								    </div>
 								  </div>
 								</div>
-<!-- Modal  PARA VER CITA-->
+							<!-- Modal  PARA VER CITA-->
 								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								  <div class="modal-dialog">
 								    <div class="modal-content">
@@ -303,6 +301,8 @@
 								    </div>
 								  </div>
 								</div>
+
+	</div><!-- FIN DEL CONTAINER -->
 
 							
 
