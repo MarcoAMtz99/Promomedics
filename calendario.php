@@ -15,13 +15,21 @@
 		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   
-    <a class="fa fa-home" href="https://promomedics.byw-si.com.mx/">INICIO</a>
+    <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">INICIO</a>
 	<i class="fa fa-home" aria-hidden="true"></i>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"> </span>
 	
     </button>
 	<img class="" style="height: 40px;" src="/images/logo_small.png" alt="AGENDA">
+  </div>
+</nav>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">
+      <img src="/images/logo_small.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Inicio
+    </a>
   </div>
 </nav>
 <div class="clearfix"></div>
