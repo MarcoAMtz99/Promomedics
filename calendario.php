@@ -12,7 +12,7 @@
 		<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
-		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<!-- 	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   
     <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">INICIO</a>
@@ -23,11 +23,11 @@
     </button>
 	<img class="" style="height: 40px;" src="/images/logo_small.png" alt="AGENDA">
   </div>
-</nav>
-<nav class="navbar navbar-light bg-light">
+</nav> -->
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">
-      <img src="/images/logo_small.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="/images/logo_small.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
       Inicio
     </a>
   </div>
