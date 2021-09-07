@@ -45,7 +45,7 @@
 					$("#agendarModal").modal();
 				},
 				
-					events:'http://localhost/calendario/citas.php',
+					events:'https://promomedics.byw-si.com.mx/citas',
 				
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
 				eventClick:function(callEvent,jsEvent,view){
