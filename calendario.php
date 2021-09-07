@@ -15,7 +15,7 @@
 		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   
-    <a class="fa fa-home" href="https://promomedics.byw-si.com.mx/">INICIO</a>
+    <a class="fa fa-home" href="https://promomedics.byw-si.com.mx/"><i class="fa fa-home" aria-hidden="true"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"> </span>
 	
@@ -23,7 +23,7 @@
 	<img class="" style="height: 40px;" src="/images/logo_small.png" alt="AGENDA">
   </div>
 </nav>
-
+<div class="clearfix"></div>
 	<div class="container" style="background-image: url(/images/bg.jpg);">
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
