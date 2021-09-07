@@ -58,7 +58,7 @@
 			array_push($arrItems,$array);
 	}
 		$array2 = array('AGENDA' => $arrItems);
-		echo $array2;
+		echo $arrItems;
 
 
  ?>
