@@ -7,10 +7,10 @@
 	/* include 'conex.php'; */
 
 	$enlace =  mysql_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
-			if (!$enlace) {
+			/* if (!$enlace) {
 				die('No pudo conectarse: ' . mysql_error());
 			}
-			echo 'Conectado satisfactoriamente';
+			echo 'Conectado satisfactoriamente'; */
 			mysql_select_db('bywsicom_promo');
 
 	$sql = "select id,
@@ -58,7 +58,7 @@
 			array_push($arrItems,$array);
 	}
 		$array2 = array('AGENDA' => $arrItems);
-		return json_encode($array2);
+		echo json_encode($array2);
 
 
  ?>
