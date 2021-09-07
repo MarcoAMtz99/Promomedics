@@ -36,7 +36,7 @@
 	$arrItems = array();
 	while ($fila = mysql_fetch_assoc($res)) {
 		$arrItems[] = $fila;
-		echo $fila;
+		echo $fila['paciente'] ;
 		echo '	<br>';
 	}
 	$array = array('AGENDA' => $arrItems);
