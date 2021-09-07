@@ -1,12 +1,9 @@
 <?php 
 
 	header('Content-Type: application/json');
-	/* $conexion = mysqli_connect("localhost","root" ,"","promo"); */
-	$conn = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
-	mysql_select_db('bywsicom_promo');
-
-/* 	$pdo = new PDO("mysql:dbname=bywsicom_promo; host=localhost","root",""); */
-	$sql = "select id,
+	$conexion = mysqli_connect("localhost","root" ,"","promo");
+	$pdo = new PDO("mysql:dbname=promo; host=localhost","root","");
+	$sql = $pdo->prepare("select id,
 							 (select nombre from medico where ID = id_medico) as nombre,
 							(select paterno from medico where ID = id_medico) as paterno,
 							(select materno from medico where ID = id_medico) as materno,
@@ -21,11 +18,10 @@
 							recado,
 							edad,
 							comoSeEntero
-							 from agenda;";
-	$res = mysql_query($sql);
-	$infoMed = mysql_fetch_assoc($res);
+							 from agenda;");
+	$sql->execute();
 
-/* 	$resultado = $res->fetchAll(PDO::FETCH_ASSOC); */
-	echo json_encode($infoMed);
+	$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+	echo json_encode($resultado);
 
  ?>

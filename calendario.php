@@ -1,17 +1,13 @@
-<?php 
-  $titulo = "Calendario";
-  include 'header.php'; 
 
- /*  $aperm = $_SESSION['perm'];
-  if(!array_key_exists(MOD_MEDICOS, $aperm)){
-    include '403.php';
-    exit(0);
-  }else{
-    $perm = $aperm[MOD_MEDICOS];
-    $perm = $perm['action'];
-  } */
 
-?>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/fullcalendar.min.css">
+	<script src="js/jquery.min.js"></script>
+		<script src="js/moment.min.js"></script>
+		<script src="js/fullcalendar.min.js"></script>
+		<script src="js/es.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+ 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
 	<div class="container">
