@@ -28,15 +28,12 @@
 							edad,
 							comoSeEntero
 							 from agenda;";
-	$SQL2='select * from agenda';
-	$res = mysql_query($SQL2);
-	/* $infoMed = mysql_fetch_assoc($res); */
+	$SQL2 ='select * from agenda';
+
+	$res = mysql_query('select * from agenda');
 	echo "RESULTADO: ".$res;
-	$arr = array();
-/* 	while ($item = mysql_fetch_assoc($res)) {
-		$item['nombre'] = utf8_encode($item['nombre']);
-		$arr[] = $item;
-	} */
+	
+
 
 /* 	$resultado = $res->fetchAll(PDO::FETCH_ASSOC); */
 	echo json_encode($infoMed);
