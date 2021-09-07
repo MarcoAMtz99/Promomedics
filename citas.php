@@ -1,17 +1,18 @@
 <?php 
 
-	header('Content-Type: application/json');
+/* 	header('Content-Type: application/json'); */
 /* 	$conexion = mysqli_connect("localhost","root" ,"!_WOXa9ZxWfP","bywsicom_promo"); */
 	/* $conn = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
 	mysql_select_db('bywsicom_promo'); */
-	include 'conex.php';
+	/* include 'conex.php'; */
 
 	$enlace =  mysql_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
 			if (!$enlace) {
 				die('No pudo conectarse: ' . mysql_error());
 			}
 			echo 'Conectado satisfactoriamente';
-
+			mysql_select_db('bywsicom_promo');
+			
 	$sql = "select id,
 							(select nombre from medico where ID = id_medico) as nombre,
 							(select paterno from medico where ID = id_medico) as paterno,
