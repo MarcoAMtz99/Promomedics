@@ -52,12 +52,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="css/fullcalendar.min.css">
-		<script src="js/jquery.min.js"></script>
-		<script src="js/moment.min.js"></script>
-		<script src="js/fullcalendar.min.js"></script>
-		<script src="js/es.js"></script>
-    
+
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -74,10 +69,14 @@
     <link href="/css/main.css" rel="stylesheet">
 
     
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-
-<!--  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script> -->
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/fullcalendar.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/moment.min.js"></script>
+		<script src="js/fullcalendar.min.js"></script>
+		<script src="js/es.js"></script>
+ 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+     
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109157959-1"></script>
     <script>
