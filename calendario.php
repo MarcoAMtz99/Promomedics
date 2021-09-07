@@ -34,7 +34,7 @@
 </nav>
 <div class="clearfix"></div>
 
-	<div class="container" style="background-image: url(/images/bg.jpg);">
+	<div class="container-fluid col-12" style="background-image: url(/images/bg.jpg);">
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
