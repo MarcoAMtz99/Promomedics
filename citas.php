@@ -31,7 +31,7 @@
 	$SQL2 ='select * from agenda';
 
 	$res = mysql_query('select * from agenda');
-	echo "RESULTADO: ".$res;
+	echo "RESULTADO: ".mysql_num_rows($res);
 	
 
 
