@@ -36,7 +36,7 @@
 	$arrItems = array();
 	while ($fila = mysql_fetch_assoc($res)) {
 	
-		echo $fila['paciente'] ;
+		/* echo $fila['paciente'] ; */
 	
 		$array = array(
 			'id' => $fila['id'],
