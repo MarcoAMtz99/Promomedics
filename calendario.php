@@ -15,7 +15,8 @@
 		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   
-    <a class="fa fa-home" href="https://promomedics.byw-si.com.mx/"><i class="fa fa-home" aria-hidden="true"></i></a>
+    <a class="fa fa-home" href="https://promomedics.byw-si.com.mx/">INICIO</a>
+	<i class="fa fa-home" aria-hidden="true"></i>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"> </span>
 	
