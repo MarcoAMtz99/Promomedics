@@ -24,13 +24,13 @@
   </div>
 </nav>
 
-	<div class="main_container">
+	<div class="container" style="background-image: url(/images/bg.jpg);">
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
 </button> -->
 		<div class="row">
-			<div class="col-8">
+			<div class="col-6">
 					<div id="calendarioWeb"></div>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
