@@ -5,7 +5,13 @@
 	/* $conn = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
 	mysql_select_db('bywsicom_promo'); */
 	include 'conex.php';
-	/* $pdo = new PDO("mysql:dbname=bywsicom_promo; host=localhost","bywsicom_promo","!_WOXa9ZxWfP"); */
+
+	$enlace =  mysql_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
+			if (!$enlace) {
+				die('No pudo conectarse: ' . mysql_error());
+			}
+			echo 'Conectado satisfactoriamente';
+
 	$sql = "select id,
 							(select nombre from medico where ID = id_medico) as nombre,
 							(select paterno from medico where ID = id_medico) as paterno,
