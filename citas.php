@@ -12,7 +12,7 @@
 			}
 			echo 'Conectado satisfactoriamente';
 			mysql_select_db('bywsicom_promo');
-			
+
 	$sql = "select id,
 							(select nombre from medico where ID = id_medico) as nombre,
 							(select paterno from medico where ID = id_medico) as paterno,
@@ -35,9 +35,13 @@
 	/* echo "RESULTADO: ".mysql_num_rows($res); */
 	while ($fila = mysql_fetch_assoc($res)) {
 		echo $fila['id'];
+		echo '<br>';
 		echo $fila['paciente'];
+		echo '<br>';
 		echo $fila['fecha_consulta'];
+		echo '<br>';
 		echo $fila['edad'];
+		echo '<br>';
 	}
 	
 
