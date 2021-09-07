@@ -22,7 +22,8 @@
 							edad,
 							comoSeEntero
 							 from agenda;";
-	$res = mysql_query($sql);
+	$SQL2='select * from agenda';
+	$res = mysql_query($SQL2);
 	/* $infoMed = mysql_fetch_assoc($res); */
 	echo "RESULTADO: ".$res;
 	$arr = array();
