@@ -2,20 +2,20 @@
   $titulo = "Calendario";
   include 'header.php'; 
 
-  $aperm = $_SESSION['perm'];
+ /*  $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){
     include '403.php';
     exit(0);
   }else{
     $perm = $aperm[MOD_MEDICOS];
     $perm = $perm['action'];
-  }
+  } */
 
 ?>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/fullcalendar.min.css">
-	<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script src="js/moment.min.js"></script>
 		<script src="js/fullcalendar.min.js"></script>
 		<script src="js/es.js"></script>
