@@ -15,7 +15,7 @@
 		 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
   
-    <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">HOME</a>
+    <a class="fa fa-home" href="https://promomedics.byw-si.com.mx/">INICIO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"> </span>
 	
@@ -24,13 +24,13 @@
   </div>
 </nav>
 
-	<div class="container">
+	<div class="main_container">
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
 </button> -->
 		<div class="row">
-			<div class="col-6">
+			<div class="col-8">
 					<div id="calendarioWeb"></div>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
