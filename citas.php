@@ -58,7 +58,7 @@
 			array_push($arrItems,$array);
 	}
 		$array2 = array('AGENDA' => $arrItems);
-		echo json_encode($array2);
+		echo $array2;
 
 
  ?>
