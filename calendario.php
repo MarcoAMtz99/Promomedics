@@ -12,13 +12,15 @@
 
 	<div class="container">
 		<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
-</button>
+</button> -->
 		<div class="row">
 			<div class="col-6">
 					<div id="calendarioWeb"></div>
-
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
+  Agendar
+</button>
 			</div>
 			<!-- <div class="col-6">
 					<div class="" style="background: red">HOLA</div>
