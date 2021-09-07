@@ -35,7 +35,7 @@
 	/* echo "RESULTADO: ".mysql_num_rows($res); */
 	$arrItems = array();
 	while ($fila = mysql_fetch_assoc($res)) {
-		$arrItems[] = $item;
+		$arrItems[] = $fila;
 	}
 
 
