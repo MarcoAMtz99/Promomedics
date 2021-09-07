@@ -30,7 +30,7 @@
 							 from agenda;";
 	$SQL2 ='select * from agenda';
 
-	$res = mysql_query('select * from agenda');
+	$res = mysql_query("select * from agenda");
 	/* echo "RESULTADO: ".mysql_num_rows($res); */
 	while ($fila = mysql_fetch_assoc($res)) {
 		echo $fila['id'];
