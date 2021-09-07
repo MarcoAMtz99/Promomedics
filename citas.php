@@ -23,8 +23,9 @@
 							comoSeEntero
 							 from agenda;";
 	$res = mysql_query($sql);
+	$infoMed = mysql_fetch_assoc($res);
 
 /* 	$resultado = $res->fetchAll(PDO::FETCH_ASSOC); */
-	echo json_encode($res);
+	echo json_encode($infoMed);
 
  ?>
