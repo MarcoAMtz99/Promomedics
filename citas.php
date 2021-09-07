@@ -31,16 +31,34 @@
 							 from agenda;";
 	$SQL2 ='select * from agenda';
 
-	$res = mysql_query("select * from agenda");
+	$res = mysql_query($sql);
 
 	$arrItems = array();
 	while ($fila = mysql_fetch_assoc($res)) {
-		$arrItems[] = $fila;
+	
 		echo $fila['paciente'] ;
-		echo '	<br>';
+	
+		$array = array(
+			'id' => $fila['id'],
+			'nombre' => $fila['nombre'],
+			'paterno' => $fila['paterno'],
+			'materno' => $fila['materno'],
+			'paciente' => $fila['paciente'],
+			'start' => $fila['start'],
+			'hora_consulta' => $fila['hora_consulta'],
+			'telefono1' => $fila['telefono1'],
+			'telefono2' => $fila['telefono2'],
+			'telefono3' => $fila['telefono3'],
+			'costoConsulta' => $fila['costoConsulta'],
+			'aseguradora' => $fila['aseguradora'],
+			'recado' => $fila['recado'],
+			'edad' => $fila['edad'],
+			'comoSeEntero' => $fila['comoSeEntero']
+			);
+			array_push($arrItems,$array);
 	}
-	$array = array('AGENDA' => $arrItems);
-	echo json_encode($array);
+	/* $array = array('AGENDA' => $arrItems); */
+	echo json_encode($arrItems);
 
 
 
