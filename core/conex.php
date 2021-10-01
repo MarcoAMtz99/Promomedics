@@ -1,8 +1,8 @@
 <?php 
 	ini_set('display_errors',0);
 
-	$conn = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
-	mysql_select_db('bywsicom_promo');
+	$conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
+	mysqli_select_db($conn,'bywsicom_promo');
 
 
 	if(!defined('URL_ROOT')){
