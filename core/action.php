@@ -22,12 +22,12 @@ switch ($action) {
 						(SELECT fk_grupo FROM medico WHERE ID = fk_medico) AS grupo
 					FROM seg_user 
 						WHERE (username = '$user' OR email = '$user') AND password = '$pass' AND status != 2; ";
-		$res = mysql_query($SQL);
+        $res = mysqli_query($conn, $SQL);
 
-		if (mysql_num_rows($res) == 0) {
+		if (mysqli_num_rows($res) == 0) {
 			$arrRes = array('error' => true, 'sql' => $SQL);
 		}else{
-			$info = mysql_fetch_assoc($res);
+			$info = mysqli_fetch_assoc($res);
 			$idUser = $info['id_user'];
             $userName = $info['username'];
             $perfil = intval($info['fk_perfil']);
@@ -70,13 +70,13 @@ switch ($action) {
 		$newPassBD = strrev(md5(sha1(trim($newPass))));
 
 		$SQL = "SELECT id_user, email, nombre FROM seg_user WHERE email = '$mail' AND status != 2; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn,$SQL);
 
-		if (mysql_num_rows($res) > 0) {
-			$infoUser = mysql_fetch_assoc( $res );
+		if (mysqli_num_rows($res) > 0) {
+			$infoUser = mysqli_fetch_assoc( $res );
 
 			$SQL = "UPDATE seg_user SET password = '$newPassBD' WHERE id_user = '".$infoUser['id_user']."';";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($con ,$SQL);
 
 			$disc = "<br><br><br>-------------------------------------<br>";
 			$disc .="<small>Este correo fue enviado desde una cuenta no monitoreada. Por favor no respondas este correo.</small>";
@@ -98,10 +98,10 @@ switch ($action) {
 	case 'getCPInfo':
         $cp = $_POST['cp'];
         $SQL = "SELECT CONCAT(d_tipo_asenta,' ',d_asenta) AS colonia, D_mnpio, d_estado FROM cat_cp WHERE d_codigo = '$cp'; ";
-        $res = mysql_query($SQL);
+        $res = mysqli_query($conn,$SQL);
 
         $colonias = array();    $muni = '';     $edo = '';
-        while ($info = mysql_fetch_assoc($res)) {
+        while ($info = mysqli_fetch_assoc($res)) {
             $colonias[] = array('colonia' => utf8_encode($info['colonia']));
             if($muni == ''){
                 $muni = utf8_encode($info['D_mnpio']);
@@ -118,13 +118,13 @@ switch ($action) {
 
         $actual = strrev(md5(sha1(trim($actual))));
         $SQL = "SELECT * FROM seg_user WHERE id_user = $idUser AND password = '$actual'; ";
-        $res = mysql_query($SQL);
+        $res = mysqli_query($conn, $SQL);
 
-        if(mysql_num_rows($res) == 1){
+        if(mysqli_num_rows($res) == 1){
             $nueva = strrev(md5(sha1(trim($nueva))));
 
             $SQL = "UPDATE seg_user SET password = '$nueva' WHERE id_user = $idUser ";
-            mysql_query($SQL);
+            mysqli_query($conn, $SQL);
 
             $log = new Log($idUser,$_SESSION['logID']);
             $detalle = 'Modifica Contraseña';
@@ -136,7 +136,6 @@ switch ($action) {
         }
         echo json_encode($arrRes);
         break;
-
 
     default:
 		# code...
@@ -153,10 +152,8 @@ function randomString($tam=8){
 			$num = mt_rand(1,count($source));
 			$rstr .= $source[$num-1];
 		}
- 
 	}
 	return $rstr;
 }
-
 
 ?>
