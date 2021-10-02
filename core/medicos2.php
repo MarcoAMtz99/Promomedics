@@ -68,10 +68,10 @@ switch ($action) {
 					FROM medico m, seg_user u
 						WHERE u.id_user = (SELECT id_user FROM seg_user WHERE fk_medico = ID ORDER BY id_user LIMIT 1) AND (SELECT COUNT(*) FROM seg_user WHERE fk_medico = ID) > 0 
 						ORDER BY m.nombre, m.paterno, m.materno; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arrItems = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$item['especialidad'] = utf8_encode($item['especialidad']);
 			$item['act'] = '';
 			$item['rea'] = '';
@@ -106,9 +106,9 @@ switch ($action) {
 					id_user, email, fk_medico
 					FROM medico m, seg_user u
 						WHERE u.id_user = $id AND m.ID = u.fk_medico; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$item = mysql_fetch_assoc($res);
+			$item = mysqli_fetch_assoc($res);
 			
 			$arrRes = array('error' => false, 'item' => $item);	
 		echo json_encode($arrRes);
@@ -118,30 +118,30 @@ switch ($action) {
 		if($edita){
 
 			$SQL = "SELECT * FROM medico WHERE num_cedula = '$data->ced' AND status = 1; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_num_rows($res) > 0){
+			if(mysqli_num_rows($res) > 0){
 				$arrRes = array('error' => true, 'elem' => 'item-ced', 'msg' => 'Cédula ya registrada');
 			}else{
 				$SQL = "SELECT * FROM seg_user WHERE email = '$data->mail' AND (status = 1 OR  status = 3 OR status = 4 OR status = 5); ";
-				$res = mysql_query($SQL);
+				$res = mysqli_query($conn, $SQL);
 
-				if(mysql_num_rows($res) > 0){
+				if(mysqli_num_rows($res) > 0){
 					$arrRes = array('error' => true, 'elem' => 'item-mail', 'msg' => 'Email ya registrado');
 				}else{
 
 					$SQLm = "INSERT INTO medico (tipoMedico, nombre, paterno, materno, num_cedula, status) 
 									VALUES('AF', '$data->nom', '$data->ape', '$data->mat', '$data->ced', '1')";
-					$resm = mysql_query($SQLm);
+					$resm = mysqli_query($conn, $SQLm);
 
-					$med = mysql_insert_id();
+					$med = mysqli_insert_id($conn);
 					$pass = randomString(8);
 
 					$passBD = strrev(md5(sha1($pass)));
 					$SQL = "INSERT INTO seg_user VALUES (NULL, 3, $med, '$data->nom', '$data->ape $data->mat', '$data->mail', '$passBD', '$data->mail', '', NOW(), NOW(), '', 3); ";
-					$res = mysql_query($SQL);
+					$res = mysqli_query($conn, $SQL);
 
-					$id = mysql_insert_id();
+					$id = mysqli_insert_id($conn);
 
 					if($id > 0){
 						$detalle = $med.' '.$data->nom.' '.$data->ape;
@@ -188,22 +188,22 @@ switch ($action) {
 	case 'editMedico':
 		if($edita){
 			$SQL = "SELECT * FROM medico WHERE num_cedula = '$data->ced' AND status = 1 AND ID != $data->med; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_num_rows($res) > 0){
+			if(mysqli_num_rows($res) > 0){
 				$arrRes = array('error' => true, 'elem' => 'item-ced', 'msg' => 'Cédula ya registrada');
 			}else{
 				$SQL = "SELECT * FROM seg_user WHERE email = '$data->mail' AND (status = 1 OR  status = 3 OR status = 4 OR status = 5) AND id_user != $data->id; ";
-				$res = mysql_query($SQL);
+				$res = mysqli_query($conn, $SQL);
 
-				if(mysql_num_rows($res) > 0){
+				if(mysqli_num_rows($res) > 0){
 					$arrRes = array('error' => true, 'elem' => 'item-mail', 'msg' => 'Email ya registrado');
 				}else{
 					$SQLm = "UPDATE medico SET nombre = '$data->nom', paterno = '$data->ape', materno = '$data->mat', num_cedula = '$data->ced' WHERE ID = $data->med; ";
-					$resm = mysql_query($SQLm);
+					$resm = mysqli_query($conn, $SQLm);
 
 					$SQLu = "UPDATE seg_user SET nombre = '$data->nom', apellidos = '$data->ape $data->mat', email = '$data->mail', username = '$data->mail' WHERE id_user = $data->id; ";
-					$resu = mysql_query($SQLu);
+					$resu = mysqli_query($conn, $SQLu);
 
 					//if(mysql_affected_rows() > 0){
 					if($resm && $resu){
@@ -224,8 +224,6 @@ switch ($action) {
 						$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash fa-fw"></i></button>';
 						
 						$arrRes = array('error' => false, 'id' => $data->id, 'item' => $item, 'actions' => $acciones);
-
-
 
 						/*$disc = "<br><br><br>-------------------------------------<br>";
 					    $disc .="<small>Este correo fue enviado desde una cuenta no monitoreada. Por favor no respondas este correo.</small>";
@@ -253,14 +251,14 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "SELECT * FROM seg_user WHERE id_user = $id; ";
-			$info = mysql_fetch_assoc(mysql_query($SQL));
+			$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 			$mail = $info['email'];
 
 			$pass = randomString(8);
 			$passBD = strrev(md5(sha1($pass)));
 
 			$SQLr = "UPDATE seg_user SET status = 1, fk_perfil = 4 WHERE id_user = $id; ";
-			mysql_query($SQLr);
+			mysqli_query($conn, $SQLr);
 
 
 			$detalle = $id.' '.$mail;
@@ -290,15 +288,15 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "SELECT * FROM seg_user WHERE id_user = $id; ";
-			$info = mysql_fetch_assoc(mysql_query($SQL));
+			$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 			$mail = $info['email'];
 			$med = $info['fk_medico'];
 
 			$SQLr = "UPDATE seg_user SET status = 4, fk_perfil = 3 WHERE id_user = $id; ";
-			mysql_query($SQLr);
+			mysqli_query($conn, $SQLr);
 
 			$SQLm = "UPDATE medico SET status = 4 WHERE ID = $med; ";
-			mysql_query($SQLm);
+			mysqli_query($conn, $SQLm);
 
 
 			$detalle = $id.' '.$mail;
@@ -317,14 +315,14 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "SELECT * FROM seg_user WHERE id_user = $id; ";
-			$info = mysql_fetch_assoc(mysql_query($SQL));
+			$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 			$mail = $info['email'];
 
 			$pass = randomString(8);
 			$passBD = strrev(md5(sha1($pass)));
 
 			$SQLr = "UPDATE seg_user SET status = 3, password = '$passBD' WHERE id_user = $id; ";
-			mysql_query($SQLr);
+			mysqli_query($SQLr);
 
 
 			$detalle = $id.' '.$mail;
@@ -354,12 +352,12 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE seg_user SET status = 2, deleted = NOW() WHERE id_user = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$SQL = "UPDATE medico SET status = 2 WHERE ID = (SELECT fk_medico FROM seg_user WHERE id_user = $id); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Médico '.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -380,10 +378,10 @@ switch ($action) {
 		$esp = $_POST['esp'];
 
 		$SQL = "SELECT nombre FROM subespecialidades WHERE id_especialidad = $esp; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$item['nombre'] = utf8_encode($item['nombre']);
 			$arr[] = $item;
 		}
@@ -402,7 +400,7 @@ switch ($action) {
 			$SQLm = "UPDATE medico SET sexo = '$data->sexo', nacionalidad = '$data->nac', nacimiento_lugar = '$lugar', 
 								nacimiento_fecha = '$data->fnac', num_recer = '$data->inst', fecha_recer = '$data->fegre' 
 						WHERE ID = $med; ";
-			$resm = mysql_query($SQLm);
+			$resm = mysqli_query($conn, $SQLm);
 
 				/*if($idesp == 0){
 					$SQLe = "INSERT INTO medico_especialidad VALUES (NULL, $med, $data->esp, '', '$data->nced', '$data->cert', '$data->fvenc', 1, '$data->esps', '$data->subes'); ";
@@ -441,10 +439,10 @@ switch ($action) {
 						(SELECT descripcion FROM pre_especialidad e WHERE e.ID = id_especialidad) AS especialidad, 
 						(SELECT nombre FROM subespecialidades s WHERE s.ID = id_subespecialidad) AS subespecialidad 
 					FROM medico_especialidad WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$item['especialidad'] = utf8_encode($item['especialidad']);
 			$item['subespecialidad'] = utf8_encode($item['subespecialidad']);
 			$arr[] = $item;
@@ -466,9 +464,9 @@ switch ($action) {
 						(SELECT descripcion FROM pre_especialidad e WHERE e.ID = id_especialidad) AS especialidad, 
 						(SELECT nombre FROM subespecialidades s WHERE s.ID = id_subespecialidad) AS subespecialidad 
 					FROM medico_especialidad WHERE ID = $id; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
-		$item = mysql_fetch_assoc($res);
+		$item = mysqli_fetch_assoc($res);
 		$item['especialidad'] = utf8_encode($item['especialidad']);
 		$item['subespecialidad'] = utf8_encode($item['subespecialidad']);
 		
@@ -483,22 +481,22 @@ switch ($action) {
 			$sub = intval($data->subes);
 			if($esp == 0){
 				$SQLe = "INSERT INTO pre_especialidad VALUES (NULL, '$data->esps', 1, NOW(), NOW(), $user, $user); ";
-				$rese = mysql_query($SQLe);
+				$rese = mysqli_query($conn, $SQLe);
 
-				$esp = mysql_insert_id();
+				$esp = mysqli_insert_id($conn);
 			}
 
 			if($sub == 0){
 				$SQLs = "INSERT INTO subespecialidades VALUES (NULL, $esp, '$data->subess', 1, NOW(), NOW(), $user, $user); ";
-				$ress = mysql_query($SQLe);
+				$ress = mysqli_query($conn, $SQLe);
 
-				$sub = mysql_insert_id();
+				$sub = mysqli_insert_id($conn);
 			}
 
 			$SQL = "INSERT INTO medico_especialidad VALUES (NULL, $med, $esp, $sub, '$data->nced', '$data->cert', '$data->fvenc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$data->esps;
@@ -527,22 +525,22 @@ switch ($action) {
 			$sub = intval($data->subes);
 			if($esp == 0){
 				$SQLe = "INSERT INTO pre_especialidad VALUES (NULL, '$data->esps', 1, NOW(), NOW(), $user, $user); ";
-				$rese = mysql_query($SQLe);
+				$rese = mysqli_query($conn, $SQLe);
 
-				$esp = mysql_insert_id();
+				$esp = mysqli_insert_id($conn);
 			}
 
 			if($sub == 0){
 				$SQLs = "INSERT INTO subespecialidades VALUES (NULL, $esp, '$data->subess', 1, NOW(), NOW(), $user, $user); ";
-				$ress = mysql_query($SQLs);
+				$ress = mysqli_query($conn, $SQLs);
 
-				$sub = mysql_insert_id();
+				$sub = mysqli_insert_id($conn);
 			}
 
 			$SQL = "UPDATE medico_especialidad SET id_especialidad = $esp, id_subespecialidad = $sub, num_cedula = '$data->nced', num_recer = '$data->cert', fecha_recer = '$data->fvenc' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$data->esps;
 				$log->setDatos('Edita Especialidad Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -567,9 +565,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_especialidad SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Especialidad Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -590,10 +588,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, nombre, consultaPrimera, consultaSubsecuente, consultaPreferente FROM consultorio WHERE status = 1 AND id_medico = $med ORDER BY ID; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -610,13 +608,13 @@ switch ($action) {
 		$cons = $_POST['cons'];
 
 		$SQL = "SELECT * FROM consultorio WHERE ID = $cons; ";
-		$info = mysql_fetch_assoc(mysql_query($SQL));
+		$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 
 		$SQLc = "SELECT * FROM codigo_postal WHERE d_codigo = '".$info['codigo_postal']."' ORDER BY d_asenta; ";
-		$resc = mysql_query($SQLc);
+		$resc = mysqli_query($conn, $SQLc);
 
 		$arrCol = array();
-		while ($col = mysql_fetch_assoc($resc)) {
+		while ($col = mysqli_fetch_assoc($resc)) {
 			$arrCol[] = utf8_encode($col['d_asenta']);
 		}
 
@@ -629,9 +627,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO consultorio VALUES (NULL, $med, '$nom', '$data->edo','$data->calle','$data->ext','$data->int','$data->cp','$data->col', 1, NOW(), NOW(),'$data->ciu','$data->mun','$data->prim','$data->sub','$data->pref', '', ''); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$nom;
@@ -658,9 +656,9 @@ switch ($action) {
 			$nom = $data->nom;
 
 			$SQL = "UPDATE consultorio SET nombre = '$data->nom', consultaPrimera = '$data->prim', consultaSubsecuente = '$data->sub', consultaPreferente = '$data->pref', calle = '$data->calle', exterior = '$data->ext', interior = '$data->int', codigo_postal = '$data->cp', colonia = '$data->col', ciudad = '$data->ciu', municipio = '$data->mun', estado = '$data->edo' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Edita Cons Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -685,9 +683,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE consultorio SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Cons Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -707,10 +705,10 @@ switch ($action) {
 		$cons = $_POST['cons'];
 
 		$SQL = "SELECT * FROM consultorio_convenios WHERE status = 1 AND id_consultorio = $cons ORDER BY empresa; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -730,9 +728,9 @@ switch ($action) {
 			$costo = $_POST['costo'];
 
 			$SQL = "INSERT INTO consultorio_convenios VALUES (NULL, $cons, '$desc', '$costo', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -760,9 +758,9 @@ switch ($action) {
 			$costo = $_POST['costo'];
 
 			$SQL = "UPDATE consultorio_convenios SET empresa = '$desc', costo = '$costo' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita Conv Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -787,9 +785,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE consultorio_convenios SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Conv Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -810,10 +808,10 @@ switch ($action) {
 		$cons = $_POST['cons'];
 
 		$SQL = "SELECT * FROM consultorio_aseguradoras WHERE status = 1 AND id_consultorio = $cons ORDER BY aseguradora; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -833,9 +831,9 @@ switch ($action) {
 			$costo = $_POST['costo'];
 
 			$SQL = "INSERT INTO consultorio_aseguradoras VALUES (NULL, $cons, '$desc', '$costo', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -863,9 +861,9 @@ switch ($action) {
 			$costo = $_POST['costo'];
 
 			$SQL = "UPDATE consultorio_aseguradoras SET aseguradora = '$desc', costo = '$costo' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita Ase Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -890,9 +888,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE consultorio_aseguradoras SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Ase Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -922,10 +920,10 @@ switch ($action) {
 
 		$tipo = $_POST['tipo'];
 		$SQL = "SELECT * FROM consultorio_horario WHERE tipo = $tipo AND fk_consultorio = $cons ORDER BY dia, inicio; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$items = array();
-		while ($hora = mysql_fetch_assoc($res)) {
+		while ($hora = mysqli_fetch_assoc($res)) {
 			$items[] = array('id' => $hora['id_horario'], 
 							'dia' => $hora['dia'], 
 							'hora' => substr($hora['inicio'], 0, 5).' - '.substr($hora['fin'], 0, 5));
@@ -944,24 +942,24 @@ switch ($action) {
 
 			if($consid == 0){
 				$SQLc = "INSERT INTO consultorio_h_consulta VALUES (NULL, $consu, '$data->tiem','$data->cini','$data->cfin', '$cons->lini','$cons->lfin','$cons->mini','$cons->mfin','$cons->miini','$cons->mifin','$cons->jini','$cons->jfin','$cons->vini','$cons->vfin','$cons->sini','$cons->sfin','$cons->dini','$cons->dfin'); ";
-				$resc = mysql_query($SQLc);
-				$consid = mysql_insert_id();
+				$resc = mysqli_query($conn, $SQLc);
+				$consid = mysqli_insert_id($conn);
 			}else{
 				$SQLc = "UPDATE consultorio_h_consulta SET tiempo = '$data->tiem', comida = '$data->cini', comida2 = '$data->cfin', 
 									lunes_inicio = '$cons->lini', lunes_fin = '$cons->lfin', martes_inicio = '$cons->mini', martes_fin = '$cons->mfin', miercoles_inicio = '$cons->miini', miercoles_fin = '$cons->mifin', jueves_inicio = '$cons->jini', jueves_fin = '$cons->jfin', viernes_inicio = '$cons->vini', viernes_fin = '$cons->vfin', sabado_inicio = '$cons->sini', sabado_fin = '$cons->sfin', domingo_inicio = '$cons->dini', domingo_fin = '$cons->dfin' 
 								WHERE ID = $consid; ";
-				$resc = mysql_query($SQLc);
+				$resc = mysqli_query($conn, $SQLc);
 			}
 
 			if($quirid == 0){
 				$SQLq = "INSERT INTO consultorio_h_quirurgico VALUES (NULL, $consu, '$quir->lini','$quir->lfin','$quir->mini','$quir->mfin','$quir->miini','$quir->mifin','$quir->jini','$quir->jfin','$quir->vini','$quir->vfin','$quir->sini','$quir->sfin','$quir->dini','$quir->dfin'); ";
-				$resq = mysql_query($SQLq);
-				$quirid = mysql_insert_id();
+				$resq = mysqli_query($conn, $SQLq);
+				$quirid = mysqli_insert_id($conn);
 			}else{
 				$SQLq = "UPDATE consultorio_h_quirurgico SET 
 									lunes_inicio = '$quir->lini', lunes_fin = '$quir->lfin', martes_inicio = '$quir->mini', martes_fin = '$quir->mfin', miercoles_inicio = '$quir->miini', miercoles_fin = '$quir->mifin', jueves_inicio = '$quir->jini', jueves_fin = '$quir->jfin', viernes_inicio = '$quir->vini', viernes_fin = '$quir->vfin', sabado_inicio = '$quir->sini', sabado_fin = '$quir->sfin', domingo_inicio = '$quir->dini', domingo_fin = '$quir->dfin' 
 								WHERE ID = $quirid; ";
-				$resq = mysql_query($SQLq);
+				$resq = mysqli_query($conn, $SQLq);
 			}
 
 			$log->setDatos('Edita Hora Cons Médico'.$consu,$dataString,$id,MEDICOS);
@@ -984,13 +982,13 @@ switch ($action) {
 		$items = array();
 		foreach ($dias as $dia) {
 			$SQLc = "SELECT * FROM consultorio_horario WHERE fk_consultorio = $cons AND tipo = $tipo AND dia = $dia AND inicio = '$ini:00' AND fin = '$fin:00' ";
-			$resc = mysql_query($SQLc);
+			$resc = mysqli_query($conn, $SQLc);
 
-			if(mysql_num_rows($resc) == 0){
+			if(mysqli_num_rows($resc) == 0){
 				$SQL = "INSERT INTO consultorio_horario VALUES (NULL,'$cons','$tipo','$dia','$ini','$fin'); ";
-				$res = mysql_query($SQL);
+				$res = mysqli_query($conn, $SQL);
 
-				$id = mysql_insert_id();
+				$id = mysqli_insert_id($conn);
 
 				$items[] = array('id' => $id, 'dia' => $dia, 'hora' => $ini.' - '.$fin);
 			}
@@ -1009,7 +1007,7 @@ switch ($action) {
 		$id = $_POST['id'];
 		$SQL = "DELETE FROM consultorio_horario WHERE id_horario = $id; ";
 
-		echo json_encode(array('success' => mysql_query($SQL)));
+		echo json_encode(array('success' => mysqli_query($conn, $SQL)));
 		break;
 
 
@@ -1018,10 +1016,10 @@ switch ($action) {
 		$cons = $_POST['cons'];
 
 		$SQL = "SELECT * FROM consultorio_cubiculos WHERE status = 1 AND id_consultorio = $cons; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1042,9 +1040,9 @@ switch ($action) {
 			$desc = $_POST['desc'];
 
 			$SQL = "INSERT INTO consultorio_cubiculos VALUES (NULL, $cons, '$nom', '$med', 1, '$desc'); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$nom;
@@ -1073,9 +1071,9 @@ switch ($action) {
 			$desc = $_POST['desc'];
 
 			$SQL = "UPDATE consultorio_cubiculos SET nombre = '$nom', medico = '$med' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows() > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Edita Cub Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1100,9 +1098,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE consultorio_cubiculos SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Cub Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1126,9 +1124,9 @@ switch ($action) {
 			$slo = $_POST['slo'];
 
 			$SQL = "UPDATE consultorio SET giro = '$giro', slogan = '$slo' WHERE ID = $cons; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $cons;
 				$log->setDatos('Guarda Médico Cons Med Dig'.$detalle,$detalle,$cons,MEDICOS);
             	$log->saveLog();
@@ -1148,10 +1146,10 @@ switch ($action) {
 		$tipo = $_POST['tipo'];
 
 		$SQL = "SELECT ID, descripcion FROM cons_digitales WHERE status = 1 AND fk_consultorio = $cons AND tipo = $tipo; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1171,9 +1169,9 @@ switch ($action) {
 			$tipo = $_POST['tipo'];
 
 			$SQL = "INSERT INTO cons_digitales VALUES (NULL, $cons, $tipo, '$desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -1200,9 +1198,9 @@ switch ($action) {
 			$desc = $_POST['desc'];
 
 			$SQL = "UPDATE cons_digitales SET descripcion = '$desc' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita Médico Cons Med Dig'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1227,9 +1225,9 @@ switch ($action) {
 			$tipo = $_POST['tipo'];
 
 			$SQL = "UPDATE cons_digitales SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$tipo;
 				$log->setDatos('Baja Médico Cons Med Dig'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1251,10 +1249,10 @@ switch ($action) {
 		$esp = utf8_decode($_POST['esp']);
 
 		$SQL = "SELECT nombre FROM subespecialidades WHERE id_especialidad = (SELECT ID FROM especialidades WHERE nombre = '$esp' LIMIT 1); ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$item['nombre'] = utf8_encode($item['nombre']);
 			$arr[] = $item;
 		}
@@ -1270,10 +1268,10 @@ switch ($action) {
 		if($tipo == '1') $tbl = 'consultorio_staff_quirurgico';
 
 		$SQL = "SELECT ID, CONCAT(nombre, ' ', apellidos) AS nombre, especialidad, email, rol FROM $tbl WHERE status = 1 AND id_consultorio = $cons; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1294,14 +1292,14 @@ switch ($action) {
 		if($tipo == 'medq') $tbl = 'consultorio_staff_quirurgico';
 
 		$SQL = "SELECT * FROM $tbl WHERE ID = $id; ";
-		$info = mysql_fetch_assoc(mysql_query($SQL));
+		$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 
 		$esp = utf8_decode($info['especialidad']);
 		$SQLs = "SELECT nombre FROM subespecialidades WHERE id_especialidad = (SELECT ID FROM especialidades WHERE nombre = '$esp' LIMIT 1); ";
-		$res = mysql_query($SQLs);
+		$res = mysqli_query($conn, $SQLs);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			/*$item['nombre'] = utf8_encode($item['nombre']);
 			$arr[] = $item;*/
 			$arr[] = utf8_encode($item['nombre']);
@@ -1319,9 +1317,9 @@ switch ($action) {
 			if($tipo == 'medq') $tbl = 'consultorio_staff_quirurgico';
 
 			$SQL = "INSERT INTO $tbl VALUES (NULL, $cons, '$data->nom', '$data->ape', 1, '$data->esp', '$data->sub', '$data->tel', '$data->mail', '$data->rol'); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$data->nom.' '.$data->tipo;
@@ -1351,9 +1349,9 @@ switch ($action) {
 			if($tipo == 'medq') $tbl = 'consultorio_staff_quirurgico';
 
 			$SQL = "UPDATE $tbl SET nombre = '$data->nom', apellidos = '$data->ape', especialidad = '$data->esp', subespecialidad = '$data->sub', telefono = '$data->tel', email = '$data->mail', rol = '$data->rol' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$data->nom.' '.$data->tipo;
 				$log->setDatos('Edita Médico Cons Staff'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1382,9 +1380,9 @@ switch ($action) {
 			if($tipo == 'medq') $tbl = 'consultorio_staff_quirurgico';
 
 			$SQL = "UPDATE $tbl SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom.' '.$tipo;
 				$log->setDatos('Baja Médico Cons staff '.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1399,18 +1397,15 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 
-
-	
-
 	/** INSTITUCIONES **/
 	case 'getInstituciones':
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, descripcion FROM medico_instituciones WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1429,9 +1424,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO medico_instituciones VALUES (NULL, $med, '$nom', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$nom;
@@ -1458,9 +1453,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_instituciones SET descripcion = '$nom' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Edita Inst Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1485,9 +1480,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_instituciones SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Inst Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1502,16 +1497,15 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 
-
 	/** CONTACTOS **/
 	case 'getContactos':
 		$med = $_POST['med'];
 
 		$SQL = "SELECT * FROM medico_contacto WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1529,9 +1523,9 @@ switch ($action) {
 			$med = $data->med;
 
 			$SQL = "INSERT INTO medico_contacto VALUES (NULL, $med, '$data->nom', '$data->pat', '$data->mat', '$data->area', '$data->pues', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$nom;
@@ -1557,9 +1551,9 @@ switch ($action) {
 			$id = $data->id;
 
 			$SQL = "UPDATE medico_contacto SET nombre = '$data->nom', paterno = '$data->pat', materno = '$data->mat', area = '$data->area', puesto = '$data->pues' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Edita Cont Médico'.$detalle,$dataString,$id,MEDICOS);
             	$log->saveLog();
@@ -1584,9 +1578,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_contacto SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Cont Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1607,10 +1601,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, numero FROM medico_celular WHERE status = 1 AND id_contacto = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1629,9 +1623,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO medico_celular VALUES (NULL, $med, '$num', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$num;
@@ -1658,9 +1652,9 @@ switch ($action) {
 			$num = $_POST['num'];
 
 			$SQL = "UPDATE medico_celular SET numero = '$num' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$num;
 				$log->setDatos('Edita Cel Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1685,9 +1679,9 @@ switch ($action) {
 			$num = $_POST['num'];
 
 			$SQL = "UPDATE medico_celular SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$num;
 				$log->setDatos('Baja Cel Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1708,10 +1702,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, numero, ext FROM medico_telefono WHERE status = 1 AND id_contacto = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1731,9 +1725,9 @@ switch ($action) {
 			$ext = $_POST['ext'];
 
 			$SQL = "INSERT INTO medico_telefono VALUES (NULL, $med, '$num', '$ext', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$num;
@@ -1761,9 +1755,9 @@ switch ($action) {
 			$ext = $_POST['ext'];
 
 			$SQL = "UPDATE medico_telefono SET numero = '$num', ext = '$ext' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$num;
 				$log->setDatos('Edita Tel Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1788,9 +1782,9 @@ switch ($action) {
 			$num = $_POST['num'];
 
 			$SQL = "UPDATE medico_telefono SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$num;
 				$log->setDatos('Baja Tel Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1811,10 +1805,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, correo FROM medico_correo WHERE status = 1 AND id_contacto = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -1833,9 +1827,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO medico_correo VALUES (NULL, $med, '$mail', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$mail;
@@ -1862,9 +1856,9 @@ switch ($action) {
 			$mail = $_POST['mail'];
 
 			$SQL = "UPDATE medico_correo SET correo = '$mail' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$mail;
 				$log->setDatos('Edita Mail Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1889,9 +1883,9 @@ switch ($action) {
 			$mail = $_POST['mail'];
 
 			$SQL = "UPDATE medico_correo SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$mail;
 				$log->setDatos('Baja Mail Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1912,10 +1906,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, pagina, direccion FROM medico_paginas WHERE status = 1 AND id_contacto = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($conn, $res)) {
 			$arr[] = $item;
 		}
 
@@ -1935,9 +1929,9 @@ switch ($action) {
 			$dir = $_POST['dir'];
 
 			$SQL = "INSERT INTO medico_paginas VALUES (NULL, $med, '$nom', '$dir', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$nom;
@@ -1965,9 +1959,9 @@ switch ($action) {
 			$dir = $_POST['dir'];
 
 			$SQL = "UPDATE medico_paginas SET pagina = '$nom', direccion = '$dir' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Edita Pag Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -1992,9 +1986,9 @@ switch ($action) {
 			$num = $_POST['num'];
 
 			$SQL = "UPDATE medico_paginas SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$num;
 				$log->setDatos('Baja Pag Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2015,10 +2009,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT * FROM medico_idiomas WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2039,9 +2033,9 @@ switch ($action) {
 			$esc = $_POST['esc'];
 
 			$SQL = "INSERT INTO medico_idiomas VALUES (NULL, $med, '$idi', '$hab', '$esc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$idi;
@@ -2070,9 +2064,9 @@ switch ($action) {
 			$esc = $_POST['esc'];
 
 			$SQL = "UPDATE medico_idiomas SET idioma = '$idi', hablado = '$hab', escrito = '$esc' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$idi;
 				$log->setDatos('Edita Idioma Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2097,9 +2091,9 @@ switch ($action) {
 			$idi = $_POST['idi'];
 
 			$SQL = "UPDATE medico_idiomas SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$idi;
 				$log->setDatos('Baja Idioma Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2114,17 +2108,15 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 
-	
-
 	/** EXPERIENCIA CLINICA **/
 	case 'getExpCli':
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, descripcion FROM medico_exp_prof WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2143,9 +2135,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO medico_exp_prof VALUES (NULL, $med, '$desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -2172,9 +2164,9 @@ switch ($action) {
 			$desc = $_POST['desc'];
 
 			$SQL = "UPDATE medico_exp_prof SET descripcion = '$desc' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita ExpCli Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2201,7 +2193,7 @@ switch ($action) {
 			$SQL = "UPDATE medico_exp_prof SET status = 2 WHERE ID = $id; ";
 			$res = mysql_query($SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja ExpCli Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2216,16 +2208,15 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 
-
 	/** EXPERIENCIA QUIRURGICA **/
 	case 'getExpQui':
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, descripcion FROM medico_exp_qui WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2244,9 +2235,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO medico_exp_qui VALUES (NULL, $med, '$desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -2273,9 +2264,9 @@ switch ($action) {
 			$desc = $_POST['desc'];
 
 			$SQL = "UPDATE medico_exp_qui SET descripcion = '$desc' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita ExpQui Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2300,9 +2291,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_exp_qui SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja ExpQui Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2323,10 +2314,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT ID, descripcion FROM medico_pad_pro WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2345,9 +2336,9 @@ switch ($action) {
 			$med = $_POST['med'];
 
 			$SQL = "INSERT INTO medico_pad_pro VALUES (NULL, $med, '$desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -2374,9 +2365,9 @@ switch ($action) {
 			$desc = $_POST['desc'];
 
 			$SQL = "UPDATE medico_pad_pro SET descripcion = '$desc' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita EstTrat Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2401,9 +2392,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_pad_pro SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja EstTrat Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2418,7 +2409,6 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 
-
 	/** CURRICULUM **/
 	
 	case 'getCurriculum':
@@ -2428,10 +2418,10 @@ switch ($action) {
 		$cur = $arrCurri[$tipo];
 
 		$SQL = "SELECT * FROM ".$cur['tbl']." WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2454,9 +2444,9 @@ switch ($action) {
 			$cur = $arrCurri[$tipo];
 
 			$SQL = "INSERT INTO ".$cur['tbl']." VALUES (NULL, $med, '$desc', '$anio', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$desc;
@@ -2487,9 +2477,9 @@ switch ($action) {
 			$cur = $arrCurri[$tipo];
 
 			$SQL = "UPDATE ".$cur['tbl']." SET descripcion = '$desc', anio = '$anio' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$desc;
 				$log->setDatos('Edita '.$cur['log'].' Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2517,9 +2507,9 @@ switch ($action) {
 			$cur = $arrCurri[$tipo];
 
 			$SQL = "UPDATE ".$cur['tbl']." SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja '.$cur['log'].' Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2540,10 +2530,10 @@ switch ($action) {
 		$cp = $_POST['cp'];
 
 		$SQL = "SELECT * FROM codigo_postal WHERE d_codigo = '$cp' ORDER BY d_asenta; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($col = mysql_fetch_assoc($res)) {
+		while ($col = mysqli_fetch_assoc($res)) {
 			$arr[] = utf8_encode($col['d_asenta']);
 			$muni = utf8_encode($col['D_mnpio']);
 			$ciu = utf8_encode($col['d_ciudad']);
@@ -2565,13 +2555,13 @@ switch ($action) {
 
 			if($id == 0){
 				$SQLe = "INSERT INTO medico_fiscal VALUES (NULL, $med, '$data->tipo', '$data->razon', '$data->rfc', '$data->nom', '$data->rep', '$data->calle', '$data->ext', '$data->int', '$data->cp', '$data->col', '$data->ciu', '$data->mun', '$data->edo', '$data->mail'); ";
-				$rese = mysql_query($SQLe);
+				$rese = mysqli_query($conn, $SQLe);
 
-				$id = mysql_insert_id();
+				$id = mysqli_insert_id($conn);
 			}else{
 				$SQLe = "UPDATE medico_fiscal SET tipo = '$data->tipo', razon_social = '$data->razon', rfc = '$data->rfc', nombre_comercial = '$data->nom', representante = '$data->rep', calle = '$data->calle', exterior = '$data->ext', interior = '$data->int', codigo_postal = '$data->cp', colonia = '$data->col', ciudad = '$data->ciu', municipio = '$data->mun', estado = '$data->edo', email = '$data->mail' 
 							WHERE ID = $id; ";
-				$rese = mysql_query($SQLe);
+				$rese = mysqli_query($conn, $SQLe);
 			}
 			if($id > 0){
 
@@ -2595,10 +2585,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT * FROM medico_servicio WHERE status = 1 AND id_medico = $med; ";
-		$res = mysql_query($SQL);
+		$res = mysqil_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2615,7 +2605,7 @@ switch ($action) {
 		$id = $_POST['id'];
 
 		$SQL = "SELECT * FROM medico_servicio WHERE ID = $id; ";
-		$info = mysql_fetch_assoc(mysql_query($SQL));
+		$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 
 		echo json_encode($info);
 		break;
@@ -2625,9 +2615,9 @@ switch ($action) {
 			$med = $data->med;
 
 			$SQL = "INSERT INTO medico_servicio VALUES (NULL, $med, '$data->nom', '$data->desc', '$data->costo', '$data->descu', '$data->motivo', '$data->costod', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$nom;
@@ -2653,9 +2643,9 @@ switch ($action) {
 			$id = $data->id;
 
 			$SQL = "UPDATE medico_servicio SET nombre = '$data->nom', descripcion = '$data->desc', costo = '$data->costo', descuento = '$data->descu', motivo = '$data->motivo', costo_desc = '$data->costod' WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Edita Serv Médico'.$detalle,$dataString,$id,MEDICOS);
             	$log->saveLog();
@@ -2680,9 +2670,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_servicio SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Serv Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2703,10 +2693,10 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT *, DATE_FORMAT(fecha,'%d/%m/%Y') AS fecha FROM medico_archivo WHERE status = 1 AND id_medico = $med ORDER BY nombre; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = $item;
 		}
 
@@ -2748,9 +2738,9 @@ switch ($action) {
 
 			$filename = substr($filename,8);
 			$SQL = "INSERT INTO medico_archivo VALUES (NULL,$med,'$name','$desc','".strtoupper($ext)."',NOW(),0,'$filename','$peso',1, '$camp'); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 
 			if($id > 0){
 				$detalle = $id.' '.$name;
@@ -2776,9 +2766,9 @@ switch ($action) {
 			$nom = $_POST['nom'];
 
 			$SQL = "UPDATE medico_archivo SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja File Médico'.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
@@ -2810,7 +2800,7 @@ switch ($action) {
 
 		$SQL = "UPDATE medico SET fotografia = '$url' 
 							WHERE ID = $med;";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$url = URL_ROOT.'/data/'.$url;
 		if($res){
@@ -2820,7 +2810,6 @@ switch ($action) {
 		}else{
 			$arrRes = array('success' => false, 'elem' => 'gral', 'msg' => 'Ha ocurrido un error u_u Intenta nuevamente.');
 		}
-
 
 		/*if (resize($_FILES['qqfile']['tmp_name'], 500, $path.$url)) {
 		  	if(intval($id) == 0){
@@ -2854,13 +2843,13 @@ switch ($action) {
 			$SQL = "SELECT fotografia  
 						FROM medico 
 							WHERE ID = $med LIMIT 1;";
-			$info = mysql_fetch_assoc(mysql_query($SQL));
+			$info = mysqli_fetch_assoc(mysqli_query($conn, $SQL));
 
 			@unlink('../data/'.$info['fotografia']);
 
 			$SQLU = "UPDATE medico 
 						SET fotografia = '' WHERE ID = $med LIMIT 1;";
-			$res = mysql_query($SQLU);
+			$res = mysqli_query($conn, $SQLU);
 
 			$log->setDatos('Baja Foto Médico'.$med,$med,$id,MEDICOS);
 	    	$log->saveLog();
@@ -2870,15 +2859,10 @@ switch ($action) {
 		echo json_encode($res);
 		break;
 
-	
-
 	default:
 		# code...
 		break;
 }
-
-
-
 
 function randomString($tam=8){
     $source = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -2894,6 +2878,5 @@ function randomString($tam=8){
     }
     return $rstr;
 }
-
 
 ?>
