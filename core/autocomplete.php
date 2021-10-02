@@ -46,9 +46,9 @@ switch ($tipo) {
 }
 
 //function sendResponse($result, $utf8 = false){
-$res = mysql_query($SQL);
+$res = mysqli_query($conn, $SQL);
 	$arr = array();
-	while ($item = mysql_fetch_assoc($res)) {
+	while ($item = mysqli_fetch_assoc($res)) {
 		$val = $item['value'];
 		if($utf8) $val = utf8_encode($item['value']);
 		$arr[] = array('data' => $item['data'], 'value' => $val);
