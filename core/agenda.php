@@ -67,10 +67,10 @@ switch ($action) {
 					FROM medico m, seg_user u
 						WHERE u.id_user = (SELECT id_user FROM seg_user WHERE fk_medico = ID ORDER BY id_user LIMIT 1) AND (SELECT COUNT(*) FROM seg_user WHERE fk_medico = ID) > 0 
 						ORDER BY m.nombre, m.paterno, m.materno; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arrItems = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$item['act'] = '';
 			$item['rea'] = '';
 			$item['neg'] = '';
@@ -104,9 +104,9 @@ switch ($action) {
 					id_user, email, fk_medico
 					FROM medico m, seg_user u
 						WHERE u.id_user = $id AND m.ID = u.fk_medico; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$item = mysql_fetch_assoc($res);
+			$item = mysqli_fetch_assoc($res);
 			
 			$arrRes = array('error' => false, 'item' => $item);	
 		echo json_encode($arrRes);
@@ -116,10 +116,10 @@ switch ($action) {
 		$esp = $_POST['esp'];
 
 		$SQL = "SELECT nombre FROM subespecialidades WHERE id_especialidad = $esp; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$item['nombre'] = utf8_encode($item['nombre']);
 			$arr[] = $item;
 		}
@@ -147,10 +147,10 @@ switch ($action) {
 							/*AND u.status = 1*/ AND (CONCAT(m.nombre, ' ', m.paterno, ' ', m.materno) LIKE '%$q%' OR num_cedula LIKE '%$q%') 
 							$espq $subq 
 						ORDER BY m.nombre, m.paterno, m.materno; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($med = mysql_fetch_assoc($res)){
+		while ($med = mysqli_fetch_assoc($res)){
 			$arr[] = $med;
 		}
 
@@ -161,19 +161,19 @@ switch ($action) {
 		$med = $_POST['med'];
 
 		$SQL = "SELECT * FROM consultorio WHERE id_medico = $med AND status = 1; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($cons = mysql_fetch_assoc($res)) {
+		while ($cons = mysqli_fetch_assoc($res)) {
 			$consu = array('ID' => $cons['ID'], 'nombre' => $cons['nombre']);
 
 			$dir = $cons['calle'];
 			$consu['dir'] = $dir;
 
 			$SQLc = "SELECT * FROM consultorio_horario WHERE tipo = 1 AND fk_consultorio = ".$cons['ID']." ORDER BY dia, inicio; ";
-			$resc = mysql_query($SQLc);
+			$resc = mysqli_query($conn, $SQLc);
 			$items = array();
-			while ($hora = mysql_fetch_assoc($resc)) {
+			while ($hora = mysqli_fetch_assoc($resc)) {
 				$items[] = array('id' => $hora['id_horario'], 
 								'dia' => $hora['dia'], 
 								'hora' => substr($hora['inicio'], 0, 5).' - '.substr($hora['fin'], 0, 5));
@@ -181,9 +181,9 @@ switch ($action) {
 			$consu['hcons'] = $items;
 
 			$SQLq = "SELECT * FROM consultorio_horario WHERE tipo = 1 AND fk_consultorio = ".$cons['ID']." ORDER BY dia, inicio; ";
-			$resq = mysql_query($SQLq);
+			$resq = mysqli_query($conn, $SQLq);
 			$items = array();
-			while ($hora = mysql_fetch_assoc($resq)) {
+			while ($hora = mysqli_fetch_assoc($resq)) {
 				$items[] = array('id' => $hora['id_horario'], 
 								'dia' => $hora['dia'], 
 								'hora' => substr($hora['inicio'], 0, 5).' - '.substr($hora['fin'], 0, 5));
@@ -196,15 +196,10 @@ switch ($action) {
 		echo json_encode($arr);
 		break;
 
-
-
 	default:
 		# code...
 		break;
 }
-
-
-
 
 function randomString($tam=8){
     $source = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -220,6 +215,5 @@ function randomString($tam=8){
     }
     return $rstr;
 }
-
 
 ?>
