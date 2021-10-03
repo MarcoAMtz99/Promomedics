@@ -30,10 +30,10 @@ switch ($action) {
 		}else{		
 			$SQL = "SELECT id_departamento, nombre, descripcion 
 						FROM cat_departamento WHERE status = 1 ORDER BY nombre; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 
@@ -52,9 +52,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_DEPARTAMENTOS];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "INSERT INTO cat_departamento VALUES (NULL, '$data->nom', '$data->desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Departamento '.$detalle,$dataString,$id,DEPARTAMENTOS);
@@ -78,9 +78,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_DEPARTAMENTOS];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "UPDATE cat_departamento SET nombre = '$data->nom', descripcion = '$data->desc' WHERE id_departamento = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Departamento '.$detalle,$dataString,$data->id,DEPARTAMENTOS);
             	$log->saveLog();
@@ -105,9 +105,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE cat_departamento SET status = 2 WHERE id_departamento = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Departamento '.$detalle,$detalle,$id,DEPARTAMENTOS);
             	$log->saveLog();
@@ -130,10 +130,10 @@ switch ($action) {
 		}else{		
 			$SQL = "SELECT id_puesto, nombre, descripcion 
 						FROM cat_puesto WHERE status = 1 ORDER BY nombre; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 
@@ -152,9 +152,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_PUESTOS];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "INSERT INTO cat_puesto VALUES (NULL, '$data->nom', '$data->desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Puesto '.$detalle,$dataString,$id,PUESTOS);
@@ -178,9 +178,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_PUESTOS];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "UPDATE cat_puesto SET nombre = '$data->nom', descripcion = '$data->desc' WHERE id_puesto = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Puesto '.$detalle,$dataString,$data->id,PUESTOS);
             	$log->saveLog();
@@ -205,9 +205,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE cat_puesto SET status = 2 WHERE id_puesto = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Puesto '.$detalle,$detalle,$id,PUESTOS);
             	$log->saveLog();
@@ -230,10 +230,10 @@ switch ($action) {
 		}else{		
 			$SQL = "SELECT id_escolaridad, nombre, descripcion 
 						FROM cat_escolaridad WHERE status = 1 ORDER BY nombre; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 
@@ -252,9 +252,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_ESCOLARIDAD];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "INSERT INTO cat_escolaridad VALUES (NULL, '$data->nom', '$data->desc', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Escolaridad '.$detalle,$dataString,$id,ESCOLARIDAD);
@@ -278,9 +278,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_ESCOLARIDAD];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "UPDATE cat_escolaridad SET nombre = '$data->nom', descripcion = '$data->desc' WHERE id_escolaridad = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Escolaridad '.$detalle,$dataString,$data->id,ESCOLARIDAD);
             	$log->saveLog();
@@ -305,9 +305,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE cat_escolaridad SET status = 2 WHERE id_escolaridad = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Escolaridad '.$detalle,$detalle,$id,ESCOLARIDAD);
             	$log->saveLog();
@@ -330,10 +330,10 @@ switch ($action) {
 		}else{		
 			$SQL = "SELECT ID, descripcion 
 						FROM pre_especialidad WHERE status = 1 ORDER BY descripcion; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$item['descripcion'] = utf8_encode($item['descripcion']);
 				$arrItems[] = $item;
 			}
@@ -353,9 +353,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_ESPECIALIDAD];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "INSERT INTO pre_especialidad VALUES (NULL, '$data->nom', 1, NOW(), NOW(), $user, $user); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Especialidad '.$detalle,$dataString,$id,ESPECIALIDAD);
@@ -379,9 +379,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_ESPECIALIDAD];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "UPDATE pre_especialidad SET descripcion = '$data->nom', fechaActualizacion = NOW(), usuarioActualizacionId = $user WHERE ID = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Especialidad '.$detalle,$dataString,$data->id,ESPECIALIDAD);
             	$log->saveLog();
@@ -406,9 +406,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE pre_especialidad SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Especialidad '.$detalle,$detalle,$id,ESPECIALIDAD);
             	$log->saveLog();
@@ -426,10 +426,10 @@ switch ($action) {
 	case 'findEspecialidad':
 		$q = $_POST['query'];
 		$SQL = "SELECT ID, descripcion FROM pre_especialidad WHERE status = 1 AND descripcion LIKE '%$q%' ORDER BY descripcion; ";
-		$res = mysql_query($SQL);
+		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
-		while ($item = mysql_fetch_assoc($res)) {
+		while ($item = mysqli_fetch_assoc($res)) {
 			$arr[] = array('data' => $item['ID'], 'value' => utf8_encode($item['descripcion']));
 		}
 
@@ -445,10 +445,10 @@ switch ($action) {
 			$SQL = "SELECT ID, id_especialidad, nombre, 
 							(SELECT descripcion FROM pre_especialidad e WHERE e.ID = id_especialidad) AS esp 
 						FROM subespecialidades WHERE status = 1 AND (SELECT status FROM pre_especialidad e WHERE e.ID = id_especialidad) = 1 ORDER BY esp, nombre; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$item['nombre'] = utf8_encode($item['nombre']);
 				$item['esp'] = utf8_encode($item['esp']);
 				$arrItems[] = $item;
@@ -469,9 +469,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_SUBESPECIALIDAD];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "INSERT INTO subespecialidades VALUES (NULL, $data->esp, '$data->nom', 1, NOW(), NOW(), $user, $user); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Subespecialidad '.$detalle,$dataString,$id,SUBESPECIALIDAD);
@@ -495,9 +495,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_SUBESPECIALIDAD];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "UPDATE subespecialidades SET id_especialidad = $data->esp, nombre = '$data->nom', fechaActualizacion = NOW(), usuarioActualizacionId = $user WHERE ID = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Subespecialidad '.$detalle,$dataString,$data->id,SUBESPECIALIDAD);
             	$log->saveLog();
@@ -522,9 +522,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE subespecialidades SET status = 2 WHERE ID = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Subespecialidad '.$detalle,$detalle,$id,SUBESPECIALIDAD);
             	$log->saveLog();
@@ -539,9 +539,6 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 
-	
-
-
 	default:
 		# code...
 		break;
@@ -549,10 +546,10 @@ switch ($action) {
 
 function getItems($tipo, $edita){
 	$SQL = "SELECT *  FROM cat_$tipo WHERE status = 1 ORDER BY nombre; ";
-	$res = mysql_query($SQL);
+	$res = mysqli_query($conn, $SQL);
 
 	$arrItems = array();
-	while ($item = mysql_fetch_assoc($res)) {
+	while ($item = mysqli_fetch_assoc($res)) {
 		$arrItems[] = $item;
 	}
 
@@ -569,9 +566,9 @@ function getItems($tipo, $edita){
 function addItem($tipo, $tbl){
 	global $data, $log;
 	$SQL = "INSERT INTO cat_$tipo VALUES (NULL, '$data->nom', '$data->desc', 1); ";
-	$res = mysql_query($SQL);
+	$res = mysqli_query($conn, $SQL);
 
-	$id = mysql_insert_id();
+	$id = mysqli_insert_id($conn);
 	if($id > 0){
 		$detalle = $id.' '.$data->nom;
 		$log->setDatos("Alta $tipo ".$detalle,$dataString,$id,$tbl);
@@ -591,9 +588,9 @@ function addItem($tipo, $tbl){
 function editItem($tipo, $tbl){
 	global $data, $log;
 	$SQL = "UPDATE cat_$tipo SET nombre = '$data->nom', descripcion = '$data->desc' WHERE id_$tipo = $data->id; ";
-	$res = mysql_query($SQL);
+	$res = mysqli_query($conn, $SQL);
 
-	if(mysql_affected_rows() > 0){
+	if(mysqli_affected_rows($conn) > 0){
 		$detalle = $data->id.' '.$data->nom;
 		$log->setDatos("Edita $tipo ".$detalle,$dataString,$data->id,$tbl);
     	$log->saveLog();
@@ -612,9 +609,9 @@ function editItem($tipo, $tbl){
 function delItem($tipo, $id, $tbl){
 	global $log;
 	$SQL = "UPDATE cat_$tipo SET status = 2 WHERE id_$tipo = $id; ";
-	$res = mysql_query($SQL);
+	$res = mysqli_query($conn, $SQL);
 
-	if(mysql_affected_rows() > 0){
+	if(mysqli_affected_rows($conn) > 0){
 		$detalle = $id.' '.$nom;
 		$log->setDatos("Baja $tipo ".$detalle,$detalle,$id,$tbl);
     	$log->saveLog();
