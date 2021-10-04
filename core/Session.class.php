@@ -14,7 +14,8 @@ class Session {
         $infoBrowser = $this->getUserAgent($browser);
 
         $SQLS = "INSERT INTO seg_session VALUES (NULL, $this->idUser, '$ipAddr', '$browser', NOW(), NOW()); ";
-        $conn = mysqli_connect('localhost','root','','promo');
+        // $conn = mysqli_connect('localhost','root','','promo');
+           $conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
         $resS = mysqli_query($conn, $SQLS);
 
         $ids = mysqli_insert_id($conn);
@@ -33,7 +34,8 @@ class Session {
 
     public function updateUser(){
         $SQLU = "UPDATE seg_user SET last_access = NOW() WHERE id_user = '$this->idUser';";
-          $conn = mysqli_connect('localhost','root','','promo');
+          // $conn = mysqli_connect('localhost','root','','promo');
+        $conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
         $resU = mysqli_query($conn, $SQLU);
 
         return $resU;
@@ -43,7 +45,8 @@ class Session {
         $SQLP = "SELECT * FROM seg_permiso p, seg_modulo m 
                     WHERE fk_perfil = $perfil AND m.id_modulo = p.fk_modulo AND m.status = 1
                             ORDER BY fk_modulo; ";
-         $conn = mysqli_connect('localhost','root','','promo');                      
+         // $conn = mysqli_connect('localhost','root','','promo');  
+            $conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');                    
         $resP = mysqli_query($conn, $SQLP);
 
         $arrPer = array();
