@@ -18,9 +18,9 @@
 
 	if(!defined('URL_ROOT')){
 		//PRODUCCION
-		// define('URL_ROOT', 'https://promomedics.byw-si.com.mx');
+		define('URL_ROOT', 'https://promomedics.byw-si.com.mx');
 		//DESARROLLO
-		define('URL_ROOT', 'http://localhost/promomedics');
+		// define('URL_ROOT', 'http://localhost/promomedics');
 	}
 	if(!defined('PAGE_TITLE')){
 		define('PAGE_TITLE', 'Promomedics');
