@@ -1,7 +1,7 @@
 <?php 
 	// ini_set('display_errors',0);
 	//PRODUCCION
-	// $conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
+	$conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
 	// define('WP_DEBUG', false);
 	// ini_set('log_errors','On');
 	// ini_set('display_errors','Off');
@@ -9,11 +9,11 @@
 	// define('WP_DEBUG', true);
 	// define('WP_DEBUG_LOG', true);
 	//DESARROLLO
-	$conn = mysqli_connect('localhost','root','','promo');
+	// $conn = mysqli_connect('localhost','root','','promo');
 		//PRODUCCION
-	// mysqli_select_db($conn,'bywsicom_promo');
+	mysqli_select_db($conn,'bywsicom_promo');
 		//DESARROLLO
-	mysqli_select_db($conn,'promo');
+	// mysqli_select_db($conn,'promo');
 
 
 	if(!defined('URL_ROOT')){
