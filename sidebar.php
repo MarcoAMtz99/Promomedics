@@ -1,7 +1,7 @@
       <div class="navbar nav_title" style="border: 0;">
               <a href="<?php echo URL_ROOT; ?>" class="site_title">
-                <img class="logo-sm" src="/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
-                <img class="logo-md" src="/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
+                <img class="logo-sm" src="<?php echo URL_ROOT; ?>images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
+                <img class="logo-md" src="<?php echo URL_ROOT; ?>/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
               </a>
             </div>
 
@@ -54,7 +54,7 @@
                         }
                       }
                     }
-                    echo' <li id="mnu-cal"><a href="https://promomedics.byw-si.com.mx/calendario.php"><i class="fa fa-calendar"></i> Agenda</a></li>';
+                    echo' <li id="mnu-cal"><a href="'.URL_ROOT.'/calendario.php"><i class="fa fa-calendar"></i> Agenda</a></li>';
                   ?>
 
                 </ul>

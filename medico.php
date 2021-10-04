@@ -1,6 +1,7 @@
 <?php 
   $titulo = "Datos de Médico";
   include 'header.php'; 
+   include 'core/conex.php'; 
 
   $aperm = $_SESSION['perm'];
 
@@ -38,14 +39,14 @@
                   /*IFNULL((SELECT ID FROM medico_especialidad WHERE id_medico = m.ID LIMIT 1),0) AS esp,*/ 
                   IFNULL((SELECT ID FROM medico_fiscal WHERE id_medico = m.ID LIMIT 1),0) AS fact 
               FROM medico m WHERE ID = $ID; ";
-  $res = mysql_query($SQL);
-  $infoMed = mysql_fetch_assoc($res);
+  $res = mysqli_query($conn,$SQL);
+  $infoMed = mysqli_fetch_assoc($res);
 
   //$SQLme = "SELECT id_especialidad, especialidad, subespecialidad, num_cedula, num_recer, fecha_recer FROM medico_especialidad WHERE ID = ".$infoMed['esp'];
   //$infoEsp = mysql_fetch_assoc(mysql_query($SQLme));
 
   $SQLmf = "SELECT * FROM medico_fiscal WHERE ID = ".$infoMed['fact'];
-  $infoFact = mysql_fetch_assoc(mysql_query($SQLmf));
+  $infoFact = mysqli_fetch_assoc(mysqli_query($conn,$SQLmf));
 
 
   /*$SQLe = "SELECT ID, nombre FROM especialidades WHERE status = 1; ";
@@ -63,8 +64,8 @@
 ?>
 
     <!-- Datatables -->
-    <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 
     <!-- page content -->
     <div class="right_col" role="main">
@@ -168,8 +169,8 @@
                               <select name="gral-lnace" id="gral-lnace" class="form-control col-md-7 col-xs-12 <?php echo $infoMed['nacionalidad'] == 'Mexicana' ? '': 'hide' ?>">
                                 <?php 
                                   $SQLedo = "SELECT d_estado FROM codigo_postal GROUP BY d_estado ORDER BY d_estado; ";
-                                  $resedo = mysql_query($SQLedo);
-                                  while ($edo = mysql_fetch_assoc($resedo)) {
+                                  $resedo = mysqli_query($conn,$SQLedo);
+                                  while ($edo = mysqli_fetch_assoc($resedo)) {
                                     $sel = '';
                                     if($infoMed['nacimiento_lugar'] == utf8_encode($edo['d_estado'])) $sel = 'selected';
                                     echo '<option value="'.utf8_encode($edo['d_estado']).'" '.$sel.'>'.utf8_encode($edo['d_estado']).'</option>';

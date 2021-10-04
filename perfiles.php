@@ -79,9 +79,9 @@
                                             (SELECT CASE fk_parent WHEN 0 THEN m.icono ELSE (SELECT icono FROM seg_modulo WHERE id_modulo = m.fk_parent) END) AS icono
                                           FROM seg_modulo m WHERE m.status = 1 AND m.url != '#'
                                             ORDER BY id_modulo, fk_parent; ";
-                              $resm = mysql_query($SQLm);
+                              $resm = mysqli_query($conn,$SQLm);
 
-                              while ($mod = mysql_fetch_assoc($resm)) {
+                              while ($mod = mysqli_fetch_assoc($resm)) {
                                 echo "<tr>";
                                 echo "<td><i class='fa fa-".$mod['icono']."'></i> ".$mod['nombre']."</td>";
                                 echo "<td data-mod='".$mod['id_modulo']."' data-par='".$mod['fk_parent']."'>";

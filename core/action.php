@@ -17,15 +17,13 @@ switch ($action) {
 		
 		$pass = strrev(md5(sha1(trim($pass1))));
 
-		$SQL = "SELECT id_user, fk_perfil, nombre/*CONCAT(nombre,' ',apellidos),*/ AS username, fk_medico, 
-						IFNULL((SELECT CONCAT(nombre,' ',paterno,' ',materno) FROM medico WHERE ID = fk_medico),'') AS medico, status, 
-						(SELECT fk_grupo FROM medico WHERE ID = fk_medico) AS grupo
-					FROM seg_user 
-						WHERE (username = '$user' OR email = '$user') AND password = '$pass' AND status != 2; ";
+		$SQL = "SELECT id_user, fk_perfil, nombre AS username, fk_medico,IFNULL((SELECT CONCAT(nombre,' ',paterno,' ',materno) FROM medico WHERE ID = fk_medico),'') AS medico,status,(SELECT fk_grupo FROM medico WHERE ID =fk_medico) AS grupo FROM seg_user  WHERE (username = '$user' OR email = '$user') AND password = '$pass' AND status != 2; ";
+		// $SQL = "
+		// 		SELECT id_user, fk_perfil, nombre AS username, fk_medico,IFNULL((SELECT CONCAT(nombre,' ',paterno,' ',materno) FROM medico WHERE ID = fk_medico),'') AS medico,status,(SELECT fk_grupo FROM medico WHERE ID =fk_medico) AS grupo FROM seg_user  WHERE (username = 'ivan.santos@byw.com.mx' OR email = 'ivan.santos@byw.com.mx') AND password = '83099e7b47e84d49f4396e589cbf600f' AND status != 2;";
         $res = mysqli_query($conn, $SQL);
 
 		if (mysqli_num_rows($res) == 0) {
-			$arrRes = array('error' => true, 'sql' => $SQL);
+			$arrRes = array('error' => true, 'sql' => $SQL,'resultado'=>$res,'cuenta'=>mysqli_query($conn, $SQL),'CONEXION'=>$conn);
 		}else{
 			$info = mysqli_fetch_assoc($res);
 			$idUser = $info['id_user'];
@@ -35,7 +33,7 @@ switch ($action) {
             //$sucursal = intval($info['fk_sucursal']);
             $_SESSION['medico'] = $info['fk_medico'];
             $_SESSION['mediconom'] = $info['medico'];
-
+            
             $_SESSION['user'] = $idUser;
             $_SESSION['perfil'] = $perfil;
             $_SESSION['nomuser'] = $userName;
@@ -59,7 +57,8 @@ switch ($action) {
 
 			$_SESSION['last'] = time();
 
-			$arrRes = array('error' => false);
+			$arrRes = array('error' => false,'USUARIO'=>USUARIOS);
+			// echo json_encode($arrRes);
 		}
 		echo json_encode($arrRes);
 		break;

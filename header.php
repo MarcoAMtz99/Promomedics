@@ -44,9 +44,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <link rel="manifest" href="/images/favicon/manifest.json">
     <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
@@ -54,19 +54,20 @@
     <title><?php echo $title; ?></title>
 
     <!-- Bootstrap -->
-    <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- Font Awesome -->
-    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Select2 -->
-    <link href="/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
-    <link href="/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <link href="<?php echo URL_ROOT; ?>/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
     
     <!-- Custom Theme Style >
     <link href="/build/css/custom.min.css" rel="stylesheet"-->
-    <link href="/build/css/custom.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/build/css/custom.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/css/main.css" rel="stylesheet">
 
   
     <!-- Global site tag (gtag.js) - Google Analytics -->

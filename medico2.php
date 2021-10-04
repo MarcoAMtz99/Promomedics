@@ -1,6 +1,7 @@
 <?php 
   $titulo = "Datos de Médico";
   include 'header.php'; 
+    include 'core/conex.php'; 
 
   $aperm = $_SESSION['perm'];
 
@@ -33,21 +34,21 @@
   $ID = $med;
 
   $SQL = "SELECT CONCAT(nombre, ' ', paterno, ' ', materno) AS nomMed, sexo, nacionalidad, nacimiento_lugar, nacimiento_fecha, num_cedula, num_recer, fecha_recer, IFNULL((SELECT ID FROM medico_especialidad WHERE id_medico = m.ID LIMIT 1),0) AS esp, IFNULL((SELECT ID FROM medico_fiscal WHERE id_medico = m.ID LIMIT 1),0) AS fact FROM medico m WHERE ID = $ID; ";
-  $res = mysql_query($SQL);
-  $infoMed = mysql_fetch_assoc($res);
+  $res = mysqli_query($SQL);
+  $infoMed = mysqli_fetch_assoc($conn,$res);
 
   $SQLme = "SELECT id_especialidad, especialidad, subespecialidad, num_cedula, num_recer, fecha_recer FROM medico_especialidad WHERE ID = ".$infoMed['esp'];
-  $infoEsp = mysql_fetch_assoc(mysql_query($SQLme));
+  $infoEsp = mysqli_fetch_assoc(mysql_query($conn,$SQLme));
 
   $SQLmf = "SELECT * FROM medico_fiscal WHERE ID = ".$infoMed['fact'];
-  $infoFact = mysql_fetch_assoc(mysql_query($SQLmf));
+  $infoFact = mysqli_fetch_assoc(mysql_query($conn,$SQLmf));
 
 
   $SQLe = "SELECT ID, nombre FROM especialidades WHERE status = 1; ";
-  $rese = mysql_query($SQLe);
+  $rese = mysqli_query($conn,$SQLe);
 
   $SQLse = "SELECT nombre FROM subespecialidades WHERE id_especialidad = ".$infoEsp['id_especialidad'];
-  $resse = mysql_query($SQLse);
+  $resse = mysqli_query($conn,$SQLse);
 
 
 ?>

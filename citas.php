@@ -1,18 +1,21 @@
 <?php 
 
 	header('Content-Type: application/json');
-/* 	$conexion = mysqli_connect("localhost","root" ,"!_WOXa9ZxWfP","bywsicom_promo"); */
-	/* $conn = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
-	mysql_select_db('bywsicom_promo'); */
+
+	$conexion = mysqli_connect("localhost","root" ,"","promo"); 
+	 // $conexion = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
+	// mysql_select_db('bywsicom_promo'); 
 	/* include 'conex.php'; */
 
-	$enlace =  mysql_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
+	// $enlace =  mysqli_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
 			/* if (!$enlace) {
 				die('No pudo conectarse: ' . mysql_error());
 			}
 			echo 'Conectado satisfactoriamente'; */
-			mysql_select_db('bywsicom_promo');
-
+			//PRODUCTIVO
+			// mysqli_select_db($conexion,'bywsicom_promo');
+			// DESARROLLO
+			mysqli_select_db($conexion,'promo');
 	$sql = "select id,
 							(select nombre from medico where ID = id_medico) as nombre,
 							(select paterno from medico where ID = id_medico) as paterno,
@@ -31,12 +34,12 @@
 							 from agenda;";
 	$SQL2 ='select * from agenda';
 
-	$res = mysql_query($sql);
-
+	$res = mysqli_query($conexion,$sql);
+		
 	$arrItems = array();
-	while ($fila = mysql_fetch_assoc($res)) {
+	while ($fila = mysqli_fetch_assoc($res)) {
 	
-		/* echo $fila['paciente'] ; */
+	// 	/* echo $fila['paciente'] ; */
 	
 		$array = array(
 			'id' => $fila['id'],

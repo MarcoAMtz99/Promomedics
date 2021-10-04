@@ -52,9 +52,9 @@
   </body>
 </html>
     <!-- jQuery -->
-    <script src="/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.json-2.4.min.js"></script>
-    <script src="/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/js/jquery.json-2.4.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/js/main.js"></script>

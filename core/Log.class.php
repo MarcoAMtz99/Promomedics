@@ -37,7 +37,8 @@ class Log {
                                         '$this->data',
                                         $this->record,
                                         $this->destination); ";
-		mysql_query($SQLLOG);
+                                        $conn = mysqli_connect('localhost','root','','promo');
+		mysqli_query($conn,$SQLLOG);
 
         $this->updateSession();
 
@@ -47,7 +48,8 @@ class Log {
     public function updateSession(){
         $SQLSes = "UPDATE seg_session SET finished = NOW() 
                         WHERE id_session = $this->idSesion; ";
-        $resSes = mysql_query($SQLSes);
+                        $conn = mysqli_connect('localhost','root','','promo');
+        $resSes = mysqli_query($conn,$SQLSes);
 
         return $resSes;
     }

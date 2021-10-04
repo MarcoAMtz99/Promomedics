@@ -14,20 +14,20 @@
 ?>
 
     <!-- iCheck -->
-    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
 
     <!-- Datatables -->
-    <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <!-- Select2 >
-    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet"-->
+    <link href="<?php echo URL_ROOT; ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo URL_ROOT; ?>/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    
+    <link href="<?php echo URL_ROOT; ?>/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
 
-    <!-- Custom Theme Style >
-    <link href="build/css/custom.min.css" rel="stylesheet"-->
+     
+    <link href="<?php echo URL_ROOT; ?>/build/css/custom.min.css" rel="stylesheet">
 
 
 
@@ -169,21 +169,21 @@
 
 
     <!-- FastClick -->
-    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/nprogress/nprogress.js"></script>
 
-	<script src="/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+	<script src="<?php echo URL_ROOT; ?>/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
 
 
     

@@ -1,8 +1,4 @@
-<?php
-/* 	include('topmenu.php'); */
-	/* include('header.php');
-	include('sidebar.php'); */
- ?>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/fullcalendar.min.css">
 	<script src="js/jquery.min.js"></script>
@@ -27,7 +23,7 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">
-      <img src="/images/logo_small.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
+      <img src="<?php echo URL_ROOT; ?>images/logo_small.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
       Inicio
     </a>
   </div>
@@ -65,9 +61,10 @@
 					$("#FECHA").val(date.format());
 					$("#agendarModal").modal();
 				},
-				
-					events:'https://promomedics.byw-si.com.mx/citas',
-				
+					//pro
+					// events:'https://promomedics.byw-si.com.mx/citas',
+					//desarrollo
+					events:'https://localhost/promomedics/citas.php',
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
 				eventClick:function(callEvent,jsEvent,view){
 

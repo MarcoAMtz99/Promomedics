@@ -14,8 +14,8 @@
 		if(isset($_GET['id'])){
 		$ID = $_GET['id'];
 		$SQL = "SELECT * FROM seg_user WHERE id_user = $ID; ";
-		$res = mysql_query($SQL);
-		$infoMed = mysql_fetch_assoc($res);
+		$res = mysqli_query($conn,$SQL);
+		$infoMed = mysqli_fetch_assoc($res);
 		}
 	?>
 
@@ -70,9 +70,9 @@
 							FROM medico
 							 WHERE (SELECT COUNT(*) FROM seg_user WHERE fk_medico = ID) > 0; ";
               //$SQL = "SELECT * FROM seg_user";
-							$res = mysql_query($SQL);
+							$res = mysqli_query($conn,$SQL);
               print_r($res);
-							while ($med = mysql_fetch_assoc($res)) {
+							while ($med = mysqli_fetch_assoc($res)) {
 								echo '<tr>';
 								echo '<td> <a href="medicos.php?id='.$med['id_user'].'" target="_self"> '.$med['id_user'].' </a> </td>';
 								echo '<td> <a href="medicos.php?id='.$med['id_user'].'" target="_self"> '.$med['nombre'].' </a> </td>';
@@ -103,8 +103,8 @@
 						if(isset($_GET['id'])){
 						$id = $_GET['id'];
 						$SQLC = "SELECT * FROM seg_user WHERE id_user = $id";
-						$resC = mysql_query($SQLC);
-						$con = mysql_fetch_assoc($resC);
+						$resC = mysqli_query($conn,$SQLC);
+						$con = mysqli_fetch_assoc($resC);
 						echo '<input type="text" class="form-control has-feedback-left" id="inputID" value="'.$con['id_user'].'" disabled/>';
 						echo '<input type="hidden" name="inputID" value="'.$con['id_user'].'"/>';
 						}
