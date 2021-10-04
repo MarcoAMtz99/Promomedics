@@ -14,9 +14,9 @@ class Session {
         $infoBrowser = $this->getUserAgent($browser);
 
         $SQLS = "INSERT INTO seg_session VALUES (NULL, $this->idUser, '$ipAddr', '$browser', NOW(), NOW()); ";
-        $resS = mysql_query($SQLS);
+        $resS = mysqli_query($conn, $SQLS);
 
-        $ids = mysql_insert_id();
+        $ids = mysqli_insert_id($conn);
         $this->idSesion = $ids;
 
 	    $this->detail = $infoBrowser['browser'].' en '.$infoBrowser['platform'].' ['.$ipAddr.']';
@@ -32,7 +32,7 @@ class Session {
 
     public function updateUser(){
         $SQLU = "UPDATE seg_user SET last_access = NOW() WHERE id_user = '$this->idUser';";
-        $resU = mysql_query($SQLU);
+        $resU = mysqli_query($conn, $SQLU);
 
         return $resU;
     }
@@ -41,10 +41,10 @@ class Session {
         $SQLP = "SELECT * FROM seg_permiso p, seg_modulo m 
                     WHERE fk_perfil = $perfil AND m.id_modulo = p.fk_modulo AND m.status = 1
                             ORDER BY fk_modulo; ";
-        $resP = mysql_query($SQLP);
+        $resP = mysqli_query($conn, $SQLP);
 
         $arrPer = array();
-        while ($perm = mysql_fetch_assoc($resP)) {
+        while ($perm = mysqli_fetch_assoc($resP)) {
             //$perm['nombre'] = utf8_encode($perm['nombre']);
 
             if($perm['fk_parent'] == 0){
@@ -190,8 +190,6 @@ class Session {
         return array( 'platform' => $platform, 'browser' => $browser, 'version' => $version );
     }
 }
-
-
 
 ?>
 
