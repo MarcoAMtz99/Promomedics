@@ -30,10 +30,10 @@ switch ($action) {
 			$SQL = "SELECT id_modulo, nombre, descripcion, url,  
 							(SELECT CASE url WHEN '#' THEN 1 ELSE 0 END) AS submodulos 
 						FROM seg_modulo WHERE status = 1 AND fk_parent = 0 ORDER BY nombre; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 
@@ -56,9 +56,9 @@ switch ($action) {
 
 			$SQL = "SELECT *, (SELECT CASE url WHEN '#' THEN 1 ELSE 0 END) AS submodulos 
 						FROM seg_modulo WHERE id_modulo = ".$id;
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$item = mysql_fetch_assoc($res);
+			$item = mysqli_fetch_assoc($res);
 			
 			$arrRes = array('error' => false, 'item' => $item);		
 		}
@@ -73,10 +73,10 @@ switch ($action) {
 
 			$SQL = "SELECT id_modulo, nombre, descripcion, url 
 						FROM seg_modulo WHERE status = 1 AND fk_parent = $id ORDER BY nombre; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 
@@ -95,9 +95,9 @@ switch ($action) {
 		$permm = $perm['children'][MOD_MODULOS];
 		if($edita && $permm['action'] == 'EDIT'){
 			$SQL = "INSERT INTO seg_modulo VALUES (NULL, '$data->parent', '$data->abrev', '$data->nom', '$data->desc', '$data->url', '$data->ico', NOW(), NOW(), '', 1); ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Módulo'.$detalle,$dataString,$id,MODULOS);
@@ -121,9 +121,9 @@ switch ($action) {
 		$permm = $perm['children'][MOD_MODULOS];
 		if($edita && $permm['action'] == 'EDIT'){
 			$SQL = "UPDATE seg_modulo SET fk_parent = '$data->parent', abrev = '$data->abrev', nombre = '$data->nom', descripcion = '$data->desc', url = '$data->url', icono = '$data->ico', modificado = NOW() WHERE id_modulo = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Módulo'.$detalle,$dataString,$data->id,MODULOS);
             	$log->saveLog();
@@ -148,9 +148,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE seg_modulo SET status = 2, eliminado = NOW() WHERE id_modulo = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Módulo'.$detalle,$detalle,$id,MODULOS);
             	$log->saveLog();
@@ -173,10 +173,10 @@ switch ($action) {
 		}else{		
 			$SQL = "SELECT id_perfil, nombre, descripcion 
 						FROM seg_perfil WHERE status = 1 /*ORDER BY nombre*/; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($conn, $res)) {
 				$arrItems[] = $item;
 			}
 
@@ -195,9 +195,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_PERFILES];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "INSERT INTO seg_perfil VALUES (null,'$data->nom', '$data->desc', NOW(), NOW(), null, 1) ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$id = mysql_insert_id();
+			$id = mysqli_insert_id($conn);
 			if($id > 0){
 				$detalle = $id.' '.$data->nom;
 				$log->setDatos('Alta Perfil '.$detalle,$dataString,$id,PERFILES);
@@ -221,9 +221,9 @@ switch ($action) {
 		$permp = $perm['children'][MOD_PERFILES];
 		if($edita && $permp['action'] == 'EDIT'){
 			$SQL = "UPDATE seg_perfil SET nombre = '$data->nom', descripcion = '$data->desc', modificado = NOW() WHERE id_perfil = $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $data->id.' '.$data->nom;
 				$log->setDatos('Edita Perfil '.$detalle,$dataString,$data->id,PERFILES);
             	$log->saveLog();
@@ -248,9 +248,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE seg_perfil SET status = 2, eliminado = NOW() WHERE id_perfil = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Perfil '.$detalle,$detalle,$id,PERFILES);
             	$log->saveLog();
@@ -274,10 +274,10 @@ switch ($action) {
 			$perf = $_POST['perf'];
 			$SQL = "SELECT fk_modulo, action 
 						FROM seg_permiso WHERE fk_perfil = $perf ORDER BY fk_modulo; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 			
@@ -295,17 +295,17 @@ switch ($action) {
 			$det = $data->perf.':'.$data->mod;
 			if($act == 'NONE'){
 				$SQLd = "DELETE FROM seg_permiso WHERE fk_perfil = $data->perf AND fk_modulo = $data->mod; ";
-				$resd = mysql_query($SQLd);
+				$resd = mysqli_query($conn, $SQLd);
 
-				if(mysql_affected_rows() > 0){
+				if(mysqli_affected_rows($conn) > 0){
 					$log->setDatos('Elimina Permiso '.$det,$dataString,$data->mod,PERMISOS);
 	            	$log->saveLog();
 
 	            	$SQLp = "SELECT * FROM seg_permiso WHERE (SELECT fk_parent FROM seg_modulo WHERE id_modulo = fk_modulo) = $data->par; ";
-	            	$resp = mysql_query($SQLp);
-	            	if(mysql_num_rows($resp) == 0){
+	            	$resp = mysqli_query($conn, $SQLp);
+	            	if(mysqli_num_rows($resp) == 0){
 	            		$SQLp = "DELETE FROM seg_permiso WHERE fk_perfil = $data->perf AND fk_modulo = $data->par; ";
-	            		mysql_query($SQLp);
+	            		mysqli_query($conn, $SQLp);
 	            	}
 
 					$arrRes = array('res' => true);	
@@ -314,10 +314,10 @@ switch ($action) {
 				}
 			}else{
 				$SQL = "SELECT id_permiso FROM seg_permiso WHERE fk_perfil = $data->perf AND fk_modulo = $data->mod; ";
-				$res = mysql_query($SQL);
+				$res = mysqli_query($conn, $SQL);
 
-				if(mysql_num_rows($res) > 0){
-					$info = mysql_fetch_assoc($res);
+				if(mysqli_num_rows($res) > 0){
+					$info = mysqli_fetch_assoc($res);
 					$id = $info['id_permiso'];
 
 					$SQLm = "UPDATE seg_permiso SET action = '$data->act' WHERE id_permiso = $id; ";
@@ -325,18 +325,18 @@ switch ($action) {
 					$SQLm = "INSERT INTO seg_permiso VALUES (NULL, $data->perf, $data->mod, '$data->act'); ";
 				}
 
-				$resm = mysql_query($SQLm);
+				$resm = mysqli_query($conn, $SQLm);
 
-				if(mysql_affected_rows() > 0){
+				if(mysqli_affected_rows($conn) > 0){
 					$log->setDatos('Edita Permiso '.$det,$dataString,$data->mod,PERMISOS);
 	            	$log->saveLog();
 
 
 	            	$SQLp = "SELECT * FROM seg_permiso WHERE fk_perfil = $data->perf AND fk_modulo = $data->par; ";
-	            	$resp = mysql_query($SQLp);
-	            	if(mysql_num_rows($resp) == 0){
+	            	$resp = mysqli_query($conn, $SQLp);
+	            	if(mysqli_num_rows($resp) == 0){
 	            		$SQLp = "INSERT INTO seg_permiso VALUES (NULL, $data->perf, $data->par, '$data->act'); ";
-	            		mysql_query($SQLp);
+	            		mysqli_query($conn, $SQLp);
 	            	}
 
 					$arrRes = array('res' => true);	
@@ -364,10 +364,10 @@ switch ($action) {
 							DATE_FORMAT(last_access,'%d/%m/%Y %H:%i:%s') AS acceso, fk_perfil, 
 							(SELECT nombre FROM seg_perfil WHERE id_perfil = fk_perfil) AS perfil 
 						FROM seg_user WHERE status = 1 $medq ORDER BY nombre, apellidos; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysql_fetch_assoc($res)) {
+			while ($item = mysqli_fetch_assoc($res)) {
 				$arrItems[] = $item;
 			}
 
@@ -389,9 +389,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "SELECT * FROM seg_user WHERE id_user = ".$id;
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			$item = mysql_fetch_assoc($res);
+			$item = mysqli_fetch_assoc($res);
 			
 			$arrRes = array('error' => false, 'item' => $item);		
 		}
@@ -417,9 +417,9 @@ switch ($action) {
 					$med = $_SESSION['medico'];
 					$pass = strrev(md5(sha1(trim($data->pass))));
 					$SQL = "INSERT INTO seg_user VALUES (NULL, $data->perf, $med, '$data->nom', '$data->ape', '$data->mail', '$pass', '$data->mail', '', NOW(), NOW(), '', 1); ";
-					$res = mysql_query($SQL);
+					$res = mysqli_query($conn, $SQL);
 
-					$id = mysql_insert_id();
+					$id = mysqli_insert_id($conn);
 					if($id > 0){
 						$detalle = $id.' '.$data->user;
 						$log->setDatos('Alta Usuario '.$detalle,$dataString,$id,USUARIOS);
@@ -446,15 +446,15 @@ switch ($action) {
 		if($edita && $permp['action'] == 'EDIT'){
 
 			$SQL = "SELECT * FROM seg_user WHERE username = '$data->user' AND status = 1 AND id_user != $data->id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_num_rows($res) > 0){
+			if(mysqli_num_rows($res) > 0){
 				$arrRes = array('error' => true, 'elem' => 'item-user', 'msg' => 'Username ya registrado');
 			}else{
 				$SQL = "SELECT * FROM seg_user WHERE email = '$data->mail' AND status = 1 AND id_user != $data->id; ";
-				$res = mysql_query($SQL);
+				$res = mysqli_query($conn, $SQL);
 
-				if(mysql_num_rows($res) > 0){
+				if(mysqli_num_rows($res) > 0){
 					$arrRes = array('error' => true, 'elem' => 'item-mail', 'msg' => 'Email ya registrado');
 				}else{
 					$pass = '';
@@ -464,9 +464,9 @@ switch ($action) {
 					$SQL = "UPDATE seg_user SET nombre = '$data->nom', apellidos = '$data->ape', updated = NOW(), 
 										fk_perfil = $data->perf, username = '$data->user', email = '$data->mail' $pass 
 									WHERE id_user = $data->id; ";
-					$res = mysql_query($SQL);
+					$res = mysqli_query($conn, $SQL);
 
-					if(mysql_affected_rows() > 0){
+					if(mysqli_affected_rows($conn) > 0){
 						$detalle = $data->id.' '.$data->user;
 						$log->setDatos('Edita Usuario '.$detalle,$dataString,$data->id,USUARIOS);
 		            	$log->saveLog();
@@ -493,9 +493,9 @@ switch ($action) {
 			$id = $_POST['id'];
 
 			$SQL = "UPDATE seg_user SET status = 2, deleted = NOW() WHERE id_user = $id; ";
-			$res = mysql_query($SQL);
+			$res = mysqli_query($conn, $SQL);
 
-			if(mysql_affected_rows() > 0){
+			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
 				$log->setDatos('Baja Usuario '.$detalle,$detalle,$id,USUARIOS);
             	$log->saveLog();
@@ -509,10 +509,6 @@ switch ($action) {
 		}
 		echo json_encode($arrRes);
 		break;
-
-
-
-
 
 	default:
 		# code...
