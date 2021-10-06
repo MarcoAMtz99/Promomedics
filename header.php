@@ -31,7 +31,7 @@
       $usertype = $_SESSION['perfil'];
     }
   }else{
-    header('Location: '.URL_ROOT.'/login');
+    header('Location: '.URL_ROOT.'/login.php');
     //exit();
   }
 
