@@ -3,8 +3,8 @@
 	//PRODUCCION
 	$conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
 	// define('WP_DEBUG', false);
-	// ini_set('log_errors','On');
-	// ini_set('display_errors','On');
+	ini_set('log_errors','On');
+	ini_set('display_errors','On');
 	// ini_set('error_reporting', E_ALL );
 	// define('WP_DEBUG', true);
 	// define('WP_DEBUG_LOG', true);
