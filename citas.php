@@ -63,6 +63,7 @@
     }
 
 	$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+		echo "RESULTADO";
 	 echo json_encode($data);
 	// echo "403.pHP AQUI SE VE SI SSALE EL ECHOO PRIMERO";
 	// echo "<br>";
