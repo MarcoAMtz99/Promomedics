@@ -45,9 +45,7 @@
             <form id="form-login">
               <h1>Ingresar</h1>
               <div>
-                <?php if(isset($_GET['session'])) : ?>
-                <div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>Tu sesión ha caducado por inactividad</div>
-                <?php endif; ?>
+               
                 <input id="username" type="text" class="form-control" placeholder="Username o Email" required="" />
               </div>
               <div>
