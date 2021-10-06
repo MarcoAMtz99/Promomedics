@@ -48,9 +48,10 @@ if($usertype > 2){
 	if(!isset($_GET['action'])) $action = $_POST['action'];
 	if (isset($_POST['data'])) {
 			$dataString = $_POST['data'];
+			$data = json_decode($dataString);
 	}
 
-	$data = json_decode($dataString);
+	
 
 	include 'Log.class.php';
 	$log = new Log($user,$idSesion);
