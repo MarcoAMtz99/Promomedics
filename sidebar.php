@@ -11,7 +11,7 @@
             <div class="profile">
               <div class="profile_info">
                 <span>Bienvenido,</span>
-                <h2><?php  if(isset($username)){echo $username} ?></h2>
+                <h2><?php  if(isset($username)){echo $username;} ?></h2>
               </div>
 
               <div class="clearfix"></div>
