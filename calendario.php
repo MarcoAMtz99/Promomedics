@@ -62,7 +62,7 @@
 					$("#agendarModal").modal();
 				},
 					//pro
-					events:'https://promomedics.byw-si.com.mx/citas',
+					events:'https://promomedics.byw-si.com.mx/citas.php',
 					//desarrollo
 					// events:'https://localhost/promomedics/citas.php',
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
