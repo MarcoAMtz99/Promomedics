@@ -11,8 +11,9 @@
         <?php
 
         if (isset($_SESSION['status'])) {
-          if($_SESSION['status'] != 3) :
-        }
+          if($_SESSION['status'] != 3) {
+
+
           ?>
         <div id="form-pass" class="modal fade">
             <div class="modal-dialog">
@@ -50,7 +51,9 @@
               </div>
             </div>
         </div>
-        <?php endif; ?>
+        <?php
+            }
+        } ?>
         
       </div>
     </div>
