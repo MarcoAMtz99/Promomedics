@@ -13,7 +13,7 @@
 		//PRODUCCION
 	mysqli_select_db($conn,'bywsicom_promo');
 		//DESARROLLO
-	mysqli_select_db($conn,'promo');
+	// mysqli_select_db($conn,'promo');
 
 
 	if(!defined('URL_ROOT')){
