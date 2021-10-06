@@ -5,7 +5,7 @@
 	// $conexion = mysqli_connect("localhost","root" ,"","promo");
 	// $pdo = new PDO("mysql:dbname=promo; host=localhost","root","");
 	//PRODUCCION
-	$conexion = mysqli_connect("localhost","bywsicom_promo" ,"!_WOXa9ZxWfP","bywsicom_promo");
+	// $conexion = mysqli_connect("localhost","bywsicom_promo" ,"!_WOXa9ZxWfP","bywsicom_promo");
 		// $conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
 	$pdo = new PDO("mysql:dbname=bywsicom_promo; host=localhost","bywsicom_promo","!_WOXa9ZxWfP");
 
