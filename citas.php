@@ -25,7 +25,7 @@
 
 	$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($resultado);
-	print_r($resultado);
+	// print_r($resultado);
 
 
  ?>
