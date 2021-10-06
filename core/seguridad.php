@@ -15,8 +15,12 @@ if(!$user || !array_key_exists(MOD_SEGURIDAD, $aperm)){
 	if($perm['action'] == 'EDIT') $edita = true;
 	
 	$action = $_POST['action'];
-	$dataString = $_POST['data'];
-	$data = json_decode($dataString);
+	if(!isset($_GET['action'])) $action = $_POST['action'];
+	if (isset($_POST['data'])) {
+			$dataString = $_POST['data'];
+			$data = json_decode($dataString);
+	}
+
 
 	include 'Log.class.php';
 	$log = new Log($user,$idSesion);
