@@ -1,6 +1,6 @@
       <div class="navbar nav_title" style="border: 0;">
               <a href="<?php echo URL_ROOT; ?>" class="site_title">
-                <img class="logo-sm" src="<?php echo URL_ROOT; ?>images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
+                <img class="logo-sm" src="<?php echo URL_ROOT; ?>/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
                 <img class="logo-md" src="<?php echo URL_ROOT; ?>/images/logo_small.png" alt="<?php echo PAGE_TITLE ?>">
               </a>
             </div>

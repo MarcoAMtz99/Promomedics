@@ -111,7 +111,7 @@
                             $SQLp = "SELECT id_perfil, nombre FROM seg_perfil WHERE status = 1 $limitados; ";
                             $resp = mysqli_query($conn,$SQLp);
 
-                            while ($perf = mysql_fetch_assoc($resp)) {
+                            while ($perf = mysqli_fetch_assoc($resp)) {
                               echo '<option value="'.$perf['id_perfil'].'">'.$perf['nombre'].'</option>' ;
                             }
                            ?>
