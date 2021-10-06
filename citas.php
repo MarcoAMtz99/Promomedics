@@ -15,7 +15,7 @@
 			//PRODUCTIVO
 			// mysqli_select_db($conexion,'bywsicom_promo');
 			// DESARROLLO
-			mysqli_select_db($conexion,'promo');
+			// mysqli_select_db($conexion,'promo');
 	$sql = "select id,
 							(select nombre from medico where ID = id_medico) as nombre,
 							(select paterno from medico where ID = id_medico) as paterno,
