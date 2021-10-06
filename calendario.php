@@ -112,6 +112,7 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
+								      	<form action="agendar.php" method="post">
 								      	<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" >FECHA</span>
@@ -196,6 +197,8 @@
 								
 								         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
 								      </div>
+								       </form> 
+								       <!-- AQUI TERMINA EL FORM -->
 								    </div>
 								  </div>
 								</div>
