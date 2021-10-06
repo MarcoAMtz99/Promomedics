@@ -30,6 +30,7 @@
 	}
 	
 	print_r($resultado);
+	echo json_encode($resultado);
 	// header("Location: calendario.php");
 
  ?>
