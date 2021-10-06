@@ -1,6 +1,6 @@
 <?php 
 
-	// header('Content-Type: application/json');
+	header('Content-Type: application/json');
 	$conexion = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
 	if (mysqli_connect_errno()) {
 		//VALIDAR CONEXION A DB
@@ -64,17 +64,17 @@
 
 	$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 	 echo json_encode($data);
-	echo "403.pHP AQUI SE VE SI SSALE EL ECHOO PRIMERO";
-	echo "<br>";
-	echo "<br>";
-	echo "<br>";
-	echo "JSON SE IMPRIME:";
-	echo "<br>";
-	echo $resultado2;
-			echo "<br>";
-	echo json_encode($resultado);
-	print_r($resultado);
-	echo json_encode($resultado);
+	// echo "403.pHP AQUI SE VE SI SSALE EL ECHOO PRIMERO";
+	// echo "<br>";
+	// echo "<br>";
+	// echo "<br>";
+	// echo "JSON SE IMPRIME:";
+	// echo "<br>";
+	// echo $resultado2;
+	// 		echo "<br>";
+	// echo json_encode($resultado);
+	// print_r($resultado);
+	// echo json_encode($resultado);
 	// header("Location: calendario.php");
 
  ?>
