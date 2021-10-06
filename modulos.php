@@ -45,7 +45,67 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+       <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                  </button>
+                  <h4 class="modal-title">Agregar Módulo</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal form-label-left">
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="item-nom">Nombre <span class="required">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" id="item-nom" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Módulo">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="item-desc" class="control-label col-md-3 col-sm-3 col-xs-12">Descripción</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input id="item-desc" class="form-control col-md-7 col-xs-12" type="text" placeholder="Descripción">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="item-abrev" class="control-label col-md-3 col-sm-3 col-xs-12">Abrev <span class="required">*</span></label>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input id="item-abrev" class="form-control col-md-7 col-xs-12" type="text" placeholder="Abreviación menú" maxlength="6">
+                      </div>
+                      <label for="item-ico" class="control-label col-md-1 col-sm-1 col-xs-12">Icono</label>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input id="item-ico" class="form-control col-md-7 col-xs-12" type="text" placeholder="Icono de menú">
+                      </div>
+                    </div>
+
+
+                    <div class="form-group item-tipo">
+                      <label for="item-tipo" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo</label>
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <select id="item-tipo" class="form-control">
+                          <option value="1">Directo</option>
+                          <option value="2">Menú</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group item-url">
+                      <label for="item-url" class="control-label col-md-3 col-sm-3 col-xs-12">URL <span class="required">*</span></label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input id="item-url" class="form-control col-md-7 col-xs-12" type="text" placeholder="URL">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <input type="hidden" id="item-parent" value="0">
+                  <input type="hidden" id="item-id" value="0">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button id="btnSave" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+
+              </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
