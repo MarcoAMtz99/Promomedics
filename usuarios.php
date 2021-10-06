@@ -109,7 +109,7 @@
                             $limitados = "";
                             if($usertype == 4) $limitados = "AND id_perfil > 3";
                             $SQLp = "SELECT id_perfil, nombre FROM seg_perfil WHERE status = 1 $limitados; ";
-                            $resp = mysql_query($SQLp);
+                            $resp = mysqli_query($conn,$SQLp);
 
                             while ($perf = mysql_fetch_assoc($resp)) {
                               echo '<option value="'.$perf['id_perfil'].'">'.$perf['nombre'].'</option>' ;

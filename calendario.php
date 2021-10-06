@@ -23,7 +23,7 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">
-      <img src="<?php echo URL_ROOT; ?>images/logo_small.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
+      <img src="images/logo_small.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
       Inicio
     </a>
   </div>
