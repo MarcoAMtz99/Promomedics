@@ -37,7 +37,11 @@
                     <h2>Especialidades <small>Catálogo de Especialidades</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <?php if($perm == 'EDIT') : ?>
-                      <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar</a></li>
+                      <li>
+                          <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
+                              <i class="fa fa-plus"></i> Agregar
+                          </a>
+                      </li>
                       <?php endif; ?>
                     </ul>
                     <div class="clearfix"></div>
@@ -173,7 +177,7 @@
           $('#frm-item .modal-title').html('Agregar Especialidad');
           $('#frm-item input').val('');
           $('#item-id').val(0);
-          $('#frm-item').modal('show');
+          $('#frm-item').hide();
         });
 
         getItems();

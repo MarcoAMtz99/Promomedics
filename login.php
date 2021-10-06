@@ -149,9 +149,29 @@
             btn = $(this);
             btn.attr('disabled','');
 
+            $.ajax({
+                method:'POST',
+                url: 'core/action.php',
+                data: {
+                    action:'login',
+                    data: $.toJSON(data),
+                }
+            }).done(item => {
+                if(item.error){
+                    msg = 'No se encontro al usuario. Verifica tus datos.';
+                    err.append(msg);
+                    err.addClass('alert-danger');
+                    btn.before(err);
+                    btn.removeAttr('disabled');
+                }else{
+                    window.location = "<?php echo URL_ROOT; ?>";
+                }
+            }, 'json');
+
+            /*
             $.post(
-              'core/action.php', 
-              {action: 'login', data: $.toJSON(data)}, 
+              'core/action.php',
+              {action: 'login', data: $.toJSON(data)},
               function(data) {
                 if(data.error){
                   msg = 'No se encontro al usuario. Verifica tus datos.';
@@ -162,7 +182,8 @@
                 }else{
                   window.location = "<?php echo URL_ROOT; ?>";
                 }
-              },'json');
+              },'json')
+              */
           }
         });
 

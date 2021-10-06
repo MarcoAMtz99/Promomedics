@@ -125,7 +125,12 @@
                       <h2>Módulos <small>Menús de primer nivel</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <?php if($perm == 'EDIT') : ?>
-                        <li><a id="btnAddM" class="add-link"><i class="fa fa-plus"></i> Agregar Módulo</a></li>
+                        <li>
+                            <a id="btnAddM" class="add-link" data-toggle="modal" data-target="#frm-item">>
+                                <i class="fa fa-plus"></i>
+                                Agregar Módulo
+                            </a>
+                        </li>
                         <?php endif; ?>
                       </ul>
                       <div class="clearfix"></div>
@@ -319,7 +324,7 @@
           $('#item-tipo').val(1);
           $('.item-tipo').removeClass('hide');
           $('.item-url').removeClass('hide');
-          $('#frm-item').modal('show');
+          $('#frm-item').hide();
         });
 
         $('#item-tipo').change(function() {

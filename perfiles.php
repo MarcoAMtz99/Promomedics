@@ -44,7 +44,7 @@
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <span class="section">Perfiles 
                           <?php if($perm == 'EDIT') : ?>
-                          <button id="btnAdd" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i> Agregar</button>
+                          <button id="btnAdd" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#frm-item"><i class="fa fa-plus"></i> Agregar</button>
                           <?php endif; ?>
                         </span>
 
@@ -224,7 +224,7 @@
           $('#frm-item .modal-title').html('Agregar Perfil');
           $('#frm-item input').val('');
           $('#item-id').val(0);
-          $('#frm-item').modal('show');
+          $('#frm-item').hide();
         });
 
         getPerfiles();

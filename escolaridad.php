@@ -19,15 +19,12 @@
     <!-- bootstrap-progressbar -->
     <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-
     <!-- Datatables -->
     <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 
-
         <!-- page content -->
         <div class="right_col" role="main">
-
 
           <div class="row">
 
@@ -37,7 +34,11 @@
                     <h2>Escolaridad <small>Catálogo de Escolaridad</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <?php if($perm == 'EDIT') : ?>
-                      <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar</a></li>
+                      <li>
+                          <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
+                              <i class="fa fa-plus"></i> Agregar
+                          </a>
+                      </li>
                       <?php endif; ?>
                     </ul>
                     <div class="clearfix"></div>
@@ -173,7 +174,7 @@
           $('#frm-item .modal-title').html('Agregar Escolaridad');
           $('#frm-item input').val('');
           $('#item-id').val(0);
-          $('#frm-item').modal('show');
+          $('#frm-item').hide();
         });
 
         getItems();

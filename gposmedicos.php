@@ -42,7 +42,11 @@
                       <h2>Alta de Grupo Médicos <small>Grupos registrados</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <?php if($perm == 'EDIT') : ?>
-                        <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar Grupo</a></li>
+                        <li>
+                            <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
+                                <i class="fa fa-plus"></i> Agregar Grupo
+                            </a>
+                        </li>
                         <?php endif; ?>
                       </ul>
                       <div class="clearfix"></div>
@@ -209,7 +213,7 @@
           $('.creado').addClass('hide');
           //$('#item-perf').val(1);
           $('#frm-item small').addClass('hide');
-          $('#frm-item').modal('show');
+          $('#frm-item').hide();
         });
 
         getMedicos();

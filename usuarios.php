@@ -26,11 +26,8 @@
     <!-- Select2 >
     <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet"-->
 
-
-
         <!-- page content -->
         <div class="right_col" role="main">
-
 
           <div class="clearfix"></div>
 
@@ -41,7 +38,12 @@
                       <h2>Usuarios <small>Usuarios con acceso al sistema</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <?php if($perm == 'EDIT') : ?>
-                        <li><a id="btnAdd" class="add-link"><i class="fa fa-plus"></i> Agregar Usuario</a></li>
+                        <li>
+                            <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
+                                <i class="fa fa-plus"></i>
+                                Agregar Usuario
+                            </a>
+                        </li>
                         <?php endif; ?>
                       </ul>
                       <div class="clearfix"></div>
@@ -210,7 +212,7 @@
           $('#item-id').val(0);
           //$('#item-perf').val(1);
           $('#frm-item small').addClass('hide');
-          $('#frm-item').modal('show');
+          $('#frm-item').hide();
         });
 
         getUsuarios();
