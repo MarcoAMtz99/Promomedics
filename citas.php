@@ -25,11 +25,11 @@
 
 	$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 	while (true) {
-		echo json_encode($resultado);
+		// echo json_encode($resultado);
 		break;
 	}
 	
-	// print_r($resultado);
+	print_r($resultado);
 	// header("Location: calendario.php");
 
  ?>
