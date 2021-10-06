@@ -61,6 +61,8 @@
 			array_push($arrItems,$array);
 	}
 		$auxiliar = array('AGENDA' => $arrItems);
+		$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+		echo json_encode($resultado);
 		echo json_encode($auxiliar);
 	/* 	break; */
 
