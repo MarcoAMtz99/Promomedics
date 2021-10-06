@@ -34,7 +34,7 @@
 							 from agenda;";
 	$SQL2 ='select * from agenda';
 
-	$res = mysqli_query($conexion,$sql);
+	$res = mysqli_query($conexion,$SQL2);
 		
 	$arrItems = array();
 	while ($fila = mysqli_fetch_assoc($res)) {
