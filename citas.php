@@ -2,9 +2,9 @@
 
 	// header('Content-Type: application/json');
 	$conexion = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
-	f (mysqli_connect_errno()) {
+	if (mysqli_connect_errno()) {
 		//VALIDAR CONEXION A DB
-    printf("Conexión fallida: %s\n", mysqli_connect_error());
+    printf(mysqli_connect_error());
     exit();
 	}
 	// $conexion = mysqli_connect("localhost","root" ,"","promo");
@@ -30,7 +30,8 @@
 	$array= array();
 	$resultado2 = mysqli_query($conexion, $consulta);
 	while ($row = mysqli_fetch_assoc($resultado)) {
-       $dato = $row["nombre"];
+		echo $row;
+       $dato = $row['nombre'];
        array_push($array, $dato);
 
     }
