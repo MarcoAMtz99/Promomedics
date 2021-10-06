@@ -6,8 +6,8 @@
 	 // $conexion = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
 	// mysql_select_db('bywsicom_promo'); 
 	/* include 'conex.php'; */
-
-	$enlace =  mysqli_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
+	$conexion = mysqli_connect("localhost","bywsicom_promo" ,"!_WOXa9ZxWfP","bywsicom_promo");
+	// $enlace =  mysqli_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
 			/* if (!$enlace) {
 				die('No pudo conectarse: ' . mysql_error());
 			}
