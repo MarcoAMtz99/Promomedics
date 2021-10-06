@@ -69,7 +69,7 @@
 				eventClick:function(callEvent,jsEvent,view){
 
 					$("#identificador").html(callEvent.id);
-					$("#paciente").html(callEvent.paciente);
+					$("#paciente").html(callEvent.title);
 					$("#descripcionCita").html(callEvent.start);
 					$("#hora_consulta").html(callEvent.hora_consulta);
 					$("#aseguradora").html(callEvent.aseguradora);
@@ -81,9 +81,9 @@
 					$("#edad").html(callEvent.edad);
 					let fechaAux = callEvent.start.format();
 
-					$("#persona").val(callEvent.paciente);
+					$("#persona").val(callEvent.title);
 					$("#descripcionCita").val(fechaAux);
-					/* swal('persona: ',callEvent.paciente); */
+					console.log('persona: ',callEvent.paciente);
 					$("#hora_consulta").val();
 					$("#edad").val(callEvent.edad);
 					$("#telefono1").val(callEvent.telefono1);
@@ -94,6 +94,7 @@
 
 					$("#exampleModal").modal();
 				}
+				
 				
 			});
 		});
