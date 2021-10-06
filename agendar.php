@@ -15,7 +15,7 @@
 
 
 
-	$sql = $pdo->prepare("INSERT INTO `agenda`(`id_medico`, `status`, `fechaCreacion`, `fechaActualizacion`, `usuarioCreacionId`, `usuarioActualizacionId`, `id_consultorio`, `paciente`, `fecha_consulta`, `hora_consulta`, `aseguradora`, `mail`, `telefono1`, `telefono2`, `telefono3`, `consultaPrimeraVez`, `consultaSubsecuente`, `consultaPreferencial1`, `consultaPreferencial2`, `consultaRevision`, `consultaEstudios`, `consultaUrgencia`, `costoConsulta`, `recado`, `comoSeEntero`, `edad`, `tutor`) VALUES (10,1,'2021-09-07','2021-09-07',1,1,14,'$paciente','$fecha_consulta','12:00:00','GNP','prueba@gmail.com','1234567890','1234567890','1234567890',0,0,0,0,0,0,0,'$costoConsulta','prueba','internet',25,null)");
+	$sql = $pdo->prepare("INSERT INTO `agenda`(`id_medico`, `status`, `fechaCreacion`, `fechaActualizacion`, `usuarioCreacionId`, `usuarioActualizacionId`, `id_consultorio`, `paciente`, `fecha_consulta`, `hora_consulta`, `aseguradora`, `mail`, `telefono1`, `telefono2`, `telefono3`, `consultaPrimeraVez`, `consultaSubsecuente`, `consultaPreferencial1`, `consultaPreferencial2`, `consultaRevision`, `consultaEstudios`, `consultaUrgencia`, `costoConsulta`, `recado`, `comoSeEntero`, `edad`, `tutor`) VALUES (10,1,'2021-10-06','2021-10-06',1,1,14,'$paciente','$fecha_consulta','12:00:00','GNP','prueba@gmail.com','1234567890','1234567890','1234567890',0,0,0,0,0,0,0,'$costoConsulta','prueba','internet',25,null)");
 
 	$sql->execute();
 
