@@ -46,7 +46,10 @@ if($usertype > 2){
 }*/
 	$action = $_GET['action'];
 	if(!isset($_GET['action'])) $action = $_POST['action'];
-	$dataString = $_POST['data'];
+	if (isset($_POST['data'])) {
+			$dataString = $_POST['data'];
+	}
+
 	$data = json_decode($dataString);
 
 	include 'Log.class.php';
