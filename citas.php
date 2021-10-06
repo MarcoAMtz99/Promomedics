@@ -26,6 +26,6 @@
 	$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($resultado);
 	// print_r($resultado);
-	break;
+	header("Location: calendario.php");
 
  ?>
