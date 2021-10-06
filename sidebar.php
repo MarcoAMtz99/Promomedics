@@ -29,7 +29,9 @@
 
                   <?php  
                     $permArray = $_SESSION['perm'];
-
+                 if (isset( $permArray)) {
+                      # code...
+                    
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
                         echo '<li id="mnu-'.$perm['abrev'].'"><a><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].' <span class="fa fa-chevron-down"></span></a>';
@@ -54,6 +56,7 @@
                         }
                       }
                     }
+                  } //Fin del if para validar isset 
                     echo' <li id="mnu-cal"><a href="'.URL_ROOT.'/calendario.php"><i class="fa fa-calendar"></i> Agenda</a></li>';
                   ?>
 

@@ -8,7 +8,12 @@
         </footer>
         <!-- /footer content -->
         
-        <?php if($_SESSION['status'] != 3) : ?>
+        <?php
+
+        if (isset($_SESSION['status'])) {
+          if($_SESSION['status'] != 3) :
+        }
+          ?>
         <div id="form-pass" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
