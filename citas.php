@@ -29,6 +29,13 @@
 		break;
 	}
 	echo "403.pHP AQUI SE VE SI SSALE EL ECHOO PRIMERO";
+	echo "<br>";
+	echo "<br>";
+	echo "<br>";
+	echo "JSON SE IMPRIME:";
+	echo "<br>";
+
+	echo json_encode($resultado);
 	print_r($resultado);
 	echo json_encode($resultado);
 	// header("Location: calendario.php");
