@@ -2,12 +2,12 @@
 
 	header('Content-Type: application/json');
 
-	$conexion = mysqli_connect("localhost","root" ,"","promo"); 
+	// $conexion = mysqli_connect("localhost","root" ,"","promo"); 
 	 // $conexion = mysql_pconnect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
 	// mysql_select_db('bywsicom_promo'); 
 	/* include 'conex.php'; */
 
-	// $enlace =  mysqli_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
+	$enlace =  mysqli_connect('localhost', 'bywsicom_promo', '!_WOXa9ZxWfP');
 			/* if (!$enlace) {
 				die('No pudo conectarse: ' . mysql_error());
 			}
