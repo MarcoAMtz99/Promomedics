@@ -1,7 +1,7 @@
 <?php 
 	// ini_set('display_errors',0);
 	//PRODUCCION
-	$conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP');
+	$conn = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
 	// define('WP_DEBUG', false);
 	// ini_set('log_errors','On');
 	// ini_set('display_errors','On');
