@@ -25,7 +25,8 @@
                        if($_SESSION['status'] != 3) {                   
                      ?>
                     <li><a data-toggle="modal" href="#form-pass"><i class="fa fa-key pull-right"></i> Cambiar contraseña</a></li>
-                    <?php  } ?>
+                    <?php  }
+                    } ?>
                     <li><a href="/promomedics/core/logout.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                   </ul>
                 </li>
