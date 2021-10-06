@@ -34,7 +34,8 @@
 	echo "<br>";
 	echo "JSON SE IMPRIME:";
 	echo "<br>";
-
+	echo $resultado;
+			echo "<br>";
 	echo json_encode($resultado);
 	print_r($resultado);
 	echo json_encode($resultado);
