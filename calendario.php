@@ -117,40 +117,40 @@
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" >FECHA</span>
 										  </div>
-										  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="FECHA" readonly="">
+										   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="fecha" id="FECHA" readonly="">
 										  </div>
 
 								      	<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Paciente</span>
 										  </div>
-										  <input type="text" class="form-control" id="paciente" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="text" class="form-control" id="paciente" aria-label="Sizing example input" name="paciente" aria-describedby="inputGroup-sizing-sm">
 										  </div>
 
 										    <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Edad</span>
 										  </div>
-										  <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" name="edad" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 
 										  <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Telefono</span>
 										  </div>
-										  <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" name="telefono1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Celular</span>
 										  </div>
-										  <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" name="telefono2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Otro</span>
 										  </div>
-										  <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" name="telefono3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<!-- MEDICOS LIST -->
 										<div class="input-group mb-3">
@@ -180,17 +180,18 @@
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">$Costo consulta</span>
 										  </div>
-										  <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" name="costoConsulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group">
 
 										  <div class="input-group-prepend">
 										    <span class="input-group-text">Recado</span>
 										  </div>
-										  <textarea class="form-control" aria-label="With textarea"></textarea>
+										  <textarea class="form-control" name="recado" aria-label="With textarea"></textarea>
 										</div>
 								   
 								      </div>
+								      
 								      <div class="modal-footer">
 								       
 								         <button type="submit" class="btn btn-primary">AGENDAR</button>
