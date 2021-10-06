@@ -28,7 +28,10 @@
                 <ul class="nav side-menu">
 
                   <?php  
-                    $permArray = $_SESSION['perm'];
+                  if (isset($_SESSION['perm'])) {
+                     $permArray = $_SESSION['perm'];
+                  }
+                   
                  if (isset( $permArray)) {
                       # code...
                     
