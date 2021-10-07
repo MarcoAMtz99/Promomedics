@@ -7,7 +7,7 @@
 		<!-- <script src="js/es.js"></script> -->
 		<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
- 		
+
 
 	<!-- 	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -57,7 +57,7 @@
 			      dataType: "json"
 			    }).done(function( data ) {
 			        alert("Todo bien");
-			        console.log(data); //Si pones el content-type en PHP no necesitas parse         
+			        console.log(data,"JSON"); //Si pones el content-type en PHP no necesitas parse         
 			    });;
 
 
