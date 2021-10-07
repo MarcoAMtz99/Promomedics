@@ -3,6 +3,8 @@
 include 'conex.php';
 
 $action = $_POST['action'];
+$conn = mysqli_connect('localhost:8889','root','root','isantosp_promo');
+
 $data = json_decode($_POST['data']);
 
 include 'Session.class.php';
@@ -14,7 +16,7 @@ switch ($action) {
 	case 'login':
 		$user = $data->user;
 		$pass1 = $data->pass;
-		
+
 		$pass = strrev(md5(sha1(trim($pass1))));
 
 		$SQL = "SELECT id_user, fk_perfil, nombre AS username, fk_medico,IFNULL((SELECT CONCAT(nombre,' ',paterno,' ',materno) FROM medico WHERE ID = fk_medico),'') AS medico,status,(SELECT fk_grupo FROM medico WHERE ID =fk_medico) AS grupo FROM seg_user  WHERE (username = '$user' OR email = '$user') AND password = '$pass' AND status != 2; ";
@@ -29,11 +31,11 @@ switch ($action) {
 			$idUser = $info['id_user'];
             $userName = $info['username'];
             $perfil = intval($info['fk_perfil']);
-            
+
             //$sucursal = intval($info['fk_sucursal']);
             $_SESSION['medico'] = $info['fk_medico'];
             $_SESSION['mediconom'] = $info['medico'];
-            
+
             $_SESSION['user'] = $idUser;
             $_SESSION['perfil'] = $perfil;
             $_SESSION['nomuser'] = $userName;

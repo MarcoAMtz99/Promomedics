@@ -100,7 +100,7 @@ switch ($action) {
 			$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar" ><i class="fa fa-trash fa-fw"></i></button>';
 		}
 		
-		$arrRes = array('error' => $SQL, 'items' => $arrItems, 'actions' => $acciones,'hola');
+		$arrRes = array('error' => $SQL, 'items' => $arrItems, 'actions' => $acciones);
 		echo json_encode($arrRes);
 		break;
 

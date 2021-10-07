@@ -390,19 +390,41 @@
 
       function getMedicos(){
         NProgress.start();
-        $.post('core/medicos/getMedicos', 
-          {}, 
-          function(resp) {
+        $.ajax({
+            method: 'GET',
+            url: 'core/medicos.php',
+            data:{
+                action: 'getMedicos',
+            },
+        }).done(item => {
+            let resp = JSON.parse(item)
+            console.log(resp)
             $('#tbl-items tbody').empty();
             if(resp.items.length > 0){
-              $.each(resp.items, function(index, item){
-                addItemRow(item, resp.actions);
-              });
-              $("[data-toggle='tooltip']").tooltip();
+                $.each(resp.items, function(index, item){
+                    addItemRow(item, resp.actions);
+                });
+                $("[data-toggle='tooltip']").tooltip();
             }
             doTable('#tbl-items', 5);
             NProgress.done();
+        });
+
+        /*
+        $.post('core/medicos/getMedicos',
+          {}, 
+          function(resp) {
+              $('#tbl-items tbody').empty();
+              if(resp.items.length > 0){
+                  $.each(resp.items, function(index, item){
+                      addItemRow(item, resp.actions);
+                  });
+                  $("[data-toggle='tooltip']").tooltip();
+              }
+              doTable('#tbl-items', 5);
+              NProgress.done();
         },'json');
+        */
       }
 
       function addItemRow(item, act){
