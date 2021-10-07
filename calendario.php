@@ -7,7 +7,7 @@
 		<!-- <script src="js/es.js"></script> -->
 		<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
- 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+ 		
 
 	<!-- 	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
