@@ -315,6 +315,12 @@
 										  </div>
 										   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="fecha" id="FECHA" readonly="">
 										  </div>
+										   <div class="input-group input-group-sm mb-3">
+										  <div class="input-group-prepend">
+										    <span class="input-group-text" id="inputGroup-sizing-sm">Hora</span>
+										  </div>
+										  <input type="time" class="form-control" id="hora" aria-label="Sizing example input" name="hora" aria-describedby="inputGroup-sizing-sm">
+										  </div>
 
 								      	<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
@@ -322,31 +328,32 @@
 										  </div>
 										  <input type="text" class="form-control" id="paciente" aria-label="Sizing example input" name="paciente" aria-describedby="inputGroup-sizing-sm">
 										  </div>
+										 
 
 										    <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Edad</span>
 										  </div>
-										  <input type="number" class="form-control" name="edad" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="edad" name="edad" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 
 										  <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Telefono</span>
 										  </div>
-										  <input type="number" class="form-control" name="telefono1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="telefono1" name="telefono1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Celular</span>
 										  </div>
-										  <input type="number" class="form-control" name="telefono2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="telefono2" name="telefono2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Otro</span>
 										  </div>
-										  <input type="number" class="form-control" name="telefono3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="telefono3" name="telefono3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<!-- MEDICOS LIST -->
 										<div class="input-group mb-3">
@@ -368,16 +375,16 @@
 										</div>
 										  <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
-										    <span class="input-group-text" id="inputGroup-sizing-sm">$Costo consulta</span>
+										    <span class="input-group-text">$Costo consulta</span>
 										  </div>
-										  <input type="number" class="form-control" name="costoConsulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="costoConsulta" name="costoConsulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group">
 
 										  <div class="input-group-prepend">
 										    <span class="input-group-text">Recado</span>
 										  </div>
-										  <textarea class="form-control" name="recado" aria-label="With textarea"></textarea>
+										  <textarea class="form-control" id="recado" name="recado" aria-label="With textarea"></textarea>
 										</div>
 								   
 								      </div>
@@ -499,14 +506,33 @@
 <script>
 	function enviar(){
 					 paciente = $.trim($('#paciente').val());
+					 hora = $.trim($('#hora').val());
           			 edad = $.trim($('#edad').val());
+          			 telefono1=$.trim($('#telefono1').val());
+          			 telefono2=$.trim($('#telefono2').val());
+          			 telefono3=$.trim($('#telefono3').val());
+          			 medico=$('#modalMedico').val();
+          			 consultorio=$('#modalConsultorio').val();
+          			 costo=$('#costoConsulta').val();
+          			 recado=$('#recado').val();
+          			 fecha= $('#FECHA').val();
           			 data = {
 			              paciente: paciente, 
-			              edad: edad
+			              edad: edad,
+			              hora:hora,
+			              telefono1:telefono1,
+						  telefono2:telefono2,
+					      telefono3:telefono3,
+						  medico:medico,
+						  consultorio:consultorio,
+						  recado:recado,
+						  costo:costo,
+						  fecha:fecha
 			            };
 					$.ajax({
 			                method:'POST',
-			                url: 'https://api.promo.byw-si.com.mx/agenda',
+			                url: 'https://api.promo.byw-si.com.mx/api/agenda',
+			                // url: 'http://127.0.0.1:8000/api/agenda',
 			                data: {
 			                    action:'cita',
 			                    data: data,
@@ -527,3 +553,30 @@
 </script>				
 
 
+          <!-- 
+            $CITA->status = $request->data["status"];
+            $CITA->fechaCreacion = $request->data["fechaCreacion"];
+            $CITA->fechaActualizacion = $request->data["fechaActualizacion"];
+            $CITA->usuarioCreacionId = $request->data["usuarioCreacionId"];
+            $CITA->usuarioActualizacionId = $request->data["usuarioActualizacionId"];
+            $CITA->id_consultorio = $request->data["id_consultorio"];
+            $CITA->paciente = $request->data["paciente"];
+            $CITA->fecha_consulta = $request->data["fecha_consulta"];
+            $CITA->hora_consulta = $request->data["hora_consulta"];
+            $CITA->aseguradora = $request->data["aseguradora"];
+            $CITA->mail = $request->data["mail"];
+            $CITA->telefono1 = $request->data["telefono1"];
+            $CITA->telefono2 = $request->data["telefono2"];
+            $CITA->telefono3 = $request->data["telefono3"];
+            $CITA->consultaPrimeraVez = $request->data["consultaPrimeraVez"];
+            $CITA->consultaSubsecuente = $request->data["consultaSubsecuente"];
+            $CITA->consultaPreferencial1 = $request->data["consultaPreferencial1"];
+            $CITA->consultaPreferencial2 = $request->data["consultaPreferencial2"];
+            $CITA->consultaRevision = $request->data["consultaRevision"];
+            $CITA->consultaEstudios = $request->data["consultaEstudios"];
+            $CITA->consultaUrgencia = $request->data["consultaUrgencia"];
+            $CITA->costoConsulta = $request->data["costoConsulta"];
+            $CITA->recado = $request->data["recado"];
+            $CITA->comoSeEntero = $request->data["comoSeEntero"];
+            $CITA->edad = $request->data["edad"];
+            $CITA->tutor = $request->data["tutor"]; -->
