@@ -517,10 +517,11 @@
                 data: {
                     action:'getCitas',
                 }
-            })done(function( data ) {
+            }).done(function( data ) {
              alert("Todo bien");
          console.log(data); //Si pones el content-type en PHP no necesitas parse         
       });
+            
       }
 
       function addItemRow(item, act){
