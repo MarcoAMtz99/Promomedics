@@ -31,7 +31,7 @@
 </nav>
 <div class="clearfix"></div>
 
-	<div class="container-fluid col-12" style="background-image: url(/images/bg.jpg);">
+	<div class="container-fluid col-12" style="background-image: url(./images/bg.jpg);">
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
@@ -81,7 +81,7 @@
 			        // alert("Todo bien");
 			        // console.log(data,"JSON");
 			        $.each(data, function(i, item) {
-			        		modalConsultorio
+			        		// modalConsultorio
 						    // console.log(data[i]);
 						  //   $("medicos").each(function(i){ 
    					// 		 this.src = "test" + i + ".jpg"; 
@@ -243,8 +243,8 @@
 				},
 				defaultView: 'listDay',
 					//pro
-					// events:'https://api.promo.byw-si.com.mx/api/agenda',
-					events:'http://127.0.0.1:8000/api/agenda',
+					events:'https://api.promo.byw-si.com.mx/api/agenda',
+					// events:'http://127.0.0.1:8000/api/agenda',
 									// events: [
 							  //   {
 							  //     id: 'a',
@@ -504,6 +504,12 @@
 
 				
 <script>
+	//CON ESTA FUNCION SE ACTUALIZA CADA 5 MINUTOS LA PAGINA
+	  setInterval("actualizar()",50000);
+
+	  function actualizar(){
+	  	location.reload();
+	  }
 	function enviar(){
 					 paciente = $.trim($('#paciente').val());
 					 hora = $.trim($('#hora').val());
@@ -542,12 +548,14 @@
 			                    msg = 'No se encontro al usuario. Verifica tus datos.';
 			                    err.append(msg);
 			                    err.addClass('alert-danger');
+			                    $("#agendarModal").removeClass('selected');
 			                    btn.before(err);
 			                    btn.removeAttr('disabled');
 			                }else{
 			                   console.log('Error');
 			                }
 			            }, 'json');
+			            // location.reload();
 
 				}
 </script>				
