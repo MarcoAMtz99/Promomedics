@@ -3,8 +3,6 @@
 include 'conex.php';
 
 $action = $_POST['action'];
-$conn = mysqli_connect('localhost:8889','root','root','isantosp_promo');
-
 $data = json_decode($_POST['data']);
 
 include 'Session.class.php';
