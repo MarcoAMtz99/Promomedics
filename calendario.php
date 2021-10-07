@@ -36,29 +36,131 @@
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
 </button> -->
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Medico</label>
+    <select class="form-control" id="medicos">
+      <option>SELECCIONA UN MEDICO</option>
+    </select>
+  </div>
+  <div class="clearfix"></div>
+  <br>
 		<div class="row">
-			<div class="col-6">
+			<div class="col-5">
 					<div id="calendarioWeb"></div>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
-  Agendar
+					
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal"> -->
+  <!-- Agendar -->
+</button>
+			</div>
+				<div class="col-7 align-items-end">
+					<div id="calendarioWeb2"></div>
+					
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal"> -->
+  <!-- Agendar -->
 </button>
 			</div>
 			
-
+<!-- <div id="calendarioWeb2"></div> -->
 		</div>
 		
 	
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
+			//PARA CUANDO SE SELECCIONE EL MEDICO MANDAREMOS A LLAMAR A SUS CONSULTORIOS
+			$( "#modalMedico" ).change(function() {
+				 alert($( "#modalMedico" ).val());
+				 var id= $( "#modalMedico" ).val();
+				 var url="https://api.promo.byw-si.com.mx/api/consultorio/";
+				 var peticion =url+id;
+				  $.ajax({
+			      url: peticion,
+			      method: "GET",
+			      dataType: "json"
+			    }).done(function( data ) {
+			        // alert("Todo bien");
+			        // console.log(data,"JSON");
+			        $.each(data, function(i, item) {
+			        		modalConsultorio
+						    // console.log(data[i]);
+						  //   $("medicos").each(function(i){ 
+   					// 		 this.src = "test" + i + ".jpg"; 
+								// });
+								$("#modalConsultorio").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+								// $("#medicos").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+						}); //Si pones el content-type en PHP no necesitas parse         
+			   		 });
+				});
+
+				// function enviar(){
+				// 	 paciente = $.trim($('#paciente').val());
+    //       			 edad = $.trim($('#edad').val());
+    //       			 data = {
+			 //              paciente: paciente, 
+			 //              edad: edad
+			 //            };
+				// 	$.ajax({
+			 //                method:'POST',
+			 //                url: 'http://127.0.0.1:8000/api/agenda',
+			 //                data: {
+			 //                    action:'cita',
+			 //                    data: $.toJSON(data),
+			 //                }
+			 //            }).done(item => {
+			 //                if(item.error){
+			 //                    msg = 'No se encontro al usuario. Verifica tus datos.';
+			 //                    err.append(msg);
+			 //                    err.addClass('alert-danger');
+			 //                    btn.before(err);
+			 //                    btn.removeAttr('disabled');
+			 //                }else{
+			 //                   console.log('Error');
+			 //                }
+			 //            }, 'json');
+
+				// }
+
+
+
+			//PETICION PARA OBTENER TODAS LAS CITAS
 			 $.ajax({
 			      url: "https://api.promo.byw-si.com.mx/api/agenda",
 			      method: "GET",
 			      dataType: "json"
 			    }).done(function( data ) {
-			        alert("Todo bien");
-			        console.log(data,"JSON"); //Si pones el content-type en PHP no necesitas parse         
-			    });;
+			        // alert("Todo bien");
+			        console.log(data,"JSON");
+			        $.each(data, function(i, item) {
+
+						    // console.log(data[i].paciente);
+						  //   $("medicos").each(function(i){ 
+   					// 		 this.src = "test" + i + ".jpg"; 
+								// });
+								// $("#medicos").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+						}); //Si pones el content-type en PHP no necesitas parse         
+			    });
+			     $.ajax({
+			      url: "https://api.promo.byw-si.com.mx/api/medico",
+			      method: "GET",
+			      dataType: "json"
+			    }).done(function( data ) {
+			        // alert("Todo bien");
+			        // console.log(data,"JSON MEDICO"); 
+			  
+			        
+			         $.each(data, function(i, item) {
+
+						    // console.log(data[i].paciente);
+						  //   $("medicos").each(function(i){ 
+   					// 		 this.src = "test" + i + ".jpg"; 
+								// });
+								//       //HACEMOS APPEND AL SELECT EN DONDE NOS MOSTRARA LA LISTA DE MEDICOS
+								$("#modalMedico").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+								$("#medicos").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+						}); //Si pone
+			        
+			        //Si pones el content-type en PHP no necesitas parse         
+			    }); 
 
 
 			  
@@ -74,7 +176,82 @@
 					$("#agendarModal").modal();
 				},
 					//pro
-					events:'https://promomedics.byw-si.com.mx/citas.php',
+					events:'https://api.promo.byw-si.com.mx/api/agenda',
+					// events:'http://127.0.0.1:8000/api/agenda',
+					// events: [
+					// 	    {
+					// 		    id: 1,
+					// 		    title: "  Francisco Mendez Roa",
+					// 		    start: "2021-10-07",
+					// 		    hora_consulta: "12:00 hrs",
+					// 		    aseguradora: "GNP",
+					// 		    telefono1: " 56097645",
+					// 		    telefono2: " 5578908765",
+					// 		   telefono3: "",
+					// 		   costoConsulta: "350",
+					// 		   recado: "Favor de recordarme de mi cita un dia antes.",
+					// 		   edad: "2 años",
+					// 		   comoSeEntero: " Internet"
+					// 		  }
+					// 	  ],
+					// https://promomedics.api.byw-si.com.mx/agenda
+					//desarrollo
+					// events:'https://localhost/promomedics/citas.php',
+				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
+				eventClick:function(callEvent,jsEvent,view){
+					console.log('DATOS: ',callEvent);
+					$("#identificador").html(callEvent.id);
+					$("#paciente").html(callEvent.title);
+					$("#descripcionCita").html(callEvent.start);
+					$("#hora_consulta").html(callEvent.hora_consulta);
+					$("#aseguradora").html(callEvent.aseguradora);
+					$("#telefono1").html(callEvent.telefono1);
+					$("#telefono2").html(callEvent.telefono2);
+					$("#telefono3").html(callEvent.telefono3);
+					$("#costoConsulta").html(callEvent.costoConsulta);
+					$("#recado").html(callEvent.recado);
+					$("#edad").html(callEvent.edad);
+					let fechaAux = callEvent.start.format();
+
+					$("#persona").val(callEvent.title);
+					$("#descripcionCita").val(fechaAux);
+					console.log('DATOS: ',callEvent);
+					$("#hora_consulta").val();
+					$("#edad").val(callEvent.edad);
+					$("#telefono1").val(callEvent.telefono1);
+					$("#telefono2").val(callEvent.telefono2);
+					$("#telefono3").val(callEvent.telefono3);
+					$("#costoConsulta").val(callEvent.costoConsulta);
+					$("#recado").val(callEvent.recado);
+
+					$("#exampleModal").modal();
+				}
+				
+				
+			});
+			//ESTE CALENDARIO ES LA LISTA DE LAS CITAS DEL MEDICO UNA VEZ SELECCIONADO
+			$('#calendarioWeb2').fullCalendar({
+				// plugins: [ 'list' ],
+				header:{
+					// defaultView: 'listDay',
+						
+				},
+				dayClick:function(date,jsEvent,view){
+				/* 	swal("cota para la fecha: "+date.format()); */
+					$("#FECHA").val(date.format());
+					$("#agendarModal").modal();
+				},
+				defaultView: 'listDay',
+					//pro
+					// events:'https://api.promo.byw-si.com.mx/api/agenda',
+					events:'http://127.0.0.1:8000/api/agenda',
+									// events: [
+							  //   {
+							  //     id: 'a',
+							  //     title: 'my event',
+							  //     start: '2021-10-07'
+							  //   }
+							  // ],
 					// https://promomedics.api.byw-si.com.mx/agenda
 					//desarrollo
 					// events:'https://localhost/promomedics/citas.php',
@@ -110,10 +287,15 @@
 				
 				
 			});
-		});
+
+
+
+
+
+		}); //fin del document.ready
+
 
 	</script>
-	
 
 <!-- Modal  PARA CREAR CITA-->
 								<div class="modal fade" id="agendarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -126,7 +308,7 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
-								      	<form action="agendar.php" method="post">
+								      	<form action="" method="post">
 								      	<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" >FECHA</span>
@@ -171,11 +353,8 @@
 										  <div class="input-group-prepend">
 										    <label class="input-group-text" for="inputGroupSelect01">Medicos</label>
 										  </div>
-										  <select class="custom-select" id="inputGroupSelect01">
-										    <option selected>Choose...</option>
-										    <option value="1">One</option>
-										    <option value="2">Two</option>
-										    <option value="3">Three</option>
+										  <select class="custom-select" id="modalMedico">
+										    <option selected>Elige el medico</option>
 										  </select>
 										</div>
 										<!-- CONSULTORIOS LIST -->
@@ -183,11 +362,8 @@
 										  <div class="input-group-prepend">
 										    <label class="input-group-text" for="inputGroupSelect01">Consultorio</label>
 										  </div>
-										  <select class="custom-select" id="inputGroupSelect01">
-										    <option selected>Choose...</option>
-										    <option value="1">One</option>
-										    <option value="2">Two</option>
-										    <option value="3">Three</option>
+										  <select class="custom-select" id="modalConsultorio">
+										    <option selected>Elige el consultorio</option>
 										  </select>
 										</div>
 										  <div class="input-group input-group-sm mb-3">
@@ -208,7 +384,7 @@
 								      
 								      <div class="modal-footer">
 								       
-								         <button type="submit" class="btn btn-primary">AGENDAR</button>
+								         <button type="button" class="btn btn-primary" onclick="enviar();">AGENDAR</button>
 								
 								         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
 								      </div>
@@ -319,6 +495,35 @@
 
 	</div><!-- FIN DEL CONTAINER -->
 
-							
+				
+<script>
+	function enviar(){
+					 paciente = $.trim($('#paciente').val());
+          			 edad = $.trim($('#edad').val());
+          			 data = {
+			              paciente: paciente, 
+			              edad: edad
+			            };
+					$.ajax({
+			                method:'POST',
+			                url: 'https://api.promo.byw-si.com.mx/agenda',
+			                data: {
+			                    action:'cita',
+			                    data: data,
+			                }
+			            }).done(item => {
+			                if(item.error){
+			                    msg = 'No se encontro al usuario. Verifica tus datos.';
+			                    err.append(msg);
+			                    err.addClass('alert-danger');
+			                    btn.before(err);
+			                    btn.removeAttr('disabled');
+			                }else{
+			                   console.log('Error');
+			                }
+			            }, 'json');
+
+				}
+</script>				
 
 
