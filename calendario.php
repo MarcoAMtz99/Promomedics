@@ -1,7 +1,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/fullcalendar.min.css">
-	<script src="js/jquery.min.js"></script>
+	    <script src="js/jquery.min.js"></script>
 		<script src="js/moment.min.js"></script>
 		<script src="js/fullcalendar.min.js"></script>
 		<!-- <script src="js/es.js"></script> -->
@@ -50,17 +50,17 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
-				 var request = $.ajax({
+			 $.ajax({
 			      url: "https://promomedics.api.byw-si.com.mx/agenda",
 			      method: "GET",
 			      dataType: "json"
-			    });
-
-
-			    request.done(function( data ) {
+			    }).done(function( data ) {
 			        alert("Todo bien");
 			        console.log(data); //Si pones el content-type en PHP no necesitas parse         
-			    });
+			    });;
+
+
+			  
 			$('#calendarioWeb').fullCalendar({
 				header:{
 					left:'today,prev,next',
