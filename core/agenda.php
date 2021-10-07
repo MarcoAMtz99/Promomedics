@@ -196,6 +196,43 @@ switch ($action) {
 		echo json_encode($arr);
 		break;
 
+		case 'getCitas':
+		$consu = array();
+			$SQLq = "select id,
+							 (select nombre from medico where ID = id_medico) as nombre,
+							(select paterno from medico where ID = id_medico) as paterno,
+							(select materno from medico where ID = id_medico) as materno,
+							paciente as title,
+							fecha_consulta as start,
+							hora_consulta,
+							aseguradora,
+							telefono1,
+							telefono2,
+							telefono3,
+							costoConsulta,
+							recado,
+							edad,
+							comoSeEntero
+
+							 from agenda;";
+			$resq = mysqli_query($conn, $SQLq);
+			$items = array();
+			while ($hora = mysqli_fetch_assoc($resq)) {
+				$items[] = array('nombre' => $hora['nombre'], 
+								'paterno' => $hora['paterno'], 
+								'materno' => $hora['materno']
+
+							);
+			}
+			$consu[] = $items;
+
+			$arr[] = $consu;
+		}
+
+		echo json_encode($arr);
+		break;
+
+
 	default:
 		# code...
 		break;
