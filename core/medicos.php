@@ -95,9 +95,9 @@ switch ($action) {
             
 		$acciones = '';
 		if($edita){
-			$acciones = '<button class="btn btn-primary btn-xs btn-edit" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil fa-fw"></i></button>';
+			$acciones = '<button class="btn btn-primary btn-xs btn-edit" data-toggle="modal" title="Editar" data-target="#frm-item"><i class="fa fa-pencil fa-fw"></i></button>';
 			//$acciones .= '<button class="btn btn-danger btn-xs btn-neg" data-toggle="tooltip" title="Negar"><i class="fa fa-ban fa-fw"></i></button>';
-			$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash fa-fw"></i></button>';
+			$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar" ><i class="fa fa-trash fa-fw"></i></button>';
 		}
 		
 		$arrRes = array('error' => $SQL, 'items' => $arrItems, 'actions' => $acciones,'hola');
