@@ -549,6 +549,7 @@
 			                    err.append(msg);
 			                    err.addClass('alert-danger');
 			                    $("#agendarModal").removeClass('selected');
+			                     setInterval("actualizar()",5000);
 			                    btn.before(err);
 			                    btn.removeAttr('disabled');
 			                }else{
