@@ -50,6 +50,17 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
+				 var request = $.ajax({
+			      url: "https://promomedics.api.byw-si.com.mx/agenda",
+			      method: "GET",
+			      dataType: "json"
+			    });
+
+
+			    request.done(function( data ) {
+			        alert("Todo bien");
+			        console.log(data); //Si pones el content-type en PHP no necesitas parse         
+			    });
 			$('#calendarioWeb').fullCalendar({
 				header:{
 					left:'today,prev,next',
@@ -63,6 +74,7 @@
 				},
 					//pro
 					events:'https://promomedics.byw-si.com.mx/citas.php',
+					// https://promomedics.api.byw-si.com.mx/agenda
 					//desarrollo
 					// events:'https://localhost/promomedics/citas.php',
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
