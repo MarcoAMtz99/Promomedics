@@ -197,39 +197,30 @@ switch ($action) {
 		break;
 
 		case 'getCitas':
-		$consu = array();
-			$SQLq = "select id,
-							 (select nombre from medico where ID = id_medico) as nombre,
-							(select paterno from medico where ID = id_medico) as paterno,
-							(select materno from medico where ID = id_medico) as materno,
-							paciente as title,
-							fecha_consulta as start,
-							hora_consulta,
-							aseguradora,
-							telefono1,
-							telefono2,
-							telefono3,
-							costoConsulta,
-							recado,
-							edad,
-							comoSeEntero
+					$conexion = mysqli_connect('localhost','bywsicom_promo','!_WOXa9ZxWfP','bywsicom_promo');
+				// $conexion = mysqli_connect("localhost","root" ,"","promo");
+				$pdo = new PDO("mysql:dbname=bywsicom_promo; host=localhost","bywsicom_promo","!_WOXa9ZxWfP");
+				$sql = $pdo->prepare("select id,
+										 (select nombre from medico where ID = id_medico) as nombre,
+										(select paterno from medico where ID = id_medico) as paterno,
+										(select materno from medico where ID = id_medico) as materno,
+										paciente as title,
+										fecha_consulta as start,
+										hora_consulta,
+										aseguradora,
+										telefono1,
+										telefono2,
+										telefono3,
+										costoConsulta,
+										recado,
+										edad,
+										comoSeEntero
 
-							 from agenda;";
-			$resq = mysqli_query($conn, $SQLq);
-			$items = array();
-			while ($hora = mysqli_fetch_assoc($resq)) {
-				$items[] = array('nombre' => $hora['nombre'], 
-								'paterno' => $hora['paterno'], 
-								'materno' => $hora['materno']
+										 from agenda;");
+				$sql->execute();
 
-							);
-			}
-			// $consu[] = $items;
-
-			// $arr[] = $consu;
-		}
-
-		echo json_encode($items);
+				$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+				echo json_encode($resultado);
 		break;
 
 
