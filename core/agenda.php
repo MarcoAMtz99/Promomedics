@@ -224,12 +224,12 @@ switch ($action) {
 
 							);
 			}
-			$consu[] = $items;
+			// $consu[] = $items;
 
-			$arr[] = $consu;
+			// $arr[] = $consu;
 		}
 
-		echo json_encode($arr);
+		echo json_encode($items);
 		break;
 
 
