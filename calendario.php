@@ -505,11 +505,9 @@
 				
 <script>
 	//CON ESTA FUNCION SE ACTUALIZA CADA 5 MINUTOS LA PAGINA
-	  setInterval("actualizar()",50000);
+	  // setInterval("actualizar()",50000);
 
-	  function actualizar(){
-	  	location.reload();
-	  }
+	
 	function enviar(){
 					 paciente = $.trim($('#paciente').val());
 					 hora = $.trim($('#hora').val());
@@ -548,17 +546,24 @@
 			                    msg = 'No se encontro al usuario. Verifica tus datos.';
 			                    err.append(msg);
 			                    err.addClass('alert-danger');
-			                    $("#agendarModal").removeClass('selected');
-			                     setInterval("actualizar()",5000);
+			                   
+			                   
 			                    btn.before(err);
 			                    btn.removeAttr('disabled');
+
 			                }else{
-			                   console.log('Error');
+			                	 $("#agendarModal").removeClass('selected');
+			                   console.log('Success');
+			                    window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
 			            // location.reload();
 
 				}
+
+	  function actualizar(){
+	  	location.reload();
+	  }
 </script>				
 
 
