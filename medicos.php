@@ -231,6 +231,7 @@
                   $('#item-med').val(resp.item.fk_medico);
                   $('#frm-item small').removeClass('hide');
                   // $('#frm-item').modal('show');
+                  $('#frm-item').hide();
                   NProgress.done();
                 }
             },'json');
