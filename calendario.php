@@ -52,7 +52,7 @@
 		
 		$(document).ready(function(){
 			 $.ajax({
-			      url: "http://api.promo.byw-si.com.mx/agenda",
+			      url: "https://api.promo.byw-si.com.mx/agenda",
 			      method: "GET",
 			      dataType: "json"
 			    }).done(function( data ) {
