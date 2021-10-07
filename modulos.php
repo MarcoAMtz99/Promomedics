@@ -510,12 +510,12 @@
             doTable('#tbl-items', 4);
             NProgress.done();
         },'json');
+
           $.ajax({
                 method:'POST',
                 url: 'core/agenda.php',
                 data: {
                     action:'getCitas',
-                    data: $.toJSON(data),
                 }
             }).done(item => {
                
