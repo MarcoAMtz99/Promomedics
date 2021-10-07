@@ -82,7 +82,7 @@ switch ($action) {
 			$item['rea'] = '';
 			$item['neg'] = '';
 			if($item['fk_perfil'] == 3 && $edita && $item['status'] == 3){
-				$item['act'] = '<button class="btn btn-success add-link" data-toggle="tooltip" title="Activar"><i class="fa fa-check fa-fw"></i></button>';	
+				$item['act'] = '<button class="btn btn-success btn-xs btn-act" data-toggle="tooltip" title="Activar"><i class="fa fa-check fa-fw"></i></button>';	
 				$item['rea'] = '<button class="btn btn-info btn-xs btn-rea" data-toggle="tooltip" title="Reactivar"><i class="fa fa-refresh fa-fw"></i></button>';
 				$item['neg'] = '<button class="btn btn-danger btn-xs btn-neg" data-toggle="tooltip" title="Negar"><i class="fa fa-ban fa-fw"></i></button>';
 			}else if($item['fk_perfil'] == 4 && $edita){
@@ -95,7 +95,7 @@ switch ($action) {
             
 		$acciones = '';
 		if($edita){
-			$acciones = '<button class="btn btn-primary btn-xs btn-edit" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil fa-fw"></i></button>';
+			$acciones = '<button class="btn btn-primary add-link" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil fa-fw"></i></button>';
 			//$acciones .= '<button class="btn btn-danger btn-xs btn-neg" data-toggle="tooltip" title="Negar"><i class="fa fa-ban fa-fw"></i></button>';
 			$acciones .= '<button class="btn btn-danger btn-xs btn-del" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash fa-fw"></i></button>';
 		}
