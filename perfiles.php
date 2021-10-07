@@ -138,6 +138,7 @@
                   <form class="form-horizontal form-label-left">
 
                     <div class="form-group">
+                       <div class="clearfix"></div>
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="item-nom">Nombre <span class="required">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
@@ -145,6 +146,7 @@
                       </div>
                     </div>
                     <div class="form-group">
+                       <div class="clearfix"></div>
                       <label for="item-desc" class="control-label col-md-3 col-sm-3 col-xs-12">Descripción</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <input id="item-desc" class="form-control col-md-7 col-xs-12" type="text" placeholder="Descripción">
