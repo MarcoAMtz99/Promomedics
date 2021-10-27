@@ -142,7 +142,7 @@
           </div>
 
 
-           <div class="modal fade" id="frm-item-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal fade" id="frm-item-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                   <div class="modal-content">
                       <div class="modal-header">
@@ -211,39 +211,6 @@
         $('body').on('click', '.btn-edit', function(){
             id = $(this).parent().data('id');
             NProgress.start();
-
-            $.ajax({
-                method: 'POST',
-                url: 'core/medicos.php',
-                data: {
-                    id: id,
-                    action: 'getMedico'
-                },
-            }).done(item => {
-                let resp = JSON.parse(item);
-                if(!resp.error){
-                    $('#frm-item .modal-title').html('Editar Médico');
-                    $('#item-nom').val(resp.item.nombre);
-                    $('#item-ape').val(resp.item.paterno);
-                    $('#item-mat').val(resp.item.materno);
-                    $('#item-mail').val(resp.item.email);
-                    $('#item-ced').val(resp.item.num_cedula);
-
-                    $('#btnDatos').removeClass('hide').attr('href', '/medico/'+resp.item.fk_medico);
-
-                    $('.creado').removeClass('hide');
-                    $('#item-creado').val(resp.item.creado+' por '+resp.item.usuario);
-
-                    $('#item-id').val(id);
-                    $('#item-med').val(resp.item.fk_medico);
-                    $('#frm-item small').removeClass('hide');
-                    $('#frm-item').modal('show');
-                    // $('#frm-item').hide();
-                    NProgress.done();
-                }
-            });
-
-            /*
             $.post(
               'core/medicos/getMedico', {id: id}, 
               function(resp) {
@@ -268,7 +235,6 @@
                   NProgress.done();
                 }
             },'json');
-            */
         });
 
         /*$('body').on('click', '.btn-edit', function(){
@@ -303,34 +269,7 @@
             act = 'addMedico';
             if(parseInt(data.id,10) > 0) act = 'editMedico';
             NProgress.start();
-              console.log(act)
-
-            $.ajax({
-                method: 'POST',
-                url: 'core/medicos.php',
-                action: act,
-                data: {
-                    action: act,
-                    data: $.toJSON(data),
-                },
-            }).done(item => {
-                console.log(item)
-                if(!item.error){
-                    $('#tbl-items').DataTable().destroy();
-                    addItemRow(item.item, item.actions);
-                    doTable('#tbl-items', 5);
-                    $('#item-id').val('0');
-                    $('#frm-item').modal('hide');
-                    btn.removeClass('disabled');
-                }else{
-                    setError(item.elem, item.msg);
-                    btn.removeClass('disabled');
-                }
-                NProgress.done();
-            })
-
-            /*
-            $.post('core/medicos/'+act,
+            $.post('core/medicos/'+act, 
               {data: $.toJSON(data)}, 
               function(resp) {
                 if(!resp.error){
@@ -346,7 +285,6 @@
                 }
                 NProgress.done();
             },'json');
-            */
           }
         });
 
@@ -368,29 +306,6 @@
             btn = $(this);
             btn.addClass('disabled');
             NProgress.start();
-            console.log(user)
-
-            $.ajax({
-                method: 'POST';
-                url: 'core/medicos.php',
-                data: {
-                    nom: user,
-                    id: id,
-                    action: 'delMedico',
-                },
-            }).done(resp => {
-                if(resp.res){
-                    $('#tbl-items').DataTable().destroy();
-                    trp.remove();
-                    $('#frm-item-del').modal('hide');
-                    btn.removeClass('disabled');
-                    doTable('#tbl-items', 5);
-                }
-                NProgress.done();
-            });
-        }
-
-        /*
             $.post(
                 'core/medicos/delMedico',
                 {nom: user, id: id},
@@ -404,35 +319,12 @@
                   }
                   NProgress.done();
                 },'json');
-        */
         });
 
         $('body').on('click', '.btn-act', function(){
             id = $(this).parent().data('id');
             td = $(this).parent();
             NProgress.start();
-
-            $.ajax({
-                method: 'POST',
-                url: 'core/medicos.php',
-                action: 'activaMedico',
-                data:{
-                    action: 'activaMedico',
-                    id: id,
-                },
-            }).done(resp => {
-                if(!resp.error){
-                    alerta = $('<div class="alert alert-success">Se activo al médico correctamente</div>');
-                    $('#tbl-items').before(alerta);
-                    setTimeout(function(){ alerta.remove(); }, 5000);
-                    td.find('.btn-rea').remove();
-                    td.find('.btn-act').remove();
-                    $('.tooltip').remove();
-                    NProgress.done();
-                }
-            })
-
-            /*
             $.post(
               'core/medicos/activaMedico', {id: id}, 
               function(resp) {
@@ -446,7 +338,6 @@
                   NProgress.done();
                 }
             },'json');
-            */
         });
 
         $('body').on('click', '.btn-rea', function(){
@@ -454,27 +345,6 @@
             td = $(this).parent();
             btn = $(this);
             NProgress.start();
-
-            $.ajax({
-                method: 'POST',
-                url: 'core/medicos.php',
-                data: {
-                    id: id,
-                    action; 'reactivaMedico',
-                },
-            }).done(resp => {
-                if(!resp.error){
-                    alerta = $('<div class="alert alert-success">Se envio la nueva contraseña por correo al médico</div>');
-                    $('#tbl-items').before(alerta);
-                    setTimeout(function(){ alerta.remove(); }, 5000);
-                    if(td.find('.btn-act').length == 0) btn.before(resp.act);
-                    if(td.find('.btn-neg').length == 0) btn.before(resp.neg);
-                    $('.tooltip').remove();
-                    NProgress.done();
-                    }
-            });
-
-            /*
             $.post(
               'core/medicos/reactivaMedico', {id: id}, 
               function(resp) {
@@ -490,7 +360,6 @@
                   NProgress.done();
                 }
             },'json');
-            */
         });
 
         $('body').on('click', '.btn-neg', function(){
@@ -498,31 +367,26 @@
             td = $(this).parent();
             btn = $(this);
             NProgress.start();
-
-            $.ajax({
-                method: 'POST',
-                url: 'core/medicos.php',
-                data: {
-                    id: id,
-                    action: 'rechazaMedico',
-                },
-            }).done(resp => {
+            $.post(
+              'core/medicos/rechazaMedico', {id: id}, 
+              function(resp) {
                 if(!resp.error){
-                    alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
-                    $('#tbl-items').before(alerta);
-                    setTimeout(function(){ alerta.remove(); }, 5000);
-                    if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
-                    td.find('.btn-act').remove();
-                    td.find('.btn-neg').remove();
-                    $('.tooltip').remove();
-                    NProgress.done();
-                }
-            });
+                  alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
+                  $('#tbl-items').before(alerta);
+                  setTimeout(function(){ alerta.remove(); }, 5000);
 
-        
+                  if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
+                  td.find('.btn-act').remove();
+                  td.find('.btn-neg').remove();
+
+                  $('.tooltip').remove();
+
+                  NProgress.done();
+                }
+            },'json');
         });
 
-      // });
+      });
 
       function getMedicos(){
         NProgress.start();
@@ -534,6 +398,7 @@
             },
         }).done(item => {
             let resp = JSON.parse(item)
+            console.log(resp)
             $('#tbl-items tbody').empty();
             if(resp.items.length > 0){
                 $.each(resp.items, function(index, item){
