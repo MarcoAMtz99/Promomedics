@@ -536,7 +536,7 @@
             */
         });
 
-      });
+      // });
 
       function getMedicos(){
         NProgress.start();
