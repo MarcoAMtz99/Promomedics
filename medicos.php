@@ -471,6 +471,7 @@
                     if(td.find('.btn-neg').length == 0) btn.before(resp.neg);
                     $('.tooltip').remove();
                     NProgress.done();
+                    }
             });
 
             /*
@@ -536,7 +537,7 @@
             */
         });
 
-      });
+      // });
 
       function getMedicos(){
         NProgress.start();
