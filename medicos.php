@@ -432,7 +432,7 @@
                 }
             })
 
-            /*
+            
             $.post(
               'core/medicos/activaMedico', {id: id}, 
               function(resp) {
@@ -446,7 +446,7 @@
                   NProgress.done();
                 }
             },'json');
-            */
+            
         });
 
         $('body').on('click', '.btn-rea', function(){
@@ -473,7 +473,7 @@
                     NProgress.done();
             });
 
-            /*
+            
             $.post(
               'core/medicos/reactivaMedico', {id: id}, 
               function(resp) {
@@ -489,7 +489,7 @@
                   NProgress.done();
                 }
             },'json');
-            */
+            
         });
 
         $('body').on('click', '.btn-neg', function(){
@@ -518,7 +518,7 @@
                 }
             });
 
-            /*
+            
             $.post(
               'core/medicos/rechazaMedico', {id: id}, 
               function(resp) {
@@ -533,10 +533,10 @@
                   NProgress.done();
                 }
             },'json');
-            */
+            
         });
 
-      // });
+      });
 
       function getMedicos(){
         NProgress.start();
