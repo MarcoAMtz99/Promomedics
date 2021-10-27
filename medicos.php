@@ -519,22 +519,7 @@
                 }
             });
 
-            /*
-            $.post(
-              'core/medicos/rechazaMedico', {id: id}, 
-              function(resp) {
-                if(!resp.error){
-                  alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
-                  $('#tbl-items').before(alerta);
-                  setTimeout(function(){ alerta.remove(); }, 5000);
-                  if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
-                  td.find('.btn-act').remove();
-                  td.find('.btn-neg').remove();
-                  $('.tooltip').remove();
-                  NProgress.done();
-                }
-            },'json');
-            */
+        
         });
 
       // });
