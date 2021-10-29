@@ -79,13 +79,14 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h4 class="modal-title">Agregar </h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title">Agregar </h4>
+                  
                 </div>
                 <div class="modal-body">
                   <form class="form-horizontal form-label-left">
-
+                     <div class="clearfix"></div>
                     <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="item-nom">Nombre <span class="required">*</span>
                       </label>
@@ -93,19 +94,21 @@
                         <input type="text" id="item-nom" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Grupo Médico">
                       </div>
                     </div>
+                     <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-ape" class="control-label col-md-3 col-sm-3 col-xs-12">Responsable</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <input id="item-ape" class="form-control col-md-7 col-xs-12" type="text" placeholder="Responsable">
                       </div>
                     </div>
+                     <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-mat" class="control-label col-md-3 col-sm-3 col-xs-12">Giro</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <input id="item-mat" class="form-control col-md-7 col-xs-12" type="text" placeholder="Giro">
                       </div>
                     </div>
-
+                     <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-ced" class="control-label col-md-3 col-sm-3 col-xs-12">Celular <span class="required">*</span></label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
@@ -113,7 +116,7 @@
                       </div>
                     </div>
 
-                 
+                   <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-sexo" class="control-label col-md-3 col-sm-3 col-xs-12">Estado <span class="required">*</span></label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
