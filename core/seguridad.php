@@ -180,7 +180,7 @@ switch ($action) {
 			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			while ($item = mysqli_fetch_assoc($conn, $res)) {
+			while ($item = mysqli_fetch_assoc( $res)) {
 				$arrItems[] = $item;
 			}
 
