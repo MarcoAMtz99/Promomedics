@@ -175,7 +175,7 @@ switch ($action) {
 					    $disc .="<small>Este correo fue enviado desde una cuenta no monitoreada. Por favor no respondas este correo.</small>";
 					    $to = $data->mail;
 					    $subject = "Bienvenido a Promomedics";
-					    $body = "Hola ".$data->nom."<br><br>Bienvenido a Promomedics, por favor llena toda tu informaci&oacute;n correspondiente ingresando a ".URL_ROOT." con tu correo  <br>$email<br>Tu contrase&ntilde;a provisional es <strong>$pass</strong> <br><br>--<br>".PAGE_TITLE;
+					    $body = "Hola ".$data->nom."<br><br>Bienvenido a Promomedics, por favor llena toda tu informaci&oacute;n correspondiente ingresando a ".URL_ROOT." con tu correo  <br>email<br>Tu contrase&ntilde;a provisional es <strong>$pass</strong> <br><br>--<br>".PAGE_TITLE;
 					    $body = $body.$disc;
 					    $header  = 'MIME-Version: 1.0' . "\r\n";
 					    $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -334,7 +334,7 @@ switch ($action) {
 
 			// $dataString = $_POST['data'];
 			// $data = json_decode($dataString);
-			
+
 			$detalle = $id.' '.$mail;
         	// $log->setDatos('Reactiva Usuario Medico '.$detalle,$dataString,$id,USUARIOS);
         	// $log->saveLog();
