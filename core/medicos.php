@@ -3366,7 +3366,7 @@ switch ($action) {
 		echo json_encode($arrRes);
 		break;
 		case 'getGrupoMedico':
-			$id = $_POST['id'];
+			// $id = $_POST['id'];
 
 			/*$SQL = "SELECT ID, m.nombre, m.paterno, m.materno, num_cedula, 
 							id_user, email, fk_medico, DATE_FORMAT(m.fechaCreacion,'%d/%m/%Y %H:%i') AS creado, 
