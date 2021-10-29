@@ -87,7 +87,7 @@
     <div class="container-xxl">
       <div class="main_container">
         <div class="col-md-3 left_col menu_fixed">
-          <div class="col-6">
+          <div class="col-2">
             
             <?php include 'sidebar.php'; ?>
 
