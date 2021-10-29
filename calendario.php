@@ -240,30 +240,34 @@
 					// events:'https://localhost/promomedics/citas.php',
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
 				eventClick:function(callEvent,jsEvent,view){
-					console.log('DATOS: ',callEvent);
-					$("#identificador").html(callEvent.id);
-					$("#paciente").html(callEvent.title);
-					$("#descripcionCita").html(callEvent.start);
-					$("#hora_consulta").html(callEvent.hora_consulta);
-					$("#aseguradora").html(callEvent.aseguradora);
-					$("#telefono1").html(callEvent.telefono1);
-					$("#telefono2").html(callEvent.telefono2);
-					$("#telefono3").html(callEvent.telefono3);
-					$("#costoConsulta").html(callEvent.costoConsulta);
-					$("#recado").html(callEvent.recado);
-					$("#edad").html(callEvent.edad);
-					let fechaAux = callEvent.start.format();
 
-					$("#persona").val(callEvent.title);
-					$("#descripcionCita").val(fechaAux);
+					// console.log('DATOS: ',callEvent,jsEvent,view);
+
+					// $("#identificador").html(callEvent.id);
+					// $("#paciente").html(callEvent.title);
+					// $("#descripcionCita").html(callEvent.start);
+					// $("#hora_consulta").html(callEvent.hora_consulta);
+					// $("#aseguradora").html(callEvent.aseguradora);
+					// $("#telefono1").html(callEvent.telefono1);
+					// $("#telefono2").html(callEvent.telefono2);
+					// $("#telefono3").html(callEvent.telefono3);
+					// $("#costoConsulta").html(callEvent.costoConsulta);
+					// $("#recado").html(callEvent.recado);
+					// $("#edad").html(callEvent.edad);
+					let fechaAux = callEvent.start.format();
+						
+					$("#PACIENTE_EDIT").val(callEvent.title);
+					$("#FECHA_EDIT").val(fechaAux);
+					$("#ID_EDIT").val(callEvent.id);
 					console.log('DATOS: ',callEvent);
 					$("#hora_consulta").val();
-					$("#edad").val(callEvent.edad);
-					$("#telefono1").val(callEvent.telefono1);
-					$("#telefono2").val(callEvent.telefono2);
-					$("#telefono3").val(callEvent.telefono3);
-					$("#costoConsulta").val(callEvent.costoConsulta);
-					$("#recado").val(callEvent.recado);
+					$("#EDAD_EDIT").val(callEvent.edad);
+					$("#telefono1_EDIT").val(callEvent.telefono1);
+					$("#telefono2_EDIT").val(callEvent.telefono2);
+					$("#telefono3_EDIT").val(callEvent.telefono3);
+					$("#costoConsulta_EDIT").val(callEvent.costoConsulta);
+					$("#recado_EDIT").val(callEvent.recado);
+					// alert("EDITAR");
 
 					$("#exampleModal").modal();
 				}
@@ -447,8 +451,10 @@
 								    </div>
 								  </div>
 								</div>
+
 							<!-- Modal  PARA VER CITA-->
 								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<form action="" method="post">
 								  <div class="modal-dialog">
 								    <div class="modal-content">
 								      <div class="modal-header">
@@ -463,40 +469,43 @@
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" aria-label="Sizing example input">FECHA</span>
 										  </div>
-										  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="descripcionCita" readonly="">
+										  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="FECHA_EDIT"  name="FECHA_EDIT" readonly="">
 										  </div>
 
 								      	<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Paciente</span>
+
 										  </div>
-										  <input type="text" class="form-control"  id="persona" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="text" class="form-control"  id="PACIENTE_EDIT"  name="PACIENTE_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										 <!--  <input type="text" id="ID_EDIT" hidden> -->
+										   <input type="text" class="form-control"  id="ID_EDIT" name="ID_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly>
 										  </div>
 
 										    <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Edad</span>
 										  </div>
-										  <input type="number" class="form-control" id="edad" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="EDAD_EDIT" name="EDAD_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 
 										  <div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Telefono</span>
 										  </div>
-										  <input type="number" class="form-control"  id="telefono1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control"  id="telefono1_EDIT" name="telefono1_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Celular</span>
 										  </div>
-										  <input type="number" class="form-control"  id="telefono2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control"  id="telefono2_EDIT"  name="telefono2_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group input-group-sm mb-3">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Otro</span>
 										  </div>
-										  <input type="number" class="form-control" id="telefono3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="number" class="form-control" id="telefono3_EDIT" name="telefono3_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<!-- MEDICOS LIST -->
 									<!-- 	<div class="input-group mb-3">
@@ -526,24 +535,25 @@
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">$Costo consulta</span>
 										  </div>
-										  <input type="text" class="form-control" id="costoConsulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+										  <input type="text" class="form-control" id="costoConsulta_EDIT" name="costoConsulta_EDIT" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 										</div>
 										<div class="input-group">
 
 										  <div class="input-group-prepend">
 										    <span class="input-group-text">Recado</span>
 										  </div>
-										  <textarea class="form-control" id="recado" aria-label="With textarea"></textarea>
+										  <textarea class="form-control" id="recado_EDIT" name="recado_EDIT" aria-label="With textarea"></textarea>
 										</div>
 								   
 								      </div>
 								      <div class="modal-footer">
 								       
-								         <button type="button" class="btn btn-primary">ACTUALIZAR</button>
+								         <button type="button" class="btn btn-primary" onclick="actualizarCita();">ACTUALIZAR</button>
 								
 								         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
 								      </div>
 								    </div>
+								</form>
 								  </div>
 								</div>
 
@@ -557,7 +567,7 @@
 	
 	function enviar(){
 					 paciente = $.trim($('#modalPaciente').val());
-					 alert(paciente);
+					 // alert(paciente);
 					 hora = $.trim($('#hora').val());
           			 edad = $.trim($('#edad').val());
           			 telefono1=$.trim($('#telefono1').val());
@@ -606,6 +616,64 @@
 			                }
 			            }, 'json');
 			            location.reload();
+
+				}
+				function actualizarCita(){
+						paciente = $.trim($('#modalPaciente').val());
+					 // alert(paciente);
+					 id_cita = $.trim($('#ID_EDIT').val());
+					 hora = $.trim($('#hora').val());
+          			 EDAD = $.trim($('#EDAD_EDIT').val());
+          			 TELEFONO1=$.trim($('#telefono1').val());
+          			 TELEFONO2=$.trim($('#telefono2').val());
+          			 TELEFONO3=$.trim($('#telefono3').val());
+          			 medico=$('#modalMedico').val();
+          			 consultorio=$('#modalConsultorio').val();
+          			 COSTO=$('#costoConsulta_EDIT').val();
+          			 RECADO=$('#recado_EDIT').val();
+          			 fecha= $('#FECHA').val();
+          			 data = {
+          			 	_token:'{{ csrf_token() }}',
+			              paciente: paciente, 
+			              marco:"hola",
+			              edad: EDAD,
+			              hora:hora,
+			              telefono1:TELEFONO1,
+						  telefono2:TELEFONO2,
+					      telefono3:TELEFONO3,
+						  medico:medico,
+						  consultorio:consultorio,
+						  recado:RECADO,
+						  costo:COSTO,
+						  fecha:fecha,
+						  id_cita:id_cita
+			            };
+					$.ajax({
+			                method:'POST',
+			                url: 'https://api.promo.byw-si.com.mx/api/agenda/'+id_cita,
+			                // url: 'http://127.0.0.1:8000/api/agenda/'+id_cita,
+			                // type: "PATCH",
+			                data: {
+			                    action:'cita',
+			                    data: data,
+			                }
+			            }).done(item => {
+			                if(item.error){
+			                    msg = 'No se encontro al usuario. Verifica tus datos.';
+			                    err.append(msg);
+			                    err.addClass('alert-danger');
+			                   
+			                   
+			                    btn.before(err);
+			                    btn.removeAttr('disabled');
+
+			                }else{
+			                	 $("#agendarModal").removeClass('selected');
+			                   console.log('Success');
+			                    // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
+			                }
+			            }, 'json');
+			            // location.reload();
 
 				}
 
