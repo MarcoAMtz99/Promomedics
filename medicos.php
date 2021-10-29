@@ -506,7 +506,7 @@
         tr.append('<td class="text-small">'+item.nombre+'</td>');
         tr.append('<td>'+item.especialidad+'</td>');
         tr.append('<td>'+item.num_cedula+'</td>');
-        tr.append('<td class="fs-6">'+item.email+'</td>');
+        tr.append('<td class="text-sm">'+item.email+'</td>');
         tr.append('<td>'+item.acceso+'</td>');
         tda = $('<td data-idm="'+item.ID+'" data-id="'+item.id_user+'" class="text-center">'+act+'</td>');
         $(tda).find('.btn-edit').after(item.act);
