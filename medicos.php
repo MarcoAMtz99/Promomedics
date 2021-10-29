@@ -328,6 +328,8 @@
         $('body').on('click', '.btn-act', function(){
             id = $(this).parent().data('id');
             td = $(this).parent();
+            console.log('id:',id);
+            console.log('td:',td);
             NProgress.start();
             $.post(
               'core/medicos/activaMedico', {id: id}, 
