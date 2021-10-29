@@ -96,7 +96,7 @@
         </div>
 
         <!-- top navigation -->
-        <div class="col-6 top_nav navbar-fixed-top">
+        <div class="col-6 ">
           
           <?php include 'topmenu.php'; ?>
 
