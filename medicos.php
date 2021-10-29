@@ -295,9 +295,10 @@
         $('body').on('click', '.btn-del', function(){
             trp = $(this).parents('tr');
             id = $(this).parent().data('id');
+             // id = $(this).parent().data('id');
             nombre = trp.find('td:eq(0)').html();
             ced = trp.find('td:eq(1)').html();
-             id = $('#item-del-id').val();
+             // id = $('#item-del-id').val();
             trp = $("[data-id='"+id+"']").parent();
             user = trp.find('td:eq(1)').html();
             btn = $(this);
@@ -318,6 +319,7 @@
                   }
                   NProgress.done();
                 },'json');
+
             $('#item-del-id').val(id);
             $('#frm-item-del').find('strong:eq(0)').html(nombre);
             $('#frm-item-del').find('strong:eq(1)').html(ced);

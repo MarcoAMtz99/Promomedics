@@ -374,7 +374,7 @@ switch ($action) {
 
 				$arrRes = array('res' => true);	
 			}else{
-				$arrRes = array('error' => true);
+				$arrRes = array('error' => true 'id eliminado'=>$id);
 			}
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');
