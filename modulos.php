@@ -30,9 +30,9 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="row">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+       <!--      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Launch demo modal
-</button>
+</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
