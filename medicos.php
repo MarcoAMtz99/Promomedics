@@ -456,7 +456,7 @@
           tr.empty();
         }
 
-        tr.append('<td>'+item.nombre+'</td>');
+        tr.append('<td col-4>'+item.nombre+'</td>');
         tr.append('<td>'+item.especialidad+'</td>');
         tr.append('<td>'+item.num_cedula+'</td>');
         tr.append('<td>'+item.email+'</td>');
