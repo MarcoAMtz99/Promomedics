@@ -3379,7 +3379,7 @@ switch ($action) {
 			$arrItems = array();
 			$item = mysqli_fetch_assoc($res);
 			while ($item = mysqli_fetch_assoc($res)) {
-			array_push($arrItems, ($item);
+					array_push($arrItems, $item);
 				}
 			    $aux = json_encode($SQL);
 			    
