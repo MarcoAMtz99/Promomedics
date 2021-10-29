@@ -46,6 +46,7 @@ if($usertype > 2){
 }*/
 	$action = $_GET['action'];
 	if(!isset($_GET['action'])) $action = $_POST['action'];
+
 	if (isset($_POST['data'])) {
 			$dataString = $_POST['data'];
 			$data = json_decode($dataString);
@@ -303,7 +304,8 @@ switch ($action) {
 
 			$SQLm = "UPDATE medico SET status = 4 WHERE ID = $med; ";
 			mysqli_query($conn, $SQLm);
-
+			$dataString = $_POST['data'];
+			$data = json_decode($dataString);
 
 			$detalle = $id.' '.$mail;
         	$log->setDatos('Medico No Autorizado '.$detalle,$dataString,$id,USUARIOS);
@@ -330,7 +332,9 @@ switch ($action) {
 			$SQLr = "UPDATE seg_user SET status = 3, password = '$passBD' WHERE id_user = $id; ";
 			mysqli_query($conn, $SQLr);
 
-
+			$dataString = $_POST['data'];
+			$data = json_decode($dataString);
+			
 			$detalle = $id.' '.$mail;
         	$log->setDatos('Reactiva Usuario Medico '.$detalle,$dataString,$id,USUARIOS);
         	$log->saveLog();
