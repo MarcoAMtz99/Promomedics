@@ -368,7 +368,7 @@ switch ($action) {
 			$res = mysqli_query($conn, $SQL2);
 
 			if(mysqli_affected_rows($conn) > 0){
-				$detalle = $id.' '.$nom;
+				$detalle = $id.' ';
 				$log->setDatos('Baja Médico '.$detalle,$detalle,$id,MEDICOS);
             	$log->saveLog();
 
