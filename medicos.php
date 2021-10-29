@@ -345,6 +345,25 @@
             td = $(this).parent();
             btn = $(this);
             NProgress.start();
+            //  $.ajax({
+            //     method: 'POST',
+            //     url: 'core/medicos.php',
+            //     data: {
+            //         id: id,
+            //         action: 'rechazaMedico',
+            //     },
+            // }).done(resp => {
+            //     if(!resp.error){
+            //         alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
+            //         $('#tbl-items').before(alerta);
+            //         setTimeout(function(){ alerta.remove(); }, 5000);
+            //         if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
+            //         td.find('.btn-act').remove();
+            //         td.find('.btn-neg').remove();
+            //         $('.tooltip').remove();
+            //         NProgress.done();
+            //     }
+            // });
             $.post(
               'core/medicos/reactivaMedico', {id: id}, 
               function(resp) {

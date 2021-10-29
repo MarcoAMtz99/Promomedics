@@ -209,7 +209,7 @@ switch ($action) {
 					$resm = mysqli_query($conn, $SQLm);
 
 					$SQLu = "UPDATE seg_user SET nombre = '$data->nom', apellidos = '$data->ape $data->mat', email = '$data->mail', username = '$data->mail' WHERE id_user = $data->id; ";
-					$resu = mysqli_query($SQLu);
+					$resu = mysqli_query($conn,$SQLu);
 
 					//if(mysql_affected_rows() > 0){
 					if($resm && $resu){
