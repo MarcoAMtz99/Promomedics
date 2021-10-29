@@ -3377,15 +3377,14 @@ switch ($action) {
 			$res = mysqli_query($conn, $SQL);
 
 			$arrItems = array();
-			$item = mysqli_fetch_assoc($res);
-					while ($item = mysqli_fetch_assoc($res)) {
-						// array_push($arrItems, $item);
-						$arrItems[] = $item;
+			$arr = array();
+				while ($item = mysqli_fetch_assoc($res)) {
+					$arr[] = $item;
 				}
 
 			    $aux = json_encode($SQL);
 			    
-			$arrRes = array('error' => false, 'item' => $item, 'consulta' => $arrItems);	
+			$arrRes = array('error' => false, 'item' => $item, 'consulta' => $arr);	
 			
 		echo json_encode($arrRes);
 		break;
