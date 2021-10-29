@@ -518,7 +518,7 @@
                     action:'getCitas',
                 }
             }).done(function( data ) {
-             alert("Todo bien");
+             // alert("Todo bien");
          console.log(data); //Si pones el content-type en PHP no necesitas parse         
       });
             
