@@ -235,6 +235,7 @@
                   $('#frm-item small').removeClass('hide');
                   $('#frm-item').modal('show');
                   // $('#frm-item').hide();
+                  console.log('ID QUE SE ENVIA.:',id);
                   console.log('EDITAR MEDICO RESPUESTA:',resp);
                   NProgress.done();
                 }
@@ -297,7 +298,7 @@
             id = $(this).parent().data('id');
             nombre = trp.find('td:eq(0)').html();
             ced = trp.find('td:eq(1)').html();
-           
+
             trp = $("[data-id='"+id+"']").parent();
             user = trp.find('td:eq(1)').html();
             btn = $(this);
