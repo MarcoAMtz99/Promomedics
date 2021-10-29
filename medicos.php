@@ -57,7 +57,7 @@
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th class="col-4">Nombre Médico</th>
+                            <th class="col-5">Nombre Médico</th>
                             <th>Especialidad</th>
                             <th>Cédula</th>
                             <th>Email</th>
@@ -503,7 +503,7 @@
           tr.empty();
         }
 
-        tr.append('<td class="text-small ">'+item.nombre+'</td>');
+        tr.append('<td class="text-small">'+item.nombre+'</td>');
         tr.append('<td>'+item.especialidad+'</td>');
         tr.append('<td>'+item.num_cedula+'</td>');
         tr.append('<td>'+item.email+'</td>');
