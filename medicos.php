@@ -297,6 +297,27 @@
             id = $(this).parent().data('id');
             nombre = trp.find('td:eq(0)').html();
             ced = trp.find('td:eq(1)').html();
+             id = $('#item-del-id').val();
+            trp = $("[data-id='"+id+"']").parent();
+            user = trp.find('td:eq(1)').html();
+            btn = $(this);
+            console.log('ELIMINAR MEDICO',id);
+             console.log('ELIMINAR USER',user);
+            btn.addClass('disabled');
+            NProgress.start();
+            $.post(
+                'core/medicos/delMedico',
+                {nom: user, id: id},
+                function(resp){
+                  if(resp.res){
+                    $('#tbl-items').DataTable().destroy();
+                    trp.remove();
+                    $('#frm-item-del').modal('hide');
+                    btn.removeClass('disabled');
+                    doTable('#tbl-items', 5);
+                  }
+                  NProgress.done();
+                },'json');
             $('#item-del-id').val(id);
             $('#frm-item-del').find('strong:eq(0)').html(nombre);
             $('#frm-item-del').find('strong:eq(1)').html(ced);
