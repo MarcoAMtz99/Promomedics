@@ -92,33 +92,35 @@
                         <input type="text" id="item-nom" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Médico">
                       </div>
                     </div>
+                         <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-ape" class="control-label col-md-3 col-sm-3 col-xs-12">Paterno</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <input id="item-ape" class="form-control col-md-7 col-xs-12" type="text" placeholder="Apellido Paterno">
                       </div>
                     </div>
+                         <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-mat" class="control-label col-md-3 col-sm-3 col-xs-12">Materno</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <input id="item-mat" class="form-control col-md-7 col-xs-12" type="text" placeholder="Apellido Materno">
                       </div>
                     </div>
-
+                         <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-ced" class="control-label col-md-3 col-sm-3 col-xs-12">Cédula <span class="required">*</span></label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="item-ced" class="form-control col-md-7 col-xs-12" type="text" placeholder="Número Cédula" <?php echo $usertype != 1 ? 'disabled' : '' ?>>
                       </div>
                     </div>
-
+                         <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-mail" class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span></label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <input id="item-mail" class="form-control col-md-7 col-xs-12" type="text" placeholder="Correo electrónico">
                       </div>
                     </div>
-                    
+                           <div class="clearfix"></div>
                     <hr class="creado">
                     <div class="form-group creado">
                       <label for="item-creado" class="control-label col-md-3 col-sm-3 col-xs-12">Creado</label>
