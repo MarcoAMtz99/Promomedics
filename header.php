@@ -86,7 +86,8 @@
   <body class="nav-sm">
     <div class="container-xxl">
       <div class="main_container">
-        <div class="col-md-3 left_col menu_fixed">
+        <div class="row">
+            <div class="col-md-3 left_col menu_fixed">
           <div class="col-2">
             
             <?php include 'sidebar.php'; ?>
@@ -100,4 +101,6 @@
           <?php include 'topmenu.php'; ?>
 
         </div>
+        </div>
+        
         <!-- /top navigation -->
