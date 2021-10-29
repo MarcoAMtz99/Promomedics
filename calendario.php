@@ -52,8 +52,22 @@
   <!-- Agendar -->
 </button>
 			</div>
-				<div class="col-7 align-items-end">
-					<div id="calendarioWeb2"></div>
+				<div class="col-7 align-items-end bg-dark text-white">
+					<!-- <div id="calendarioWeb2"></div> -->
+					<div class="row">
+						<div class="col-6">
+								<div class="form-group">
+						    <label for="formGroupExampleInput" >Paciente</label>
+						    <input type="text" class="form-control bg-light" id="formGroupExampleInput" placeholder="Example input placeholder">
+						  </div>
+						  <div class="form-group">
+						    <label for="formGroupExampleInput2" >Another label</label>
+						    <input type="text" class="form-control bg-light" id="formGroupExampleInput2" placeholder="Another input placeholder">
+						  </div>
+						</div>
+						
+
+					</div>
 					
 					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal"> -->
   <!-- Agendar -->
@@ -155,8 +169,33 @@
    					// 		 this.src = "test" + i + ".jpg"; 
 								// });
 								//       //HACEMOS APPEND AL SELECT EN DONDE NOS MOSTRARA LA LISTA DE MEDICOS
-								$("#modalMedico").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+								$("#modalMedico").append('<option value='+data[i].ID+'>'+data[i].nombre+' '+data[i].paterno+' '+data[i].materno+' </option>');
 								$("#medicos").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
+						}); //Si pone
+			        
+			        //Si pones el content-type en PHP no necesitas parse         
+			    }); 
+			    $.ajax({
+			      url: "https://api.promo.byw-si.com.mx/api/paciente",
+			      method: "GET",
+			      dataType: "json"
+			    }).done(function( data ) {
+			        // alert("Todo bien");
+			        // console.log(data,"JSON MEDICO"); 
+			  
+			        
+			         $.each(data, function(i, item) {
+
+						    // console.log(data[i].paciente);
+						  //   $("medicos").each(function(i){ 
+   					// 		 this.src = "test" + i + ".jpg"; 
+								// });
+								let espacio= ""
+								let nombre =data[i].nombre+data[i].paterno+data[i].materno;
+
+								//       //HACEMOS APPEND AL SELECT EN DONDE NOS MOSTRARA LA LISTA DE MEDICOS
+								$("#modalPaciente").append('<option value='+data[i].id_paciente+'>'+data[i].nombre+' '+data[i].paterno+' '+data[i].materno+'</option>');
+								// $("#medicos").append('<option value='+data[i].ID+'>'+data[i].nombre+'</option>');
 						}); //Si pone
 			        
 			        //Si pones el content-type en PHP no necesitas parse         
@@ -328,7 +367,13 @@
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Paciente</span>
 										  </div>
-										  <input type="text" class="form-control" id="paciente" aria-label="Sizing example input" name="paciente" aria-describedby="inputGroup-sizing-sm">
+										<!--   <input type="text" class="form-control" id="paciente" aria-label="Sizing example input" name="paciente" aria-describedby="inputGroup-sizing-sm"> -->
+										   <select class="custom-select" id="modalPaciente">
+										    <option selected>Elige el paciente</option>
+										  </select>
+										   <input type="hidden" id="nombrePaciente">
+										   <input type="hidden" id="paternoPaciente">
+										   <input type="hidden" id="maternoPaciente">
 										  </div>
 										 
 
@@ -511,7 +556,8 @@
 
 	
 	function enviar(){
-					 paciente = $.trim($('#paciente').val());
+					 paciente = $.trim($('#modalPaciente').val());
+					 alert(paciente);
 					 hora = $.trim($('#hora').val());
           			 edad = $.trim($('#edad').val());
           			 telefono1=$.trim($('#telefono1').val());
@@ -559,7 +605,7 @@
 			                    window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
-			            // location.reload();
+			            location.reload();
 
 				}
 
