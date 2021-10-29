@@ -84,11 +84,10 @@
   </head>
 
   <body class="nav-sm">
-    <div class="container-xxl">
+    <div class="container body">
       <div class="main_container">
-        <div class="row">
-            <div class="col-md-3 left_col menu_fixed">
-          <div class="col-2">
+        <div class="col-md-3 left_col menu_fixed">
+          <div class="left_col scroll-view">
             
             <?php include 'sidebar.php'; ?>
 
@@ -96,11 +95,9 @@
         </div>
 
         <!-- top navigation -->
-        <div class="col-6 ">
+        <div class="top_nav navbar-fixed-top">
           
           <?php include 'topmenu.php'; ?>
 
         </div>
-        </div>
-        
         <!-- /top navigation -->
