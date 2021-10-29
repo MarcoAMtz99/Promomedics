@@ -404,7 +404,7 @@
           function(resp) {
             $('#tbl-items tbody').empty();
             console.log('datos grupo medico',resp.item);
-             $.each(resp, function(index){
+             $.each(resp.item, function(index){
                 addItemRow( resp.item,0);
              });
               $("[data-toggle='tooltip']").tooltip();
