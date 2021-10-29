@@ -3378,9 +3378,11 @@ switch ($action) {
 
 			$arrItems = array();
 			$item = mysqli_fetch_assoc($res);
-			while ($item = mysqli_fetch_assoc($res)) {
-					array_push($arrItems, $item);
+					while ($item = mysqli_fetch_assoc($res)) {
+						// array_push($arrItems, $item);
+						$arrItems[] = $item;
 				}
+
 			    $aux = json_encode($SQL);
 			    
 			$arrRes = array('error' => false, 'item' => $item, 'consulta' => $arrItems);	
