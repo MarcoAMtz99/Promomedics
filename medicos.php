@@ -308,6 +308,8 @@
             trp = $("[data-id='"+id+"']").parent();
             user = trp.find('td:eq(1)').html();
             btn = $(this);
+            console.log('ELIMINAR MEDICO',id);
+             console.log('ELIMINAR USER',user);
             btn.addClass('disabled');
             NProgress.start();
             $.post(
