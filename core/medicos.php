@@ -364,8 +364,8 @@ switch ($action) {
 			$SQL = "UPDATE seg_user SET status = 2, deleted = NOW() WHERE id_user = $id; ";
 			$res = mysqli_query($conn, $SQL);
 
-			$SQL = "UPDATE medico SET status = 2 WHERE ID = (SELECT fk_medico FROM seg_user WHERE id_user = $id); ";
-			$res = mysqli_query($conn, $SQL);
+			$SQL2 = "UPDATE medico SET status = 2 WHERE ID = (SELECT fk_medico FROM seg_user WHERE id_user = $id); ";
+			$res = mysqli_query($conn, $SQL2);
 
 			if(mysqli_affected_rows($conn) > 0){
 				$detalle = $id.' '.$nom;
@@ -374,7 +374,7 @@ switch ($action) {
 
 				$arrRes = array('res' => true,'id eliminado'=>$id);	
 			}else{
-				$arrRes = array('error' => true ,'id eliminado y sin afectar'=>$id);
+				$arrRes = array('error' => true ,'id eliminado y sin afectar'=>$id,'SQL'=>$SQL2);
 			}
 		}else{
 			$arrRes = array('error' => true, 'elem' => 'gral', 'msg' => 'Acceso Restringido.');
