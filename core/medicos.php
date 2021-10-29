@@ -269,8 +269,8 @@ switch ($action) {
 
 
 			$detalle = $id.' '.$mail;
-        	$log->setDatos('Activa Usuario Medico '.$detalle,$dataString,$id,USUARIOS);
-        	$log->saveLog();
+        	// $log->setDatos('Activa Usuario Medico '.$detalle,$dataString,$id,USUARIOS);
+        	// $log->saveLog();
 
         	$arrRes = array('error' => false);
 
@@ -304,12 +304,12 @@ switch ($action) {
 
 			$SQLm = "UPDATE medico SET status = 4 WHERE ID = $med; ";
 			mysqli_query($conn, $SQLm);
-			$dataString = $_POST['data'];
-			$data = json_decode($dataString);
+			// $dataString = $_POST['data'];
+			// $data = json_decode($dataString);
 
 			$detalle = $id.' '.$mail;
-        	$log->setDatos('Medico No Autorizado '.$detalle,$dataString,$id,USUARIOS);
-        	$log->saveLog();
+        	// $log->setDatos('Medico No Autorizado '.$detalle,$dataString,$id,USUARIOS);
+        	// $log->saveLog();
 
         	$arrRes = array('error' => false, 'rea' => '<button class="btn btn-info btn-xs btn-rea" data-toggle="tooltip" title="Reactivar"><i class="fa fa-refresh fa-fw"></i></button>');
 		}else{
@@ -332,12 +332,12 @@ switch ($action) {
 			$SQLr = "UPDATE seg_user SET status = 3, password = '$passBD' WHERE id_user = $id; ";
 			mysqli_query($conn, $SQLr);
 
-			$dataString = $_POST['data'];
-			$data = json_decode($dataString);
+			// $dataString = $_POST['data'];
+			// $data = json_decode($dataString);
 			
 			$detalle = $id.' '.$mail;
-        	$log->setDatos('Reactiva Usuario Medico '.$detalle,$dataString,$id,USUARIOS);
-        	$log->saveLog();
+        	// $log->setDatos('Reactiva Usuario Medico '.$detalle,$dataString,$id,USUARIOS);
+        	// $log->saveLog();
 
         	$disc = "<br><br><br>-------------------------------------<br>";
 		    $disc .="<small>Este correo fue enviado desde una cuenta no monitoreada. Por favor no respondas este correo.</small>";
