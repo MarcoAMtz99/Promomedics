@@ -503,7 +503,7 @@
           tr.empty();
         }
 
-        tr.append('<td class="clearfix">'+item.nombre+'</td>');
+        tr.append('<td class="text-justify">'+item.nombre+'</td>');
         tr.append('<td>'+item.especialidad+'</td>');
         tr.append('<td>'+item.num_cedula+'</td>');
         tr.append('<td>'+item.email+'</td>');
