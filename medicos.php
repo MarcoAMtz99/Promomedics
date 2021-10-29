@@ -57,7 +57,7 @@
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th>Nombre Médico</th>
+                            <th class="col-4">Nombre Médico</th>
                             <th>Especialidad</th>
                             <th>Cédula</th>
                             <th>Email</th>
@@ -311,6 +311,24 @@
                 {nom: user, id: id},
                 function(resp){
                   if(resp.res){
+                    $('#frm-item .modal-title').html('Eliminar Médico');
+                  $('#item-nom').val(resp.item.nombre);
+                  $('#item-ape').val(resp.item.paterno);
+                  $('#item-mat').val(resp.item.materno);
+                  $('#item-mail').val(resp.item.email);
+                  $('#item-ced').val(resp.item.num_cedula);
+
+                  $('#btnDatos').removeClass('hide').attr('href', '/medico/'+resp.item.fk_medico);
+
+                  $('.creado').removeClass('hide');
+                  $('#item-creado').val(resp.item.creado+' por '+resp.item.usuario);
+
+                  $('#item-id').val(id);
+                  $('#item-med').val(resp.item.fk_medico);
+                  $('#frm-item small').removeClass('hide');
+                  $('#frm-item').modal('show');
+
+
                     $('#tbl-items').DataTable().destroy();
                     trp.remove();
                     $('#frm-item-del').modal('hide');
