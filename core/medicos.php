@@ -3384,7 +3384,7 @@ switch ($action) {
 
 			    $aux = json_encode($SQL);
 			    
-			$arrRes = array('error' => false, 'item' => $item, 'consulta' => $arr);	
+			$arrRes = array('error' => false, 'item' => $arr, 'consulta' => $arr);	
 			
 		echo json_encode($arrRes);
 		break;
