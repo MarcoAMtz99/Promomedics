@@ -670,10 +670,10 @@
 			                }else{
 			                	 $("#agendarModal").removeClass('selected');
 			                   console.log('Success');
-			                    // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
+			                    window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
-			            // location.reload();
+			            location.reload();
 
 				}
 
