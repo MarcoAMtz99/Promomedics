@@ -59,10 +59,22 @@
 								<div class="form-group">
 						    <label for="formGroupExampleInput" >Paciente</label>
 						    <input type="text" class="form-control bg-light" id="formGroupExampleInput" placeholder="Example input placeholder">
+						  </div><
+						  <div class="form-group">
+						    <label for="formGroupExampleInput2" >Primera cita</label>
+						    <input type="text" value="NO"class="form-control bg-light" id="formGroupExampleInput2" placeholder="Another input placeholder">
 						  </div>
 						  <div class="form-group">
-						    <label for="formGroupExampleInput2" >Another label</label>
-						    <input type="text" class="form-control bg-light" id="formGroupExampleInput2" placeholder="Another input placeholder">
+						    <label for="formGroupExampleInput2" >Segunda cita</label>
+						    <input type="text" value="NO" class="form-control bg-light" id="formGroupExampleInput2" placeholder="Another input placeholder">
+						  </div>
+						  <div class="form-group">
+						    <label for="formGroupExampleInput2" >Tercera cita</label>
+						    <input type="text"  value="NO" class="form-control bg-light" id="formGroupExampleInput2" placeholder="Another input placeholder">
+						  </div>
+						  <div class="form-group">
+						    <label for="formGroupExampleInput2" >Cuarta cita</label>
+						    <input type="text" value="NO" class="form-control bg-light" id="formGroupExampleInput2" placeholder="Another input placeholder">
 						  </div>
 						</div>
 						
