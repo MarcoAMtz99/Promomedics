@@ -178,6 +178,7 @@
                           echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
                         }
                       }
+                      echo '<li class="list-group-item"><a href="'.URL_ROOT.$perm['url'].'" >'.$perm['nombre'].'<i class="glyphicon glyphicon-lock"></i>Login</a></li>';
                     }
                   } //Fin del if para validar isset 
                     echo' <li id="mnu-cal"><a href="'.URL_ROOT.'/calendario.php"><i class="glyphicon glyphicon-calendar"></i> Agenda</a></li>';
