@@ -195,7 +195,7 @@
               </div>
               <div class="panel-body">
             
-                     <?php include 'medicos.php'; ?>
+                     <?php include 'calendario.php'; ?>
               </div>
               </div>
         </div><!-- content -->
