@@ -178,7 +178,7 @@
                       //     echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
                       //   }
                       // }
-                      echo '<li class="list-group-item"><a href="'.URL_ROOT.$perm['url'].'" >'.$perm['nombre'].'<i class="glyphicon glyphicon-lock"></i>Login</a></li>';
+                      echo '<li class="list-group-item"><a href="'.URL_ROOT.$perm['url'].'" ><i class="glyphicon glyphicon-align-justify"></i><b>'.$perm['nombre'].'</b></a></li>';
 
                     }
 
