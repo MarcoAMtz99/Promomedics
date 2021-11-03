@@ -77,8 +77,15 @@
               <li class="active"><a href="index.html">Documentation</a></li> -->
               <!-- <li class="disabled"><a href="#">Link</a></li> -->
               <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Silverbux <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
+                    <?php 
+                    if (isset($_SESSION['status'])) {
+                       if($_SESSION['status'] != 3) {                   
+                     ?>
+                    <li><a data-toggle="modal" href="#form-pass"><i class="fa fa-key pull-right"></i> Cambiar contraseña</a></li>
+                    <?php  }
+                    } ?>
                   <li class="dropdown-header">Setting</li>
                   <li><a href="#">Action</a></li>
                   <li class="divider"></li>
@@ -150,11 +157,11 @@
                     
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
-                        echo '<li id="mnu-'.$perm['abrev'].'"><a><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].' <span class="fa fa-chevron-down"></span></a>';
+                        echo '<li class="list-group-item" id="mnu-'.$perm['abrev'].'"><a><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].' <span class="fa fa-chevron-down"></span></a>';
                         echo '<ul class="nav child_menu">';
 
                         foreach ($perm['children'] as $mnu) {
-                          echo '<li id="mnu-'.$mnu['abrev'].'"><a href="'.URL_ROOT.$mnu['url'].'">'.$mnu['nombre'].'</a></li>';
+                          echo '<li class="list-group-item" id="mnu-'.$mnu['abrev'].'"><a href="'.URL_ROOT.$mnu['url'].'">'.$mnu['nombre'].'</a></li>';
                         }
 
                         echo "</ul>";
@@ -168,7 +175,7 @@
                             echo '<li id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
                           }
                         }else{
-                          echo '<li id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
+                          echo '<li class="list-group-item" id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
                         }
                       }
                     }
