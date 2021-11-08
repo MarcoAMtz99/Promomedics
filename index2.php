@@ -103,7 +103,7 @@
     <div class="container-fluid">
     <!--documents-->
         <div class="row row-offcanvas row-offcanvas-left">
-          <div class="col-xs-3 col-sm-3 col-3 sidebar-offcanvas" role="navigation">
+          <div class="sidebar-offcanvas" role="navigation">
             <ul class="list-group panel">
                 <!-- <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>
                 <li class="list-group-item"><input type="text" class="form-control search-query" placeholder="Search Something"></li>
@@ -195,7 +195,7 @@
 
           </div>
 
-          <div class="col-xs-10 col-sm-8">
+          <div class="col-xs-10 col-sm-8 content">
               <div class="panel panel-default">
                 <div class="panel-heading">
                 <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a> Panel de Control</h3>
