@@ -103,7 +103,7 @@
     <div class="container-fluid">
     <!--documents-->
         <div class="row row-offcanvas row-offcanvas-left">
-          <div class="col-xs-3 col-sm-3 sidebar-offcanvas" role="navigation">
+          <div class="col-xs-3 col-sm-3 col-3 sidebar-offcanvas" role="navigation">
             <ul class="list-group panel">
                 <!-- <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>
                 <li class="list-group-item"><input type="text" class="form-control search-query" placeholder="Search Something"></li>
