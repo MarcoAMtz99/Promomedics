@@ -435,7 +435,7 @@ switch ($action) {
 						
 						$arrRes = array('id' => $id, 'item' => $item, 'actions' => $acciones);
 					}else{
-						$arrRes = array('error' => true, 'elem' => 'btnSave', 'msg' => 'No se pudo guardar');
+						$arrRes = array('error' => true, 'elem' => 'btnSave', 'msg' => 'No se pudo guardar','RES'=>$res);
 					}
 				}
 			//}
