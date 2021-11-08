@@ -59,7 +59,7 @@
   </head>
   <body>
     <!--nav-->
-    <nav role="navigation" class="navbar navbar-custom">
+    <nav role="navigation" class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -84,7 +84,7 @@
                     if (isset($_SESSION['status'])) {
                        if($_SESSION['status'] != 3) {                   
                      ?>
-                    <li><a data-toggle="modal" href="#form-pass"><i class="fa fa-key pull-right"></i> Cambiar contraseña</a></li>
+                    <li><a  data-toggle="modal" href="#form-pass"><i class="fa fa-key pull-right"></i> Cambiar contraseña</a></li>
                     <?php  }
                     } ?>
                     <li class="dropdown-header"><a href="/core/logout.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
@@ -102,7 +102,7 @@
 
         </div><!-- /.container-fluid -->
       </nav>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -125,7 +125,7 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
-          </nav>
+          </nav> -->
     <!--header-->
     <div class="container-fluid">
     <!--documents-->
