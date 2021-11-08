@@ -68,9 +68,11 @@
          <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="navbar-toggler-icon"></span>
             </button> -->
-            <a href="#" class="col-4">PROMOMEDICS</a>
-            <div class="clear-fix"></div>
-            <ul class="nav navbar-nav navbar-right">
+            <a href="#" class="col-4">PROMOMEDICS
+
+            </a>
+            <!-- <div class="clear-fix"></div> -->
+            <ul class="nav navbar navbar-right">
               <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
               <li class="active"><a href="index.html">Documentation</a></li> -->
               <!-- <li class="disabled"><a href="#">Link</a></li> -->
