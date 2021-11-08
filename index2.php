@@ -59,26 +59,25 @@
   </head>
   <body>
     <!--nav-->
-    <nav role="navigation" class="navbar navbar-dark bg-dark">
+    <nav role="navigation" class="navbar navbar-custom">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
 
-          <div class="navbar-header">
+          <div class="container-fluid">
 
-            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
+         <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="navbar-toggler-icon"></span>
-            </button>
-           
-          </div>
-          <!--  <a href="#" class="navbar-brand">PROMOMEDICS</a> -->
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
+            </button> -->
+            <a href="#" class="col-4">PROMOMEDICS
+              
+            </a>
+            <!-- <div class="clear-fix"></div> -->
+            <ul class="nav navbar navbar-right">
               <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
               <li class="active"><a href="index.html">Documentation</a></li> -->
               <!-- <li class="disabled"><a href="#">Link</a></li> -->
               <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle text-light" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
                     <?php 
                     if (isset($_SESSION['status'])) {
@@ -97,70 +96,19 @@
                 </ul>
               </li>
             </ul>
-
-          </div><!-- /.navbar-collapse -->
-
-        </div><!-- /.container-fluid -->
-      </nav>
-       <nav role="navigation" class="navbar navbar-custom">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="#" class="navbar-brand">Bootflat-Admin</a>
+           
           </div>
-
+          <!--  <a href="#" class="navbar-brand">PROMOMEDICS</a> -->
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="getting-started.html">Getting Started</a></li>
-              <li class="active"><a href="index.html">Documentation</a></li>
-              <!-- <li class="disabled"><a href="#">Link</a></li> -->
-              <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Silverbux <b class="caret"></b></a>
-                <ul role="menu" class="dropdown-menu">
-                  <li class="dropdown-header">Setting</li>
-                  <li><a href="#">Action</a></li>
-                  <li class="divider"></li>
-                  <li class="active"><a href="#">Separated link</a></li>
-                  <li class="divider"></li>
-                  <li class="disabled"><a href="#">Signout</a></li>
-                </ul>
-              </li>
-            </ul>
+       <!--    <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse"> -->
+            
 
-          </div><!-- /.navbar-collapse -->
+         <!--  </div> -->   <!-- /.navbar-collapse -->
+
         </div><!-- /.container-fluid -->
       </nav>
-              <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Navbar</a>
-
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </nav> -->
+      
+              
     <!--header-->
     <div class="container-fluid">
     <!--documents-->
@@ -209,47 +157,55 @@
                       <a href="" class="list-group-item">Subitem 3</a>
                     </li>
                 </li>-->
-                <?php  
+              
+                  <?php 
                   if (isset($_SESSION['perm'])) {
                      $permArray = $_SESSION['perm'];
                   }
-                   
-                 if (isset( $permArray)) {
+                    if (isset( $permArray)) {
                       # code...
                     
                     foreach ($permArray as $perm) {
-                      // if(isset($perm['children'])){
-                      //   echo '<li  id="mnu-'.$perm['abrev'].'"><a><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].' <span class="fa fa-chevron-down"></span></a>';
-                      //   echo '<ul class="nav child_menu">';
+                      if(isset($perm['children'])){
+                        echo '<li>';
+                        echo '<a href="#'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                        echo '<li class="collapse" id="'.$perm['abrev'].'">';
+                        
+                      
+               
+                      
+                   
+                        foreach ($perm['children'] as $mnu) {
 
-                      //   foreach ($perm['children'] as $mnu) {
-                      //     echo '<li  id="mnu-'.$mnu['abrev'].'"><a href="'.URL_ROOT.$mnu['url'].'">'.$mnu['nombre'].'</a></li>';
-                      //   }
+                          echo '<a href="'.URL_ROOT.$mnu['url'].'" class="list-group-item">'.$mnu['nombre'].'</a>';
+                           
+                        }
 
-                      //   echo "</ul>";
-                      //   echo "</li>";
-                      // }else{
-                      //   if($perm['url'] == '/medico' && ($usertype == 3 || $usertype == 4)) $perm['url'] .= '/'.$_SESSION['medico'];
+                        echo '</li>';
+                         echo '</li>';
+                       
+                      }
+                      else{
+                        // if($perm['url'] == '/medico' && ($usertype == 3 || $usertype == 4)) $perm['url'] .= '/'.$_SESSION['medico'];
 
-                      //   if($perm['url'] == '/gpomedico'){
-                      //     if($perm['url'] == '/gpomedico' && ($usertype == 3 || $usertype == 4) && $_SESSION['grupo'] != 0){
-                      //       $perm['url'] .= '/'.$_SESSION['grupo'];
-                      //       echo '<li id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
-                      //     }
-                      //   }else{
-                      //     echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
-                      //   }
-                      // }
-                      echo '<li class="list-group-item"><a href="'.URL_ROOT.$perm['url'].'" ><i class="glyphicon glyphicon-align-justify"></i><b>'.$perm['nombre'].'</b></a></li>';
+                        // if($perm['url'] == '/gpomedico'){
+                        //   if($perm['url'] == '/gpomedico' && ($usertype == 3 || $usertype == 4) && $_SESSION['grupo'] != 0){
+                        //     $perm['url'] .= '/'.$_SESSION['grupo'];
+                        //     echo '<li id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
+                        //   }
+                        // }else{
+                        //   echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
+                              echo '<a href="'.URL_ROOT.$perm['url'].'" class="list-group-item ">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                        // }
+                        // 
+                      }
+                     
 
                     }
 
 
-                  } //Fin del if para validar isset 
-                    echo' <li class="list-group-item"><a href="'.URL_ROOT.'/calendario.php"><i class="glyphicon glyphicon-align-justify"></i> Agenda</a></li>';
-                   
-                  ?>
-
+                  } //FIN DEL ISSET
+                   ?>
 
 
 
@@ -265,5 +221,3 @@
               <div class="panel-body">
                    <div class="content-row">
                     <!--   <div class="row"> -->
-                     
-                      
