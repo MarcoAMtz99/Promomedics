@@ -184,7 +184,7 @@
 
 
                   } //Fin del if para validar isset 
-                    echo' <li id="mnu-cal"><a href="'.URL_ROOT.'/calendario.php"><i class="list-group-item"></i> Agenda</a></li>';
+                    echo' <li class="list-group-item"><a href="'.URL_ROOT.'/calendario.php"><i class="glyphicon glyphicon-align-justify"></i> Agenda</a></li>';
                     echo '<li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>';
                   ?>
 
