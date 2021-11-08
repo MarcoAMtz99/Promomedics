@@ -59,7 +59,7 @@
   </head>
   <body>
     <!--nav-->
-    <nav role="navigation" class="navbar navbar-dark bg-light">
+    <nav role="navigation" class="navbar navbar-custom">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
 
