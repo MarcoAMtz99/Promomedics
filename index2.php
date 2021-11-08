@@ -204,22 +204,4 @@
                    <div class="content-row">
                     <!--   <div class="row"> -->
                      
-                      <?php include 'medicos.php'; ?>
-
-                    <!-- </div> -->
-                     </div>
-              </div>
-              </div>
-        </div>    <!-- content -->
-      </div>
-    </div>
-    <!--footer-->
-  <!--   <div class="site-footer">
-      <div class="container">
-      
-       
-      </div>
-    </div> -->
-
-  </body>
-</html>
+                      
