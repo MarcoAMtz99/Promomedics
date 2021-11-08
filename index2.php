@@ -165,24 +165,11 @@
                     
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
-                        <li>
-                //   <a href="#demo4" class="list-group-item " data-toggle="collapse">Item 4  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                //     <li class="collapse" id="demo4">
-                //       <a href="" class="list-group-item">Subitem 1</a>
-                //       <a href="" class="list-group-item">Subitem 2</a>
-                //       <a href="" class="list-group-item">Subitem 3</a>
-                //     </li>
-                // </li>
                         echo '<li  id="mnu-'.$perm['abrev'].'"><a><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].' <span class="fa fa-chevron-down"></span></a>';
-
-                        echo '<a href="mnu-'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].' <span class="glyphicon glyphicon-chevron-right"></span></a>';
-                          echo '<li class="collapse" id="mnu-'.$perm['abrev'].'"';
-
                         echo '<ul class="nav child_menu">';
 
                         foreach ($perm['children'] as $mnu) {
-                          // echo '<li  id="mnu-'.$mnu['abrev'].'"><a href="'.URL_ROOT.$mnu['url'].'">'.$mnu['nombre'].'</a></li>';
-                          echo ' <a href="'.URL_ROOT.$mnu['url'].'" class="list-group-item">'.$mnu['nombre'].'</a>';
+                          echo '<li  id="mnu-'.$mnu['abrev'].'"><a href="'.URL_ROOT.$mnu['url'].'">'.$mnu['nombre'].'</a></li>';
                         }
 
                         echo "</ul>";
