@@ -164,6 +164,7 @@
                       # code...
                     
                     foreach ($permArray as $perm) {
+
                       if(isset($perm['children'])){
                         echo '<li  id="mnu-'.$perm['abrev'].'"><a><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].' <span class="fa fa-chevron-down"></span></a>';
                         echo '<ul class="nav child_menu">';
@@ -204,7 +205,7 @@
                     
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
-
+                        echo '<li>';
                         echo '<a href="#'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
                         echo '<li class="collapse" id="'.$perm['abrev'].'">';
                         
@@ -219,6 +220,7 @@
                         }
 
                         echo '</li>';
+                         echo '</li>';
                        
                       }
                       else{
@@ -231,6 +233,7 @@
                         //   }
                         // }else{
                         //   echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
+                          echo 'echo '<a href="" class="list-group-item">'.$mnu['nombre'].'</a>'';
                         // }
                         // 
                       }
