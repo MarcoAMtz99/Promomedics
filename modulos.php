@@ -126,7 +126,7 @@
                       <ul class="nav navbar-right panel_toolbox">
                         <?php if($perm == 'EDIT') : ?>
                         <li>
-                            <a id="btnAddM" class="add-link" data-toggle="modal" data-target="#frm-item">>
+                            <a id="btnAddM" class="add-link" data-toggle="modal" data-target="#frm-item">
                                 <i class="fa fa-plus"></i>
                                 Agregar Módulo
                             </a>
