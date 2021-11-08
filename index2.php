@@ -60,14 +60,15 @@
     <nav role="navigation" class="navbar navbar-custom">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
-          
+
           <div class="navbar-header">
-         <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
-              <span class="sr-only">Toggle navigation</span>
+
+            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+              <span class="sr-only">HOLA</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </button> -->
+            </button>
            
           </div>
           <!--  <a href="#" class="navbar-brand">PROMOMEDICS</a> -->
