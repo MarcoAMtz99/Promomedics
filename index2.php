@@ -86,12 +86,13 @@
                     <li><a data-toggle="modal" href="#form-pass"><i class="fa fa-key pull-right"></i> Cambiar contraseña</a></li>
                     <?php  }
                     } ?>
-                  <li class="dropdown-header">Setting</li>
+                    <li class="dropdown-header"><a href="/core/logout.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
+                  <!-- <li class="dropdown-header">Setting</li>
                   <li><a href="#">Action</a></li>
                   <li class="divider"></li>
                   <li class="active"><a href="#">Separated link</a></li>
                   <li class="divider"></li>
-                  <li class="disabled"><a href="#">Signout</a></li>
+                  <li class="disabled"><a href="#">Signout</a></li> -->
                 </ul>
               </li>
             </ul>
@@ -185,7 +186,7 @@
 
                   } //Fin del if para validar isset 
                     echo' <li class="list-group-item"><a href="'.URL_ROOT.'/calendario.php"><i class="glyphicon glyphicon-align-justify"></i> Agenda</a></li>';
-                    echo '<li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>';
+                   
                   ?>
 
 
