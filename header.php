@@ -83,8 +83,8 @@
 
   </head>
 
-  <body class="nav-sm">
-    <div class="container-fluid">
+  <body class="container-fluid">
+    <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
