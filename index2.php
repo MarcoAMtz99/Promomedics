@@ -196,6 +196,9 @@
                     echo' <li class="list-group-item"><a href="'.URL_ROOT.'/calendario.php"><i class="glyphicon glyphicon-align-justify"></i> Agenda</a></li>';
 
                     echo "<hr>";
+                   
+                  ?>
+                  <?php 
                     if (isset( $permArray)) {
                       # code...
                     
@@ -238,10 +241,7 @@
 
 
                   } //FIN DEL ISSET
-
-                   
-                  ?>
-
+                   ?>
 
 
 
