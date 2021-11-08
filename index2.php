@@ -69,7 +69,7 @@
               <span class="navbar-toggler-icon"></span>
             </button> -->
             <a href="#" class="col-4">PROMOMEDICS
-              <img src="images/logo_small.png" alt="">
+              <img  class="navbar-brand" src="images/logo_small.png" alt="">
             </a>
             <!-- <div class="clear-fix"></div> -->
             <ul class="nav navbar navbar-right">
@@ -168,7 +168,7 @@
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
                         echo '<li>';
-                        echo '<a href="'.URL_ROOT.$mnu['url'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                        echo '<a href="'.URL_ROOT.$perm['url'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
                         echo '<li class="collapse" id="'.$perm['abrev'].'">';
                         
                       
