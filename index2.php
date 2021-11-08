@@ -69,7 +69,7 @@
               <span class="navbar-toggler-icon"></span>
             </button> -->
             <a href="#" class="col-4">PROMOMEDICS
-
+              <img src="images/logo_small.png" alt="">
             </a>
             <!-- <div class="clear-fix"></div> -->
             <ul class="nav navbar navbar-right">
