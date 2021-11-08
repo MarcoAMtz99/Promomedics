@@ -211,7 +211,7 @@
                       
                
                       
-                    </li>
+                   
                         foreach ($perm['children'] as $mnu) {
 
                           echo '<a href="" class="list-group-item">Subitem 1</a>';
