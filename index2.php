@@ -214,9 +214,8 @@
                    
                         foreach ($perm['children'] as $mnu) {
 
-                          echo '<a href="" class="list-group-item">Subitem 1</a>';
-                           echo '<a href="" class="list-group-item">Subitem 3</a>';
-                            echo '<a href="" class="list-group-item">Subitem 2</a>';
+                          echo '<a href="" class="list-group-item">'.$mnu['nombre'].'</a>';
+                           
                         }
 
                         echo '</li>';
