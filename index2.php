@@ -68,11 +68,6 @@
          <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="navbar-toggler-icon"></span>
             </button> -->
-           
-          </div>
-          <!--  <a href="#" class="navbar-brand">PROMOMEDICS</a> -->
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
               <li class="active"><a href="index.html">Documentation</a></li> -->
@@ -97,8 +92,14 @@
                 </ul>
               </li>
             </ul>
+           
+          </div>
+          <!--  <a href="#" class="navbar-brand">PROMOMEDICS</a> -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+       <!--    <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse"> -->
+            
 
-          </div><!-- /.navbar-collapse -->
+         <!--  </div> -->   <!-- /.navbar-collapse -->
 
         </div><!-- /.container-fluid -->
       </nav>
