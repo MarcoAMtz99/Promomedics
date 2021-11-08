@@ -205,8 +205,8 @@
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
 
-                        echo '<a href="#demo4" class="list-group-item " data-toggle="collapse">Item 4  <span class="glyphicon glyphicon-chevron-right"></span></a>';
-                        echo '<li class="collapse" id="demo4">';
+                        echo '<a href="#mnu-'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                        echo '<li class="collapse" id="mnu-'.$perm['abrev'].'">';
                         
                       
                
