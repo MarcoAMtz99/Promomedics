@@ -57,7 +57,7 @@
   </head>
   <body>
     <!--nav-->
-    <nav role="navigation" class="navbar sticky-top navbar-light bg-light">
+    <nav role="navigation" class="navbar navbar-custom">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -100,6 +100,7 @@
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
+      
     <!--header-->
     <div class="container-fluid">
     <!--documents-->
