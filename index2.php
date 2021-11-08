@@ -59,7 +59,7 @@
   </head>
   <body>
     <!--nav-->
-    <nav role="navigation" class="navbar navbar-dark bg-dark">
+    <nav role="navigation" class="navbar navbar-dark bg-light">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -73,7 +73,7 @@
               <li class="active"><a href="index.html">Documentation</a></li> -->
               <!-- <li class="disabled"><a href="#">Link</a></li> -->
               <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle text-light" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
                     <?php 
                     if (isset($_SESSION['status'])) {
