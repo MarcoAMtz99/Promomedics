@@ -233,7 +233,7 @@
                         //   }
                         // }else{
                         //   echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
-                           echo '<a href="" class="list-group-item">'.$mnu['nombre'].'</a>'';
+                              echo '<a href="#'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
                         // }
                         // 
                       }
