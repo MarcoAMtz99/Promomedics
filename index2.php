@@ -66,7 +66,7 @@
           <div class="navbar-header">
 
             <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
-              <span class="navbar-toggler-icon"></span>
+              <!-- <span class="navbar-toggler-icon"></span> -->
             </button>
            
           </div>
@@ -78,7 +78,7 @@
               <li class="active"><a href="index.html">Documentation</a></li> -->
               <!-- <li class="disabled"><a href="#">Link</a></li> -->
               <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php if(isset($username)){echo $username;}?> <b class="text-light"></b></a>
                 <ul role="menu" class="dropdown-menu">
                     <?php 
                     if (isset($_SESSION['status'])) {
