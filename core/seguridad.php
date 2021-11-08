@@ -413,7 +413,7 @@ switch ($action) {
 				$arrRes = array('error' => true, 'elem' => 'item-user', 'msg' => 'Username ya registrado');
 			}else{*/
 				$SQL = "SELECT * FROM seg_user WHERE email = '$data->mail' AND status = 1; ";
-				$res = mysql_query($SQL);
+				$res = mysqli_query($conn,$SQL);
 
 				if(mysql_num_rows($res) > 0){
 					$arrRes = array('error' => true, 'elem' => 'item-mail', 'msg' => 'Email ya registrado');
