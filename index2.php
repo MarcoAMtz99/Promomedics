@@ -68,7 +68,7 @@
          <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="navbar-toggler-icon"></span>
             </button> -->
-            <a href="#" class="col-12">PROMOMEDICS</a>
+            <a href="#" class="col-4">PROMOMEDICS</a>
             <div class="clear-fix"></div>
             <ul class="nav navbar-nav navbar-right">
               <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
@@ -206,7 +206,7 @@
                     foreach ($permArray as $perm) {
                       if(isset($perm['children'])){
                         echo '<li>';
-                        echo '<a href="'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                        echo '<a href="#'.$perm['abrev'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
                         echo '<li class="collapse" id="'.$perm['abrev'].'">';
                         
                       
