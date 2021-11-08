@@ -63,11 +63,12 @@
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
 
-          <div class="navbar-header navbar-right">
+          <div class="navbar-header ">
 
          <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="navbar-toggler-icon"></span>
             </button> -->
+            <a href="#" class="navbar-brand">PROMOMEDICS</a>
             <ul class="nav navbar-nav navbar-right">
               <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
               <li class="active"><a href="index.html">Documentation</a></li> -->
