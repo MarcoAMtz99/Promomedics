@@ -70,7 +70,7 @@
             </button>
            
           </div>
-           <a href="#" class="navbar-brand">PROMOMEDICS</a>
+          <!--  <a href="#" class="navbar-brand">PROMOMEDICS</a> -->
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
