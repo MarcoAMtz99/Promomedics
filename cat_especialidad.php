@@ -1,7 +1,7 @@
 <?php 
   $titulo = "Especialidades";
-  include 'header.php'; 
-
+  // include 'header.php'; 
+  include 'index2.php'; 
   $aperm = $_SESSION['perm'];
   $perm = $aperm[MOD_PRECARGAS];
   if(!array_key_exists(MOD_ESPECIALIDAD, $perm['children'])){

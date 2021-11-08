@@ -1,6 +1,6 @@
 <?php 
   $titulo = "Módulos";
-  include 'header.php'; 
+  include 'index2.php'; 
 
   $aperm = $_SESSION['perm'];
   $perm = $aperm[MOD_SEGURIDAD];

@@ -1,7 +1,8 @@
 
 <?php 
   $titulo = "Calendario";
-  include 'header.php'; 
+  // include 'header.php'; 
+    include 'index2.php'; 
 
   $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){

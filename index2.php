@@ -211,5 +211,3 @@
               <div class="panel-body">
                    <div class="content-row">
                     <!--   <div class="row"> -->
-                     
-                      
