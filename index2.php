@@ -195,7 +195,7 @@
                         //   }
                         // }else{
                         //   echo '<li  id="mnu-'.$perm['abrev'].'"><a href="'.URL_ROOT.$perm['url'].'"><i class="fa fa-'.$perm['icono'].'"></i> '.$perm['nombre'].'</a></li>';
-                              echo '<a href="'.URL_ROOT.$perm['url'].'" class="list-group-item " data-toggle="collapse">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                              echo '<a href="'.URL_ROOT.$perm['url'].'" class="list-group-item ">'.$perm['nombre'].'  <span class="glyphicon glyphicon-chevron-right"></span></a>';
                         // }
                         // 
                       }
