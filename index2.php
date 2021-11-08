@@ -57,7 +57,7 @@
   </head>
   <body>
     <!--nav-->
-    <nav role="navigation" class="navbar navbar-custom">
+    <nav role="navigation" class="navbar sticky-top navbar-light bg-light">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -73,9 +73,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="getting-started.html"></a></li>
-              <li class="active"><a href="index.html"></a></li>
-              <li class="disabled"><a href="#"></a></li>
+              <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
+              <li class="active"><a href="index.html">Documentation</a></li> -->
+              <!-- <li class="disabled"><a href="#">Link</a></li> -->
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php if(isset($username)){echo $username;}?> <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
