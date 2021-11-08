@@ -420,7 +420,7 @@ switch ($action) {
 				}else{
 					$med = $_SESSION['medico'];
 					$pass = strrev(md5(sha1(trim($data->pass))));
-					$SQL = "INSERT INTO seg_user VALUES (NULL, $data->perf, $med, '$data->nom', '$data->ape', '$data->mail', '$pass', '$data->mail', '', NOW(), NOW(), '', 1); ";
+					$SQL = "INSERT INTO seg_user VALUES (NULL, $data->perf, $med, '$data->nom', '$data->ape', '$data->mail', '$pass', '$data->mail', NOW(), NOW(), NOW(), NOW(), 1); ";
 					$res = mysqli_query($conn, $SQL);
 
 					$id = mysqli_insert_id($conn);
