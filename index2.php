@@ -155,8 +155,11 @@
                       <a href="" class="list-group-item">Subitem 3</a>
                     </li>
                 </li>-->
-               
+              
                   <?php 
+                  if (isset($_SESSION['perm'])) {
+                     $permArray = $_SESSION['perm'];
+                  }
                     if (isset( $permArray)) {
                       # code...
                     
