@@ -68,7 +68,7 @@
          <!--    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="navbar-toggler-icon"></span>
             </button> -->
-            <a href="#" class="navbar-brand">PROMOMEDICS</a>
+            <a href="#" class="col-12">PROMOMEDICS</a>
             <div class="clear-fix"></div>
             <ul class="nav navbar-nav navbar-right">
               <!-- <li class="active"><a href="getting-started.html">Getting Started</a></li>
