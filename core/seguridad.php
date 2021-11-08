@@ -415,7 +415,7 @@ switch ($action) {
 				$SQL = "SELECT * FROM seg_user WHERE email = '$data->mail' AND status = 1; ";
 				$res = mysqli_query($conn,$SQL);
 
-				if(mysql_num_rows($res) > 0){
+				if(mysqli_num_rows($res) > 0){
 					$arrRes = array('error' => true, 'elem' => 'item-mail', 'msg' => 'Email ya registrado');
 				}else{
 					$med = $_SESSION['medico'];
