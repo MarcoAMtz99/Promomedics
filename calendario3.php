@@ -24,7 +24,7 @@
 
 <!-- <div class="clearfix"></div> -->
 
-	<div class="container-fluid col-12">
+	
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
