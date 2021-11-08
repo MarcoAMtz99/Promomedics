@@ -1,6 +1,6 @@
 <?php 
   $titulo = "Médicos";
-  // include 'header.php'; 
+  include 'header.php'; 
 
   $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){

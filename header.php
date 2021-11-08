@@ -83,21 +83,3 @@
 
   </head>
 
-  <body class="container-fluid">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col menu_fixed">
-          <div class="left_col scroll-view">
-            
-            <?php include 'sidebar.php'; ?>
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav navbar-fixed-top">
-          
-          <?php include 'topmenu.php'; ?>
-
-        </div>
-        <!-- /top navigation -->
