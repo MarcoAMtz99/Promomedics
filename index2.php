@@ -63,7 +63,7 @@
 
           <div class="navbar-header">
 
-            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggler" type="button">
               <span class="sr-only">HOLA</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
