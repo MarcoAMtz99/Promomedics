@@ -1,6 +1,6 @@
 <?php 
   $titulo = "Médicos";
-  include 'header.php'; 
+  // include 'header.php'; 
 
   $aperm = $_SESSION['perm'];
   if(!array_key_exists(MOD_MEDICOS, $aperm)){
@@ -32,14 +32,14 @@
     <!-- Datatables -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="">
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="x_panel">
-                    <div class="x_title">
+          <div class="">
+            <div class="">
+                  <div class="">
+                    <div class="">
                       <h2>Alta de Médicos <small>Medicos registrados</small></h2>
-                      <ul class="nav navbar-right panel_toolbox">
+                      <ul class="">
                         <?php if($perm == 'EDIT') : ?>
                         <li>
                             <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
