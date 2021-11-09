@@ -1,16 +1,16 @@
 <?php 
-  $titulo = "Calendario";
-  // include 'header.php'; 
-    include 'index2.php'; 
+  // $titulo = "Calendario";
+  // // include 'header.php'; 
+  //   include 'index2.php'; 
 
-  $aperm = $_SESSION['perm'];
-  if(!array_key_exists(MOD_MEDICOS, $aperm)){
-    include '403.php';
-    exit(0);
-  }else{
-    $perm = $aperm[MOD_MEDICOS];
-    $perm = $perm['action'];
-  }
+  // $aperm = $_SESSION['perm'];
+  // if(!array_key_exists(MOD_MEDICOS, $aperm)){
+  //   include '403.php';
+  //   exit(0);
+  // }else{
+  //   $perm = $aperm[MOD_MEDICOS];
+  //   $perm = $perm['action'];
+  // }
 
 ?>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -242,8 +242,8 @@
 					$("#agendarModal").modal();
 				},
 					//pro
-					events:'https://api.promo.byw-si.com.mx/api/agenda',
-					// events:'http://127.0.0.1:8000/api/agenda',
+					// events:'https://api.promo.byw-si.com.mx/api/agenda',
+					events:'http://127.0.0.1:8000/api/agenda',
 					// events: [
 					// 	    {
 					// 		    id: 1,
@@ -263,7 +263,7 @@
 					// 	  ],
 					// https://promomedics.api.byw-si.com.mx/agenda
 					//desarrollo
-					// events:'https://localhost/promomedics/citas.php',
+					events:'https://localhost/promomedics/citas.php',
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
 				eventClick:function(callEvent,jsEvent,view){
 
@@ -314,8 +314,8 @@
 				},
 				defaultView: 'listDay',
 					//pro
-					events:'https://api.promo.byw-si.com.mx/api/agenda',
-					// events:'http://127.0.0.1:8000/api/agenda',
+					// events:'https://api.promo.byw-si.com.mx/api/agenda',
+					events:'http://127.0.0.1:8000/api/agenda',
 									// events: [
 							  //   {
 							  //     id: 'a',
@@ -325,7 +325,7 @@
 							  // ],
 					// https://promomedics.api.byw-si.com.mx/agenda
 					//desarrollo
-					// events:'https://localhost/promomedics/citas.php',
+					events:'https://localhost/promomedics/citas.php',
 				//CUANDO DEN CLICK SOBRE UN DIA EN UNA CITA SE VA A DESPLEGAR EL MODAL
 				eventClick:function(callEvent,jsEvent,view){
 
@@ -619,8 +619,8 @@
 			            };
 					$.ajax({
 			                method:'POST',
-			                url: 'https://api.promo.byw-si.com.mx/api/agenda',
-			                // url: 'http://127.0.0.1:8000/api/agenda',
+			                // url: 'https://api.promo.byw-si.com.mx/api/agenda',
+			                url: 'http://127.0.0.1:8000/api/agenda',
 			                data: {
 			                    action:'cita',
 			                    data: data,
@@ -638,10 +638,10 @@
 			                }else{
 			                	 $("#agendarModal").removeClass('selected');
 			                   console.log('Success');
-			                    window.location = "https://promomedics.byw-si.com.mx/calendario.php";
+			                    // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
-			            location.reload();
+			            // location.reload();
 
 				}
 				function actualizarCita(){
@@ -676,8 +676,8 @@
 			            };
 					$.ajax({
 			                method:'POST',
-			                url: 'https://api.promo.byw-si.com.mx/api/agenda/'+id_cita,
-			                // url: 'http://127.0.0.1:8000/api/agenda/'+id_cita,
+			                // url: 'https://api.promo.byw-si.com.mx/api/agenda/'+id_cita,
+			                url: 'http://127.0.0.1:8000/api/agenda/'+id_cita,
 			                // type: "PATCH",
 			                data: {
 			                    action:'cita',
@@ -696,15 +696,15 @@
 			                }else{
 			                	 $("#agendarModal").removeClass('selected');
 			                   console.log('Success');
-			                    window.location = "https://promomedics.byw-si.com.mx/calendario.php";
+			                    // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
-			            location.reload();
+			            // location.reload();
 
 				}
 
 	  function actualizar(){
-	  	location.reload();
+	  	// location.reload();
 	  }
 </script>				
 
