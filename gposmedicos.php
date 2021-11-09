@@ -56,15 +56,17 @@
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
                       </p>
+                       <div class="clearfix"></div>
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
+                           <div class="clearfix"></div>
                           <tr>
                             <th>Nombre </th>
                             <th>Responsable</th>
                             <th>Estado</th>
                             <th>Telefono</th>
                             <th>Giro</th>
-                            <th class="col-3">Acciones</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -462,7 +464,7 @@
         tr.append('<td>'+item.estado+'</td>');
         tr.append('<td>'+item.celular+'</td>');
         tr.append('<td>'+item.giro+'</td>');
-        tr.append('<td> <a href="#" class="btn btn-primary col-3">ASIGNAR MEDICOS</a></td>');
+        tr.append('<td> <a href="#" class="btn btn-primary">ASIGNAR MEDICOS</a></td>');
        /* tda = $('<td data-idm="'+item.ID+'" data-id="'+item.id_user+'" class="text-center">'+act+'</td>');
         $(tda).find('.btn-edit').after(item.act);
         $(tda).find('.btn-del').before(item.neg);
