@@ -650,7 +650,7 @@
 					 id_cita = $.trim($('#ID_EDIT').val());
 					 hora = $.trim($('#hora').val());
           			 EDAD = $.trim($('#EDAD_EDIT').val());
-          			 TELEFONO1=$.trim($('#telefono1').val());
+          			 TELEFONO1=$.trim($('#telefono1_EDIT').val());
           			 TELEFONO2=$.trim($('#telefono2').val());
           			 TELEFONO3=$.trim($('#telefono3').val());
           			 medico=$('#modalMedico').val();
