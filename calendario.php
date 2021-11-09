@@ -696,6 +696,7 @@
 			                }else{
 			                	 $("#agendarModal").removeClass('selected');
 			                   console.log('Success');
+			                     alert('cita actualizada');
 			                    window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
@@ -704,7 +705,7 @@
 				}
 
 	  function actualizar(){
-	  	// location.reload();
+	  	location.reload();
 	  }
 </script>				
 
