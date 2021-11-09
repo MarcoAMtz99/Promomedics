@@ -641,7 +641,7 @@
 			                    // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
-			             location.reload(4000);
+			             setTimeout("location.reload(true);",5000);
 
 				}
 				function actualizarCita(){
@@ -700,7 +700,7 @@
 			                    // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
 			                }
 			            }, 'json');
-			            location.reload(4000);
+			            setTimeout("location.reload(true);",5000);
 
 				}
 
