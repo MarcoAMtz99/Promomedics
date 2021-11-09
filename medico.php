@@ -41,13 +41,13 @@
                   IFNULL((SELECT ID FROM medico_fiscal WHERE id_medico = m.ID LIMIT 1),0) AS fact 
               FROM medico m WHERE ID = $ID; ";
   $res = mysqli_query($conn,$SQL);
-  $infoMed = mysqli_free_result($res);
+ $infoMed = mysqli_fetch_assoc($res);
 
   //$SQLme = "SELECT id_especialidad, especialidad, subespecialidad, num_cedula, num_recer, fecha_recer FROM medico_especialidad WHERE ID = ".$infoMed['esp'];
   //$infoEsp = mysql_fetch_assoc(mysql_query($SQLme));
 
   $SQLmf = "SELECT * FROM medico_fiscal WHERE ID = ".$infoMed['fact'];
-  $infoFact = mysqli_free_result(mysqli_query($conn,$SQLmf));
+  $infoFact = mysqli_fetch_assoc(mysqli_query($conn,$SQLmf));
 
 
   /*$SQLe = "SELECT ID, nombre FROM especialidades WHERE status = 1; ";
@@ -65,8 +65,8 @@
 ?>
 
     <!-- Datatables -->
-    <link href="<?php echo URL_ROOT; ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo URL_ROOT; ?>/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+   <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 
     <!-- page content -->
     <div class="right_col" role="main">
