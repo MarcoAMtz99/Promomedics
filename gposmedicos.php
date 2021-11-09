@@ -261,24 +261,12 @@
               id: parseInt($('#item-id').val(),10), 
               perf: $('#item-perf').val()
               };
-          $.each($('#frm-item input'), function(index, el) {
-            id = $(el).attr('id');
-            id = id.replace('item-','');
-            data[id] = $.trim($(el).val());
-          });
-          var filterMail = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+         
+          
 
-          if(data.nom.length < 3){
-            setError('item-nom', 'Debe ingresar un nombre');
-          }/*else if(data.user.length < 3){
-            setError('item-user', 'Debe ingresar un username');
-          }*/else if(data.mail.length < 3){
-            setError('item-mail', 'Debe ingresar un correo electrónico');
-          }else if(!filterMail.test(data.mail)){
-            setError('item-mail','Debes ingresar un email válido');
-          }else{
-            btn = $(this);
-            btn.addClass('disabled');
+          
+            // btn = $(this);
+            // btn.addClass('disabled');
 
             act = 'addGrupoMedico';
             if(parseInt(data.id,10) > 0) act = 'editMedico';
@@ -305,7 +293,9 @@
                 method: 'POST',
                 url: 'http://127.0.0.1:8000/api/grupomedico',
                 data: {
-                    data: data
+                    data: data,
+                    id:id,
+                    perf:perf
                 },
             }).done(resp => {
 
@@ -322,8 +312,8 @@
                     NProgress.done();
                 }
             });
-          }
-        });
+          
+        }); // FIN DEL CLICK SAVE
 
 
 
