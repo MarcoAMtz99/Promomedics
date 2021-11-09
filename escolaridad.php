@@ -30,8 +30,8 @@
           <div class="">
 
               <div class="">
-                <div class="x_panel">
-                  <div class="x_title">
+                <div class="">
+                  <div class="">
                     <h2>Escolaridad <small>Catálogo de Escolaridad</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <?php if($perm == 'EDIT') : ?>
