@@ -202,7 +202,7 @@
                      
 
                     }
-                      echo '<a href="'.URL_ROOT.'calendario2.php'.'" class="list-group-item ">'.'calendario  <span class="glyphicon glyphicon-chevron-right"></span></a>';
+                      echo '<a href="'.URL_ROOT.'/calendario2.php'.'" class="list-group-item ">'.'calendario  <span class="glyphicon glyphicon-chevron-right"></span></a>';
 
 
 
