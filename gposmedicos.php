@@ -59,7 +59,7 @@
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th>Nombre </th>
+                            <th class="h2">Nombre </th>
                             <th>Responsable</th>
                             <th>Estado</th>
                             <th>Telefono</th>
