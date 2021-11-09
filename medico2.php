@@ -2853,11 +2853,14 @@
           {action: 'getFiles', med: med}, 
           function(resp) {
             console.log('RESPUESTA ARCHIVOS:',resp);
-            // $.each(resp.items, function(index, item) {
-            //   addInstRow(item, resp.act);
-            // });
-            // //NProgress.done();
-            // getCons(med);
+               tr = $('<tr data-id="'+item.ID+'"></tr>');
+              tr.append('<td>'+item.nombre+'</td>');
+              tr.append('<td>'+item.consultaPrimera+'</td>');
+              tr.append('<td>'+item.consultaSubsecuente+'</td>');
+              tr.append('<td>'+item.consultaPreferente+'</td>');
+              tr.append('<td>'+resp.act+'</td>');
+
+              $('#tbl-file tbody').append(tr);
         },'json');
       }
 
