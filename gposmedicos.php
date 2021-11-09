@@ -60,11 +60,11 @@
                         <thead>
                           <tr>
                             <th class="h2">Nombre </th>
-                            <th>Responsable</th>
-                            <th>Estado</th>
-                            <th>Telefono</th>
-                            <th>Giro</th>
-                            <th>Acciones</th>
+                            <th class="h2">Responsable</th>
+                            <th class="h2">Estado</th>
+                            <th class="h2">Telefono</th>
+                            <th class="h2">Giro</th>
+                            <th class="h2">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -464,11 +464,11 @@
           tr.empty();
         }*/
           // tr = $("#tbl-items [data-id='"+item.ID+"']").parents('tr');
-        tr.append('<td>'+item.nombre+'</td>');
-        tr.append('<td>'+item.responsable+'</td>');
-        tr.append('<td>'+item.estado+'</td>');
-        tr.append('<td>'+item.celular+'</td>');
-        tr.append('<td>'+item.giro+'</td>');
+        tr.append('<td class="h3">'+item.nombre+'</td>');
+        tr.append('<td class="h3">'+item.responsable+'</td>');
+        tr.append('<td class="h3">'+item.estado+'</td>');
+        tr.append('<td class="h3">'+item.celular+'</td>');
+        tr.append('<td class="h3">'+item.giro+'</td>');
         tr.append('<td> <a href="#" class="btn btn-primary">ASIGNAR MEDICOS</a></td>');
        /* tda = $('<td data-idm="'+item.ID+'" data-id="'+item.id_user+'" class="text-center">'+act+'</td>');
         $(tda).find('.btn-edit').after(item.act);
