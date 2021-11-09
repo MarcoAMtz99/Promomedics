@@ -283,24 +283,49 @@
             act = 'addGrupoMedico';
             if(parseInt(data.id,10) > 0) act = 'editMedico';
             NProgress.start();
-            $.post('core/medicos/'+act, 
-              {data: $.toJSON(data)}, 
-              function(resp) {
+            // $.post('http://127.0.0.1:8000/api/grupomedico', 
+            //   {data: $.toJSON(data)}, 
+            //   function(resp) {
+            //     if(!resp.error){
+            //       $('#tbl-items').DataTable().destroy();
+            //       addItemRow(resp.item, resp.actions);
+            //       doTable('#tbl-items', 5);
+            //       $('#item-id').val('0');
+            //       $('#frm-item').modal('hide');
+            //       btn.removeClass('disabled');
+            //     }else{
+            //       setError(resp.elem, resp.msg);
+            //       btn.removeClass('disabled');
+            //     }
+            //     NProgress.done();
+            // },'json');
+            // 
+            // 
+              $.ajax({
+                method: 'POST',
+                url: 'http://127.0.0.1:8000/api/grupomedico',
+                data: {
+                    data: data
+                },
+            }).done(resp => {
+
+                alert(resp);
                 if(!resp.error){
-                  $('#tbl-items').DataTable().destroy();
-                  addItemRow(resp.item, resp.actions);
-                  doTable('#tbl-items', 5);
-                  $('#item-id').val('0');
-                  $('#frm-item').modal('hide');
-                  btn.removeClass('disabled');
-                }else{
-                  setError(resp.elem, resp.msg);
-                  btn.removeClass('disabled');
+                    // alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
+                    // $('#tbl-items').before(alerta);
+                    // setTimeout(function(){ alerta.remove(); }, 5000);
+                    // if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
+                    // td.find('.btn-act').remove();
+                    // td.find('.btn-neg').remove();
+                    // $('.tooltip').remove();
+                    console.log('SE CANCELA');
+                    NProgress.done();
                 }
-                NProgress.done();
-            },'json');
+            });
           }
         });
+
+
 
         $('body').on('click', '.btn-del', function(){
             trp = $(this).parents('tr');
