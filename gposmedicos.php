@@ -300,7 +300,8 @@
 
             $.ajax({
                       method:'POST',
-                      url: 'http://127.0.0.1:8001/api/grupomedico',
+                      // url: 'http://127.0.0.1:8001/api/grupomedico',
+                       url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
                       // url: 'http://127.0.0.1:8000/api/agenda/'+id_cita,
                       // type: "PATCH",
                       data: {
