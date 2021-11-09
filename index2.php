@@ -222,4 +222,4 @@
               </div>
               <div class="panel-body">
                    <div class="content-row">
-                    <!--   <div class="row"> -->
+                      <div class="row">
