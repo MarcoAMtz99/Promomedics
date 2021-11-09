@@ -304,7 +304,7 @@
                     responsable:    array.apellido,
                     celular:    array.celular,
                     giro:   array.mat,
-                    estado:    array.sexo,
+                    estado:    array.sexo
 
                 },
             }).done(resp => {
