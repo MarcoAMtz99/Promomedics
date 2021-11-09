@@ -276,27 +276,54 @@
             // 
             // 
             console.log('ARRAY QUE ENVIO AJAX',array);
-              $.ajax({
-                method: 'POST',
-                // url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
-                  url: 'http://127.0.0.1:8001/api/grupomedico',
-                data: array
-                ,
-            }).done(resp => {
+            //   $.ajax({
+            //     method: 'POST',
+            //     // url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
+            //       url: 'http://127.0.0.1:8001/api/grupomedico',
+            //     data: array
+            //     ,
+            // }).done(resp => {
 
-                alert(resp);
-                if(!resp.error){
-                    // alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
-                    // $('#tbl-items').before(alerta);
-                    // setTimeout(function(){ alerta.remove(); }, 5000);
-                    // if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
-                    // td.find('.btn-act').remove();
-                    // td.find('.btn-neg').remove();
-                    // $('.tooltip').remove();
-                    console.log('SE CANCELA');
-                    NProgress.done();
-                }
-            });
+            //     alert(resp);
+            //     if(!resp.error){
+            //         // alerta = $('<div class="alert alert-success">Se marco al médico como No Autorizado</div>');
+            //         // $('#tbl-items').before(alerta);
+            //         // setTimeout(function(){ alerta.remove(); }, 5000);
+            //         // if(td.find('.btn-rea').length == 0) btn.before(resp.neg);
+            //         // td.find('.btn-act').remove();
+            //         // td.find('.btn-neg').remove();
+            //         // $('.tooltip').remove();
+            //         console.log('SE CANCELA');
+            //         NProgress.done();
+            //     }
+            // });
+
+            $.ajax({
+                      method:'POST',
+                      url: 'http://127.0.0.1:8001/api/grupomedico',
+                      // url: 'http://127.0.0.1:8000/api/agenda/'+id_cita,
+                      // type: "PATCH",
+                      data: {
+                          action:'cita',
+                          data: array,
+                      }
+                  }).done(item => {
+                      if(item.error){
+                          msg = 'No se encontro al usuario. Verifica tus datos.';
+                          err.append(msg);
+                          err.addClass('alert-danger');
+                         
+                         
+                          btn.before(err);
+                          btn.removeAttr('disabled');
+
+                      }else{
+                         $("#agendarModal").removeClass('selected');
+                         console.log('Success');
+                           // alert('cita actualizada');
+                          // window.location = "https://promomedics.byw-si.com.mx/calendario.php";
+                      }
+                  }, 'json');
           
         }); // FIN DEL CLICK SAVE
 
