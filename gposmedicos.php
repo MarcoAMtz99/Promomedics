@@ -301,10 +301,10 @@
                 url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: {
                     nombre: array.nombre,
-                    responsable:    array.apellido,
+                    apellido:    array.apellido,
                     celular:    array.celular,
-                    giro:   array.mat,
-                    estado:    array.sexo
+                    mat:   array.mat,
+                    sexo:    array.sexo,
 
                 },
             }).done(resp => {
