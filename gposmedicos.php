@@ -278,7 +278,8 @@
             console.log('ARRAY QUE ENVIO AJAX',array);
               $.ajax({
                 method: 'POST',
-                url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
+                // url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
+                  url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: array
                 ,
             }).done(resp => {
