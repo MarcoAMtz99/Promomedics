@@ -40,14 +40,14 @@
                   /*IFNULL((SELECT ID FROM medico_especialidad WHERE id_medico = m.ID LIMIT 1),0) AS esp,*/ 
                   IFNULL((SELECT ID FROM medico_fiscal WHERE id_medico = m.ID LIMIT 1),0) AS fact 
               FROM medico m WHERE ID = $ID; ";
-  $res = mysql_query($conn,$SQL);
- $infoMed = mysql_fetch_assoc($res);
+  $res = mysqli_query($conn,$SQL);
+ $infoMed = mysqli_fetch_assoc($res);
 
   //$SQLme = "SELECT id_especialidad, especialidad, subespecialidad, num_cedula, num_recer, fecha_recer FROM medico_especialidad WHERE ID = ".$infoMed['esp'];
   //$infoEsp = mysql_fetch_assoc(mysql_query($SQLme));
 
   $SQLmf = "SELECT * FROM medico_fiscal WHERE ID = ".$infoMed['fact'];
-  $infoFact = mysql_fetch_assoc(mysql_query($conn,$SQLmf));
+  $infoFact = mysqli_fetch_assoc(mysqli_query($conn,$SQLmf));
 
 
   /*$SQLe = "SELECT ID, nombre FROM especialidades WHERE status = 1; ";
