@@ -34,15 +34,15 @@
 
 
         <!-- page content -->
-        <div class="">
+        <div class="right_col" role="main">
 
 
-          <div class="">
-            <div class="">
-                  <div class="">
-                    <div class="">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
                       <h2>Alta de Grupo Médicos <small>Grupos registrados</small></h2>
-                      <ul class="">
+                      <ul class="nav navbar-right panel_toolbox">
                         <?php if($perm == 'EDIT') : ?>
                         <li>
                             <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
@@ -56,8 +56,7 @@
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
                       </p>
-                      <table id="tbl-items" class="table table-striped table-bordered ">
-                        <br>
+                      <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
                             <th>Nombre </th>
@@ -65,7 +64,7 @@
                             <th>Estado</th>
                             <th>Telefono</th>
                             <th>Giro</th>
-                            <th>ACCIONES</th>
+                            <th class="col-3">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -463,7 +462,7 @@
         tr.append('<td>'+item.estado+'</td>');
         tr.append('<td>'+item.celular+'</td>');
         tr.append('<td>'+item.giro+'</td>');
-        tr.append('<td><a href="#" class="btn btn-primary">ASIGNAR MEDICOS</a></td>');
+        tr.append('<td> <a href="#" class="btn btn-primary col-3">ASIGNAR MEDICOS</a></td>');
        /* tda = $('<td data-idm="'+item.ID+'" data-id="'+item.id_user+'" class="text-center">'+act+'</td>');
         $(tda).find('.btn-edit').after(item.act);
         $(tda).find('.btn-del').before(item.neg);
