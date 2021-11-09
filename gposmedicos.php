@@ -64,7 +64,7 @@
                             <th>Estado</th>
                             <th>Telefono</th>
                             <th>Giro</th>
-                            <th></th>
+                            <th>ACCIONES</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -462,6 +462,7 @@
         tr.append('<td>'+item.estado+'</td>');
         tr.append('<td>'+item.celular+'</td>');
         tr.append('<td>'+item.giro+'</td>');
+        tr.append('<td><a href="#" class="btn btn-primary">ASIGNAR MEDICOS</a></td>');
        /* tda = $('<td data-idm="'+item.ID+'" data-id="'+item.id_user+'" class="text-center">'+act+'</td>');
         $(tda).find('.btn-edit').after(item.act);
         $(tda).find('.btn-del').before(item.neg);
