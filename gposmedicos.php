@@ -256,15 +256,8 @@
 
         $('#btnSave').click(function() {
           array = {
-              // id: parseInt($('#item-id').val(),10), 
-              // perf: $('#item-perf').val()item-ced
-              // item-sexo
-              // $('#frm-item input').val('');item-mat
-                 nombre:   $('#item-nom').val(),
-                 apellido:   $('#item-ape').val(),
-                  celular:   $('#item-ced').val(),
-                   mat:   $('#item-mat').val(),
-                    sexo:   $('#item-sexo').val(),
+                 nombre:$('#item-nom').val()
+               
               };
           
 
@@ -274,31 +267,26 @@
 
             // act = 'addGrupoMedico';
             // if(parseInt(data.id,10) > 0) act = 'editMedico';
-            NProgress.start();
-            // $.post('http://127.0.0.1:8000/api/grupomedico', 
-            //   {data: $.toJSON(data)}, 
-            //   function(resp) {
-            //     if(!resp.error){
-            //       $('#tbl-items').DataTable().destroy();
-            //       addItemRow(resp.item, resp.actions);
-            //       doTable('#tbl-items', 5);
-            //       $('#item-id').val('0');
-            //       $('#frm-item').modal('hide');
-            //       btn.removeClass('disabled');
-            //     }else{
-            //       setError(resp.elem, resp.msg);
-            //       btn.removeClass('disabled');
-            //     }
-            //     NProgress.done();
-            // },'json');
+            // NProgress.start();
+            $.post('http://127.0.0.1:8000/api/grupomedico', 
+              {data: $.toJSON(array)}, 
+              function(resp) {
+                  console.log('ARRAY QUE ENVIO DESDE POST',array);
+                if(!resp.error){
+                  
+                }else{
+                 
+                }
+                
+            },'json');
             // 
             // 
-            console.log('ARRAY QUE ENVIO',array);
+            console.log('ARRAY QUE ENVIO AJAX',array);
               $.ajax({
                 method: 'POST',
                 url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: {
-                    nombre: array.nombre
+                    nombre: array
 
                 },
             }).done(resp => {
