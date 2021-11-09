@@ -298,7 +298,7 @@
             console.log('ARRAY QUE ENVIO',array);
               $.ajax({
                 method: 'POST',
-                url: 'http://127.0.0.1:8001/api/grupomedico',
+                url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
                 data: {
                     nombre: array.nombre,
                     apellido:    array.apellido,
