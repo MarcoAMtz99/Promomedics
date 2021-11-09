@@ -44,8 +44,8 @@ if($usertype > 2){
 	if($perm['action'] == 'EDIT') $edita = true;
 	
 }*/
-	if(!isset($_GET['action'])) $action = $_GET['action'];
 	
+	// $action = $_GET['action'];
 	if(!isset($_GET['action'])) $action = $_POST['action'];
 
 	if (isset($_POST['data'])) {
