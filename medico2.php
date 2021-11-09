@@ -1460,6 +1460,7 @@
 
         $med = $('#med-id').val();
         getInst($med);
+        getFile($med);
 
         $('#gral-esp').change(function() {
           $('#gral-subes').addClass('disabled');
@@ -2844,6 +2845,20 @@
         tr.append('<td>'+act+'</td>');
 
         if(nuevo) $('#tbl-ase tbody').append(tr);
+      }
+
+      function getFile(med){
+        NProgress.start();
+        $.post('/core/medicos.php', 
+          {action: 'getFiles', med: med}, 
+          function(resp) {
+            console.log('RESPUESTA ARCHIVOS:',resp);
+            // $.each(resp.items, function(index, item) {
+            //   addInstRow(item, resp.act);
+            // });
+            // //NProgress.done();
+            // getCons(med);
+        },'json');
       }
 
 
