@@ -82,6 +82,6 @@
     </script>
 
   </head>
-<nav class="nav">
-  <a class="nav-link active" href="<?php echo URL_ROOT; ?>">HOME</a>
+<nav class="nav bg-dark">
+  <a class="nav-link active" href="<?php echo URL_ROOT; ?>">PROMOMEDICS</a>
 </nav>
