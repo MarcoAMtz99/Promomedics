@@ -300,7 +300,7 @@
                 method: 'POST',
                 url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: {
-                    nombre: array,
+                    nombre: array.nombre
 
                 },
             }).done(resp => {
