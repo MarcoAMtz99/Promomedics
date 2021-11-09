@@ -32,7 +32,7 @@
     <!-- Datatables -->
 
         <!-- page content -->
-        <div class="">
+        <div class="container">
 
           <div class="">
             <div class="">
