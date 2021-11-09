@@ -3022,7 +3022,7 @@ switch ($action) {
 	case 'getFiles':
 		$med = $_POST['med'];
 
-		$SQL = "SELECT *, DATE_FORMAT(fecha,'%d/%m/%Y') AS fecha FROM medico_archivo WHERE status = 1 AND id_medico = $med ORDER BY nombre; ";
+		$SQL = "SELECT *, DATE_FORMAT(fecha,'%d/%m/%Y') AS fecha FROM medico_archivo WHERE  id_medico = $med ORDER BY nombre; ";
 		$res = mysqli_query($conn, $SQL);
 
 		$arr = array();
