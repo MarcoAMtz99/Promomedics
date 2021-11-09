@@ -41,7 +41,7 @@
                 <div class="">
                   <div class="">
                     <h2>Escolaridad <small>Catálogo de Escolaridad</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
+                    <ul class="">
                       <?php if($perm == 'EDIT') : ?>
                       <li>
                           <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
@@ -55,8 +55,8 @@
                   <div class="">
 
 
-                   <!--  <div class="row"> -->
-                      <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
 
                         <table id="tbl-items" class=" table table-striped table-bordered">
                           <thead>
@@ -71,7 +71,7 @@
                         </table>
                       </div>
 
-                    <!-- </div> -->
+                    </div>
                     
                   </div>
                 </div>
