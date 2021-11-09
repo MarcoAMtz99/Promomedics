@@ -3036,7 +3036,7 @@ switch ($action) {
 			$actions .= '<button type="button" class="btn btn-xs btn-danger btnfile-del" title="Eliminar"><i class="fa fa-trash"></i></button>';
 		}
 
-		echo json_encode(array('items' => $arr, 'act' => $actions));
+		echo json_encode(array('items' => $arr, 'act' => $actions,'consulta'=>$SQL));
 		break;
 
 	case 'addFile':
