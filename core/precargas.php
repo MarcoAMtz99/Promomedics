@@ -311,9 +311,9 @@ switch ($action) {
 			$res = mysqli_query($conn, $SQL);
 
 			if(mysqli_affected_rows($conn) > 0){
-				$detalle = $id.' '.$nom;
-				$log->setDatos('Baja Escolaridad '.$detalle,$detalle,$id,ESCOLARIDAD);
-            	$log->saveLog();
+				// $detalle = $id.' '.$nom;
+				// $log->setDatos('Baja Escolaridad '.$detalle,$detalle,$id,ESCOLARIDAD);
+    //         	$log->saveLog();
 
 				$arrRes = array('res' => true);	
 			}else{
