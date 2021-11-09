@@ -56,10 +56,8 @@
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
                       </p>
-                       <div class="clearfix"></div>
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
-                           <div class="clearfix"></div>
                           <tr>
                             <th>Nombre </th>
                             <th>Responsable</th>
