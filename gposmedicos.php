@@ -293,9 +293,8 @@
                 method: 'POST',
                 url: 'http://127.0.0.1:8000/api/grupomedico',
                 data: {
-                    data: data,
-                    id:id,
-                    perf:perf
+                    data: data
+
                 },
             }).done(resp => {
 
