@@ -1,6 +1,6 @@
 <?php 
   $titulo = "Datos de Médico";
-      // include 'index2.php'; 
+          include 'header.php'; 
    include 'core/conex.php'; 
 
   $aperm = $_SESSION['perm'];
