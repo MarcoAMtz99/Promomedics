@@ -94,28 +94,28 @@
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="item-nom">Nombre <span class="required">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" id="item-nom" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Grupo Médico">
+                        <input type="text" id="nombreGrupo" required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Grupo Médico">
                       </div>
                     </div>
                      <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-ape" class="control-label col-md-3 col-sm-3 col-xs-12">Responsable</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input id="item-ape" class="form-control col-md-7 col-xs-12" type="text" placeholder="Responsable">
+                        <input id="responsable" class="form-control col-md-7 col-xs-12" type="text" placeholder="Responsable">
                       </div>
                     </div>
                      <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-mat" class="control-label col-md-3 col-sm-3 col-xs-12">Giro</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input id="item-mat" class="form-control col-md-7 col-xs-12" type="text" placeholder="Giro">
+                        <input id="giro" class="form-control col-md-7 col-xs-12" type="text" placeholder="Giro">
                       </div>
                     </div>
                      <div class="clearfix"></div>
                     <div class="form-group">
                       <label for="item-ced" class="control-label col-md-3 col-sm-3 col-xs-12">Celular <span class="required">*</span></label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="item-ced" class="form-control col-md-7 col-xs-12" type="text" placeholder="Celular" <?php echo $usertype != 1 ? 'disabled' : '' ?>>
+                        <input id="celular" class="form-control col-md-7 col-xs-12" type="text" placeholder="Celular" <?php echo $usertype != 1 ? 'disabled' : '' ?>>
                       </div>
                     </div>
 
@@ -123,7 +123,7 @@
                     <div class="form-group">
                       <label for="item-sexo" class="control-label col-md-3 col-sm-3 col-xs-12">Estado <span class="required">*</span></label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input id="item-sexo" class="form-control col-md-7 col-xs-12" type="text" placeholder="Estado">
+                        <input id="estado" class="form-control col-md-7 col-xs-12" type="text" placeholder="Estado">
                       </div>
                     </div>
                     
@@ -256,7 +256,11 @@
 
         $('#btnSave').click(function() {
           array = {
-                 nombre:$('#item-nom').val()
+                 nombre:$('#nombreGrupo').val(),
+                  responsable:$('#responsable').val(),
+                   giro:$('#giro').val(),
+                    celular:$('#celular').val(),
+                     estado:$('#estado').val()
                
               };
           
@@ -267,28 +271,16 @@
 
             // act = 'addGrupoMedico';
             // if(parseInt(data.id,10) > 0) act = 'editMedico';
-            // NProgress.start();
-            $.post('http://127.0.0.1:8000/api/grupomedico', 
-              {data: $.toJSON(array)}, 
-              function(resp) {
-                  console.log('ARRAY QUE ENVIO DESDE POST',array);
-                if(!resp.error){
-                  
-                }else{
-                 
-                }
-                
-            },'json');
+            NProgress.start();
+           
             // 
             // 
             console.log('ARRAY QUE ENVIO AJAX',array);
               $.ajax({
                 method: 'POST',
                 url: 'http://127.0.0.1:8001/api/grupomedico',
-                data: {
-                    nombre: array
-
-                },
+                data: array
+                ,
             }).done(resp => {
 
                 alert(resp);
