@@ -257,19 +257,25 @@
         });*/
 
         $('#btnSave').click(function() {
-          data = {
-              id: parseInt($('#item-id').val(),10), 
-              perf: $('#item-perf').val()
+          array = {
+              // id: parseInt($('#item-id').val(),10), 
+              // perf: $('#item-perf').val()item-ced
+              // item-sexo
+              // $('#frm-item input').val('');item-mat
+                 nombre:   $('#item-nom').val(),
+                 apellido:   $('#item-ape').val(),
+                  celular:   $('#item-ced').val(),
+                   mat:   $('#item-mat').val(),
+                    sexo:   $('#item-sexo').val(),
               };
-         
           
 
           
             // btn = $(this);
             // btn.addClass('disabled');
 
-            act = 'addGrupoMedico';
-            if(parseInt(data.id,10) > 0) act = 'editMedico';
+            // act = 'addGrupoMedico';
+            // if(parseInt(data.id,10) > 0) act = 'editMedico';
             NProgress.start();
             // $.post('http://127.0.0.1:8000/api/grupomedico', 
             //   {data: $.toJSON(data)}, 
@@ -293,7 +299,7 @@
                 method: 'POST',
                 url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: {
-                    data: data
+                    data: array,
 
                 },
             }).done(resp => {
