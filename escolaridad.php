@@ -55,7 +55,7 @@
                   <div class="">
 
 
-                    <div class="row">
+                   <!--  <div class="row"> -->
                       <div class="container-fluid">
 
                         <table id="tbl-items" class=" table table-striped table-bordered">
@@ -71,7 +71,7 @@
                         </table>
                       </div>
 
-                    </div>
+                    <!-- </div> -->
                     
                   </div>
                 </div>
