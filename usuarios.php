@@ -32,16 +32,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="">
 
           <div class="clearfix"></div>
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="x_panel">
-                    <div class="x_title">
+          <div class="">
+            <div class="">
+                  <div class="">
+                    <div class="">
                       <h2>Usuarios <small>Usuarios con acceso al sistema</small></h2>
-                      <ul class="nav navbar-right panel_toolbox">
+                      <ul class="">
                         <?php if($perm == 'EDIT') : ?>
                         <li>
                             <a id="btnAdd" class="add-link" data-toggle="modal" data-target="#frm-item">
@@ -181,25 +181,22 @@
         <?php include 'footer.php'; ?>
 
 
-    <!-- FastClick -->
-    <script src="vendors/fastclick/lib/fastclick.js"></script>
+ <!-- FastClick -->
+    <script src="<?php echo URL_ROOT; ?>/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/nprogress/nprogress.js"></script>
 
-
-
-    <!-- bootstrap-progressbar -->
-    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="vendors/iCheck/icheck.min.js"></script>
-
-    <!-- Datatables -->
-    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <!-- Select2 -->
-    <script src="vendors/select2/dist/js/select2.full.min.js"></script>
-    
+  <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>

@@ -145,29 +145,29 @@
 
 
     <!-- FastClick -->
-    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/nprogress/nprogress.js"></script>
 
 
 
     <!-- bootstrap-progressbar -->
-    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/iCheck/icheck.min.js"></script>
 
     <!-- Datatables -->
-    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
     <!-- jQuery Smart Wizard >
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script-->
     <!-- Select2 -->
-    <script src="vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/select2/dist/js/select2.full.min.js"></script>
     <!-- jquery.inputmask -->
-    <script src="vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
     <!-- validator -->
-    <script src="vendors/validator/validator.js"></script>
+    <script src="<?php echo URL_ROOT; ?>/vendors/validator/validator.js"></script>
     
 
     <!-- Custom Theme Scripts -->
