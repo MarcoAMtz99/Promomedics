@@ -258,15 +258,12 @@
 
         $('#btnSave').click(function() {
           array = {
-              // id: parseInt($('#item-id').val(),10), 
-              // perf: $('#item-perf').val()item-ced
-              // item-sexo
-              // $('#frm-item input').val('');item-mat
+            
                  nombre:   $('#item-nom').val(),
                  responsable:   $('#item-ape').val(),
                   celular:   $('#item-ced').val(),
                    giro:   $('#item-mat').val(),
-                    estado:   $('#item-sexo').val(),
+                    estado:   $('#item-sexo').val()
               };
           
 
@@ -301,10 +298,10 @@
                 url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: {
                     nombre: array.nombre,
-                    responsable:    array.responsable,
-                    celular:    array.celular,
-                    giro:   array.giro,
-                    estado:    array.estado,
+                    responsable:array.responsable,
+                    celular:array.celular,
+                    giro:array.giro,
+                    estado:array.estado,
 
                 },
             }).done(resp => {
