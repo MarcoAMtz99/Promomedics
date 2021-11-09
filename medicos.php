@@ -38,7 +38,7 @@
             <div class="">
                   <div class="">
                     <div class="">
-                      <h2>Alta de Médicos <small>Medicos registrados</small></h2>
+                      <h1>Alta de Médicos <small>Medicos registrados</small></h1>
                       <ul class="">
                         <?php if($perm == 'EDIT') : ?>
                         <li>
@@ -57,12 +57,12 @@
                       <table id="tbl-items" class="table table-striped table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th class="col-5">Nombre Médico</th>
-                            <th>Especialidad</th>
-                            <th>Cédula</th>
-                            <th>Email</th>
-                            <th>Acceso</th>
-                            <th></th>
+                            <th class="h2">Nombre Médico</th>
+                            <th class="h2">Especialidad</th>
+                            <th class="h2">Cédula</th>
+                            <th class="h2">Email</th>
+                            <th class="h2">Acceso</th>
+                            <th class="h2"></th>
                           </tr>
                         </thead>
                         <tbody>
