@@ -1,6 +1,6 @@
 <?php 
   $titulo = "Datos de Médico";
-  // include 'header.php'; 
+  
     include 'index2.php'; 
     include 'core/conex.php'; 
 
