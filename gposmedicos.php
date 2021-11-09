@@ -173,6 +173,13 @@
 
           
         </div>
+
+          </div>
+                      </div>
+                      </div>
+                      </div>
+                      <!-- fin del container fluid del index2 -->
+                      </div> 
         <!-- /page content -->
  <?php include 'footer.php'; ?>
 
