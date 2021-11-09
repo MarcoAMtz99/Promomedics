@@ -55,7 +55,7 @@
                   <div class="x_content">
 
 
-                    <div class="row">
+                    <div class="col-12">
                       <div class="col-md-12 col-sm-12 col-xs-12">
 
                         <table id="tbl-items" class="table table-striped table-bordered">
