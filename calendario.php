@@ -1,4 +1,18 @@
+<?php 
+  $titulo = "Calendario";
+  // include 'header.php'; 
+    include 'index2.php'; 
 
+  $aperm = $_SESSION['perm'];
+  if(!array_key_exists(MOD_MEDICOS, $aperm)){
+    include '403.php';
+    exit(0);
+  }else{
+    $perm = $aperm[MOD_MEDICOS];
+    $perm = $perm['action'];
+  }
+
+?>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/fullcalendar.min.css">
 	    <script src="js/jquery.min.js"></script>
@@ -21,17 +35,17 @@
 	<img class="" style="height: 40px;" src="/images/logo_small.png" alt="AGENDA">
   </div>
 </nav> -->
-<nav class="navbar navbar-dark bg-dark">
+<!-- <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://promomedics.byw-si.com.mx/">
       <img src="images/logo_small.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
       Inicio
     </a>
   </div>
-</nav>
+</nav> -->
 <div class="clearfix"></div>
 
-	<div class="container-fluid col-12" style="background-image: url(./images/bg.jpg);">
+	<!-- <div class="container-fluid col-12" style="background-image: url(./images/bg.jpg);"> -->
 		<!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agendarModal">
   Agendar
