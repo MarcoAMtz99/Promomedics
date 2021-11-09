@@ -258,11 +258,15 @@
 
         $('#btnSave').click(function() {
           array = {
-                 nombre:  $('#item-nom').val(),
-                 apellido:$('#item-ape').val(),
-                  celular:$('#item-ced').val(),
+              // id: parseInt($('#item-id').val(),10), 
+              // perf: $('#item-perf').val()item-ced
+              // item-sexo
+              // $('#frm-item input').val('');item-mat
+                 nombre:   $('#item-nom').val(),
+                 apellido:   $('#item-ape').val(),
+                  celular:   $('#item-ced').val(),
                    mat:   $('#item-mat').val(),
-                    sexo: $('#item-sexo').val(),
+                    sexo:   $('#item-sexo').val(),
               };
           
 
@@ -294,13 +298,9 @@
             console.log('ARRAY QUE ENVIO',array);
               $.ajax({
                 method: 'POST',
-                url: 'https://api.promo.byw-si.com.mx/api/grupomedico',
+                url: 'http://127.0.0.1:8001/api/grupomedico',
                 data: {
-                    nombre: $('#item-nom').val(),
-                    apellido:    array.apellido,
-                    celular:    array.celular,
-                    mat:   array.mat,
-                    sexo:    array.sexo,
+                    nombre: array,
 
                 },
             }).done(resp => {
