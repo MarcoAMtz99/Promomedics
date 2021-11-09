@@ -25,11 +25,11 @@
     <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="container" >
 
-          <div class="row">
+          <div class="">
 
-              <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Escolaridad <small>Catálogo de Escolaridad</small></h2>
